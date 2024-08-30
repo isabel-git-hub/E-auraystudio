@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+<title>Auray Studio</title>
+<link href="/css/productstyle.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script th:src="@{/js/script.js}"></script>
+</head>
+<body>
+<div layout:fragment="content">
+	<header>제품보기</header>
+	<ul class="menu">
+		<li><a href="/product/kitchen">키친</a></li>
+		<li><a href="/product/built_in">붙박이장</a></li>
+		<li><a href="/product/bath">바스</a></li>
+		<li><a href="/product/tile">타일</a></li>
+		<li><a href="/product/door">도어</a></li>
+		<li><a href="/product/innergate">중문</a></li>
+		<li>
+		    <a href="/product/window">창호</a>
+			<div class="dropdown-content">
+				<a href="/product/window/system">시스템창</a> 
+				<a href="/product/window/general">일반창</a>
+			</div>
+		</li>
+		<li>
+		    <a href="/product/moulding">몰딩</a>
+		    <div class="dropdown-content">
+		        <a href="/product/moulding/hidden">히든 몰딩</a>
+                <a href="/product/moulding/flat">평몰딩</a>
+                <a href="/product/moulding/minus">마이너스 몰딩</a>
+                <a href="/product/moulding/ceiling">천장 몰딩</a>
+                <a href="/product/moulding/baseboard">걸레받이</a>
+                <a href="/product/moulding/stair">계단 몰딩</a>
+		    </div>
+		</li>
+		<li>
+		    <a href="/product/wall">Wall</a>
+		    <div class="dropdown-content">
+		        <a href="/product/wall/style">스타일월</a>
+                <a href="/product/wall/panel">월판넬</a>
+		    </div>
+		</li>
+		<li><a href="/product/flooring">바닥재</a></li>
+		<li>
+		    <a href="/product/film">필름</a>
+		</li>
+		<li><a href="/product/wallpaper">벽지</a></li>
+		<li><a href="/product/paint">페인트</a></li>
+		<li><a href="/product/insulation">단열재</a></li>
+	</ul>
+</div>
+</body>
+</html>

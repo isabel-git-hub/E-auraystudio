@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+<title>Auray Studio</title>
+<link href="@{/css/productstyle.css}" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content">
+	<header>필름 옵션</header>
+	<div class="content">
+        <div id="film-options">
+				<div class="option">
+					<a href="/product/film/solid">솔리드</a>
+				</div>
+				<div class="option">
+                    <a href="/product/film/metal">메탈</a>
+                </div>
+                <div class="option">
+                    <a href="/product/film/wood">우드</a>
+                </div>
+                <div class="option">
+                    <a href="/product/film/stone">스톤</a>
+                </div>
+                <div class="option">
+                    <a href="/product/film/textile">텍스타일</a>
+                </div>
+                <div class="option">
+                    <a href="/product/film/leather">레더</a>
+                </div>
+                <div class="option">
+                    <a href="/product/film/interior-board">인테리어 보드</a>
+                </div>
+            </div>
+    </div>
+</div>  
+</body>
+</html>

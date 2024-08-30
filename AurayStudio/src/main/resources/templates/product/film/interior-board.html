@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+<title>Auray Studio</title>
+<link href="@{/css/productstyle.css}" rel="stylesheet">
+</head>
+<body>
+	<div layout:fragment="content">
+		<header>인테리어 보드</header>
+		<div class="content">
+			<div class="filter">
+				<div class="category">
+					<span>카테고리</span>
+					<span>프리미엄스톤</span> 
+					<span>스톤</span>
+				</div>
+				<div class="color-selection">
+					<span>색상</span>
+					<div class="color-options">
+                        <span class="color-option" style="background-color: #2b2b2b;"></span>
+                        <span class="color-option" style="background-color: #d3d3d3;"></span>
+                        <span class="color-option" style="background-color: #8b6f52;"></span>
+                        <span class="color-option" style="background-color: #f5e6cc;"></span>
+                    </div>
+				</div>
+			</div>
+			<div class="product-list">
+			    <div class="product-item">
+					<a href="/product/film/interior-board/1"> 
+					    <img src="/images/interior-board_product1.jpg" alt="인테리어 보드 제품1">
+					</a>
+					<p>프리미엄 스톤 FILM-07</p>
+                </div>
+                <div class="product-item">
+                    <a href="/product/film/interior-board/2"> 
+					    <img src="/images/interior-board_product2.jpg" alt="인테리어 보드 제품2">
+					</a>
+                    <p>스톤 FILM-07</p>
+                </div>
+			    <div class="product-item">
+					<a href="/product/film/interior-board/3"> 
+					    <img src="/images/interior-board_product3.jpg" alt="인테리어 보드 제품3">
+					</a>
+					<p>프리미엄 스톤 FILM-07</p>
+                </div>
+                <div class="product-item">
+                    <a href="/product/film/interior-board/4"> 
+					    <img src="/images/interior-board_product4.jpg" alt="인테리어 보드 제품4">
+					</a>
+                    <p>프리미엄 스톤 FILM-07</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/film/interior-board/5"> 
+					    <img src="/images/interior-board_product5.jpg" alt="인테리어 보드 제품5">
+					</a>
+					<p>스톤 FILM-07</p>
+                </div>
+                <div class="product-item">
+                    <a href="/product/film/interior-board/6"> 
+					    <img src="/images/interior-board_product6.jpg" alt="인테리어 보드 제품6">
+					</a>
+                    <p>스톤 FILM-07</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/film/interior-board/7"> 
+					    <img src="/images/interior-board_product7.jpg" alt="인테리어 보드 제품7">
+					</a>
+					<p>스톤 FILM-07</p>
+                </div>
+                <div class="product-item">
+                    <a href="/product/film/interior-board/8"> 
+					    <img src="/images/interior-board_product8.jpg" alt="인테리어 보드 제품8">
+					</a>
+                    <p>스톤 FILM-07</p>
+                </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

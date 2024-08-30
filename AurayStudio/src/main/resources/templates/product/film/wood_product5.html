@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>우드 제품 상세</title>
+    <link href="@{/css/productstyle.css}" rel="stylesheet">
+</head>
+<body>
+    <div layout:fragment="content">
+        <header>우드 제품 상세</header>
+        <div class="product-detail">
+            <div class="product-image">
+                <img src="/images/wood_product5.jpg" alt="우드 제품5">
+            </div>
+            <div class="product-info">
+                <h2>방염</h2>
+                <p><strong>카테고리:</strong> 우드</p>
+                <p><strong>제품코드:</strong> FILM-03</p>
+                <p><strong>사이즈:</strong> 두께(영업지침외) 0.2mm, 폭 1,220mm</p>
+                <p><strong>색상:</strong> 블랙 <span style="background-color: #2b2b2b; width: 20px; height: 20px; display: inline-block;"></span></p>
+                <p><strong>기능:</strong> 방염</p>
+                <div class="product-actions">
+                    <button class="action-button">인테리어 상담신청</button>
+                    <button class="action-button">가까운 매장찾기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+<title>Auray Studio</title>
+<link href="@{/css/productstyle.css}" rel="stylesheet">
+</head>
+<body>
+	<div layout:fragment="content">
+		<header>스톤</header>
+		<div class="content">
+			<p>공간에 다양한 표현을 만들어 내는 차별화된 다자인이 돋보입니다.</p>
+			<div class="filter">
+				<div class="category">
+					<span>카테고리</span> 
+					<span>스톤</span>
+				</div>
+				<div class="color-selection">
+					<span>색상</span>
+					<div class="color-options">
+                        <span class="color-option" style="background-color: #2b2b2b;"></span>
+                        <span class="color-option" style="background-color: #4a2f1b;"></span>
+                        <span class="color-option" style="background-color: #8b6f52;"></span>
+                        <span class="color-option" style="background-color: #e1d7bc;"></span>
+                    </div>
+				</div>
+				<div class="features">
+                    <span>기능</span>
+                    <input type="checkbox" id="feature1" name="feature1" value="방염">
+                    <label for="feature1">방염</label>
+                    <input type="checkbox" id="feature2" name="feature2" value="비방염">
+                    <label for="feature2">비방염</label>
+                </div>
+			</div>
+			<div class="product-list">
+			    <div class="product-item">
+					<a href="/product/film/stone/1"> 
+					    <img src="/images/stone_product1.jpg" alt="스톤 제품1">
+					</a>
+					<p>스톤 방염 FILM-04</p>
+                </div>
+                <div class="product-item">
+                    <a href="/product/film/stone/2"> 
+					    <img src="/images/stone_product2.jpg" alt="스톤 제품2">
+					</a>
+                    <p>스톤 비방염 FILM-04</p>
+                </div>
+			    <div class="product-item">
+					<a href="/product/film/stone/3"> 
+					    <img src="/images/stone_product3.jpg" alt="스톤 제품3">
+					</a>
+					<p>스톤 방염 FILM-04</p>
+                </div>
+                <div class="product-item">
+                    <a href="/product/film/stone/4"> 
+					    <img src="/images/stone_product4.jpg" alt="스톤 제품4">
+					</a>
+                    <p>스톤 비방염 FILM-04</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/film/stone/5"> 
+					    <img src="/images/stone_product5.jpg" alt="스톤 제품5">
+					</a>
+					<p>스톤 방염 FILM-04</p>
+                </div>
+                <div class="product-item">
+                    <a href="/product/film/stone/6"> 
+					    <img src="/images/stone_product6.jpg" alt="스톤 제품6">
+					</a>
+                    <p>스톤 비방염 FILM-04</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/film/stone/7"> 
+					    <img src="/images/stone_product7.jpg" alt="스톤 제품7">
+					</a>
+					<p>스톤 방염 FILM-04</p>
+                </div>
+                <div class="product-item">
+                    <a href="/product/film/stone/8"> 
+					    <img src="/images/stone_product8.jpg" alt="스톤 제품8">
+					</a>
+                    <p>스톤 비방염 FILM-04</p>
+                </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

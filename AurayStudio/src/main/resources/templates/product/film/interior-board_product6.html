@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>인테리어 보드</title>
+    <link href="@{/css/productstyle.css}" rel="stylesheet">
+</head>
+<body>
+    <div layout:fragment="content">
+        <header>인테리어 보드</header>
+        <div class="product-detail">
+            <div class="product-image">
+                <img src="/images/stone_product6.jpg" alt="인테리어 보드 제품6">
+            </div>
+            <div class="product-info">
+                <h2>미스티 화이트 세라믹</h2>
+                <p><strong>카테고리:</strong> 스톤</p>
+                <p><strong>제품코드:</strong> FILM-07</p>
+                <p><strong>사이즈:</strong> 두께 6T, 1,210(가로)mm×2,420(세로)mm</p>
+                <p><strong>색상:</strong> 베이지 <span style="background-color: #f5e6cc; width: 20px; height: 20px; display: inline-block;"></span></p>
+                <div class="product-actions">
+                    <button class="action-button">인테리어 상담신청</button>
+                    <button class="action-button">가까운 매장찾기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

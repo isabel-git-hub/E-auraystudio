@@ -1,0 +1,21 @@
+	<header>
+		<h1>Auray Studio</h1>
+		<div>
+			<ul>
+				<li th:if="${session.loggedInUser == null}"><a
+					th:href="@{/login}">로그인</a></li>
+				<li th:if="${session.loggedInUser == null}"><a
+					th:href="@{/join}">회원가입</a></li>
+				<li th:if="${session.loggedInUser != null}"><span
+					th:text="'안녕하세요, ' + ${session.loggedInUser} + '님'"></span></li>
+				<li th:if="${session.loggedInUser != null}"><a
+					th:href="@{/logout}">로그아웃</a></li>
+				<!-- <li sec:authorize="isAuthenticated()">
+            <span th:text="'안녕하세요, ' + ${#authentication.principal.username} + '님'"></span>
+        </li>
+        <li sec:authorize="isAnonymous()"><a th:href="@{/login}">로그인</a></li>
+        <li sec:authorize="isAnonymous()"><a th:href="@{/join}">회원가입</a></li>
+        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">로그아웃</a></li> -->
+			</ul>
+		</div>
+	</header>

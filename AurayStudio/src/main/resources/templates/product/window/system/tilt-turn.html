@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Tilt-turn</title>
+    <link th:href="@{/css/productstyle.css}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1 th:text="${title}">Tilt-turn</h1>
+    </header>
+    <div>
+        <p>여기에 Tilt-turn 창의 상세 정보를 입력합니다.</p>
+        <img th:src="@{/img/Tilt&Turn.jpg}" alt="Tilt-turn 창 이미지">
+    </div>
+</body>
+</html>

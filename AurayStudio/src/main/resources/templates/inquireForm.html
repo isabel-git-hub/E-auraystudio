@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+<link>
+</head>
+<body>
+	<div layout:fragment="content" id="contents">
+		<h1>상담신청</h1>
+		<form id="inquiryForm" name="inquiryForm" action="/sendMail"
+			method="post" onsubmit="return validateForm()">
+			<table>
+				<tr>
+					<td>제목</td>
+					<td><input type="text" name="title" required></td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="name" required></td>
+				</tr>
+				<tr>
+					<td>전화번호</td>
+					<td><input type="text" name="telno" required></td>
+				</tr>
+				<tr>
+					<td>시공주소</td>
+					<td><input type="text" name="addr"></td>
+				</tr>
+				<tr>
+					<td>내용</td>
+					<td><textarea name="content" required></textarea></td>
+				</tr>
+				<tr>
+					<td>상담원에게 한마디 (선택사항)</td>
+					<td><textarea name="messageToAgent"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+                        <input type="checkbox" id="consentCheckbox" name="consent" required>
+                        <label for="consentCheckbox">개인정보 처리에 동의합니다.</label>
+                    </td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="제출"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
