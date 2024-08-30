@@ -3,9 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <title>Auray Studio</title>
-<link href="/css/productstyle.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script th:src="@{/js/script.js}"></script>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 20px;
+}
+
+.menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 200px;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li a {
+	text-decoration: none;
+	color: black;
+	display: block;
+	padding: 10px 15px;
+	border-radius: 4px;
+	background-color: #f0f0f0;
+}
+
+.menu li a:hover, .menu li.active a {
+	background-color: #e0e0e0;
+	color: #ff0000;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	left: 210px;
+	top: 0;
+	background-color: #ffffff;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	width: 180px;
+}
+
+.menu li:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 8px 12px;
+	text-decoration: none;
+	display: block;
+	border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content a:last-child {
+	border-bottom: none;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
+}
+/* 드롭다운 메뉴 기본 숨기기 */
+.menu li .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 100%; /* 부모 요소 바로 옆에 위치 */
+    top: 0; /* 부모 요소와 동일한 높이에서 시작 */
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* 부모 항목 hover 시 드롭다운 메뉴 표시 */
+.menu li:hover > .dropdown-content {
+    display: block;
+}
+
+/* 드롭다운 메뉴에 hover 시에도 메뉴가 사라지지 않도록 설정 */
+.menu li .dropdown-content:hover {
+    display: block;
+}
+</style>
 </head>
 <body>
 <div layout:fragment="content">

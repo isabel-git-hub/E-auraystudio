@@ -3,14 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <title>Auray Studio</title>
-<link href="/css/productstyle.css" rel="stylesheet">
+<link href="@{/css/productstyle.css}" rel="stylesheet">
+<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 20px;
+}
+
+#wall-style-options {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 20px;
+	gap: 20px;
+}
+
+.option {
+	flex: 1 1 30%;
+	text-align: center;
+	padding: 20px;
+	border: 1px solid #ccc;
+	background-color: #f5f5f5;
+	transition: background-color 0.3s ease;
+}
+
+.option a {
+	text-decoration: none;
+	color: #000;
+	font-size: 18px;
+}
+
+.option:hover {
+	background-color: #ddd;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category, .colors, .features {
+    display: flex;
+    align-items: center;
+}
+
+.color-selection {
+    margin-top: 20px;
+}
+
+.color-options {
+    display: flex;
+    gap: 10px;
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+</style>
 </head>
 <body>
-<div layout:fragment="content">
-	<header>월판넬</header>
-	<div class="content">
-        <p>여기에서 월판넬에 대한 일반적인 내용을 소개합니다.</p>
-    </div>
-</div>    
+	<div layout:fragment="content">
+		<header>월판넬 옵션</header>
+		<div class="content">
+			<div class="filter">
+				<div class="category">
+					<span>카테고리</span> 
+					<span>월시스템</span>
+					<span>템바</span>
+					<span>디자인보드</span>
+					<span>클래식월</span>
+					<span>벽선반</span>
+					<span>아트월</span>
+				</div>
+				<div class="color-selection">
+					<span>색상</span>
+					<div class="color-options">
+                        <span class="color-option" style="background-color: #2b2b2b;"></span>
+                        <span class="color-option" style="background-color: #d3d3d3;"></span>
+                        <span class="color-option" style="background-color: #8b6f52;"></span>
+                        <span class="color-option" style="background-color: #ffffff;"></span>
+                    </div>
+				</div>
+			</div>
+			<div class="product-list">
+			    <div class="product-item">
+					<a href="/product/wall/panel/wall-system/1"> 
+					    <img src="/images/wall-system_1.jpg" alt="월시스템 제품1">
+					</a>
+					<p>월시스템 LB-03</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/wall/panel/wall-system/2"> 
+					    <img src="/images/wall-system_2.jpg" alt="월시스템 제품2">
+					</a>
+					<p>월시스템 LB-04</p>
+                </div>
+			    <div class="product-item">
+					<a href="/product/wall/panel/tamba/1"> 
+					    <img src="/images/tamba_1.jpg" alt="템바 제품1">
+					</a>
+					<p>템바 LB-01</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/wall/panel/tamba/2"> 
+					    <img src="/images/tamba_2.jpg" alt="템바 제품2">
+					</a>
+					<p>템바 LB-07</p>
+                </div>
+			    <div class="product-item">
+					<a href="/product/wall/panel/board/1"> 
+					    <img src="/images/board_1.jpg" alt="디자인보드 제품1">
+					</a>
+					<p>디자인보드 LB-02</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/wall/panel/classic/1"> 
+					    <img src="/images/classic_1.jpg" alt="클래식월 제품1">
+					</a>
+					<p>클래식월 LB-05</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/wall/panel/wall-system/3"> 
+					    <img src="/images/wall-system_3.jpg" alt="월시스템 제품3">
+					</a>
+					<p>월시스템 LB-06</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/wall/panel/shelf/1"> 
+					    <img src="/images/shelf_1.jpg" alt="벽선반 제품1">
+					</a>
+					<p>벽선반 LB-08</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/wall/panel/shelf/2"> 
+					    <img src="/images/shelf_2.jpg" alt="벽선반 제품2">
+					</a>
+					<p>벽선반 LB-09</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/wall/panel/shelf/3"> 
+					    <img src="/images/shelf_3.jpg" alt="벽선반 제품3">
+					</a>
+					<p>벽선반 LB-10</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/wall/panel/shelf/4"> 
+					    <img src="/images/shelf_4.jpg" alt="벽선반 제품4">
+					</a>
+					<p>벽선반 LB-11</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/wall/panel/art/1"> 
+					    <img src="/images/art_1.jpg" alt="아트월 제품1">
+					</a>
+					<p>아트월 LB-12</p>
+                </div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -5,7 +5,57 @@
 <head>
     <meta charset="UTF-8">
     <title>텍스타일 제품 상세</title>
-    <link href="@{/css/productstyle.css}" rel="stylesheet">
+    <!-- <link href="@{/css/productstyle.css}" rel="stylesheet"> -->
+    <style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 20px;
+}
+
+.product-detail {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-image img {
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.product-info p {
+    margin-bottom: 10px;
+}
+
+.product-actions {
+    margin-top: 20px;
+}
+
+.action-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background-color: #c9302c;
+}
+
+</style>
 </head>
 <body>
     <div layout:fragment="content">
