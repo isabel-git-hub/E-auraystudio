@@ -11,30 +11,8 @@ body {
 	padding: 20px;
 }
 
-#wall-style-options {
-	display: flex;
-	flex-wrap: wrap;
-	margin-top: 20px;
-	gap: 20px;
-}
-
-.option {
-	flex: 1 1 30%;
-	text-align: center;
-	padding: 20px;
-	border: 1px solid #ccc;
-	background-color: #f5f5f5;
-	transition: background-color 0.3s ease;
-}
-
-.option a {
-	text-decoration: none;
-	color: #000;
-	font-size: 18px;
-}
-
-.option:hover {
-	background-color: #ddd;
+.content {
+    padding: 20px;
 }
 
 .filter {
@@ -63,6 +41,35 @@ body {
     height: 30px;
     border: 1px solid #000;
     border-radius: 50%;
+    cursor: pointer;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.product-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    width: 150px;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+}
+
+.product-item p {
+    margin-top: 10px;
+}
+
+.product-item button {
+    margin-top: 10px;
+    padding: 5px 10px;
     cursor: pointer;
 }
 
@@ -95,73 +102,73 @@ body {
 			<div class="product-list">
 			    <div class="product-item">
 					<a href="/product/wall/panel/wall-system/1"> 
-					    <img src="/images/wall-system_1.jpg" alt="월시스템 제품1">
+					    <img th:src="@{/img/wall/wallpanel/인피니월.jpg}">
 					</a>
 					<p>월시스템 LB-03</p>
                 </div>
                 <div class="product-item">
 					<a href="/product/wall/panel/wall-system/2"> 
-					    <img src="/images/wall-system_2.jpg" alt="월시스템 제품2">
+					    <img th:src="@{/img/wall/wallpanel/월시스템 와이드.jpg}">
 					</a>
 					<p>월시스템 LB-04</p>
                 </div>
 			    <div class="product-item">
 					<a href="/product/wall/panel/tamba/1"> 
-					    <img src="/images/tamba_1.jpg" alt="템바 제품1">
+					    <img th:src="@{/img/wall/wallpanel/무늬목 템바보드.jpg}">
 					</a>
 					<p>템바 LB-01</p>
                 </div>
                 <div class="product-item">
 					<a href="/product/wall/panel/tamba/2"> 
-					    <img src="/images/tamba_2.jpg" alt="템바 제품2">
+					    <img th:src="@{/img/wall/wallpanel/템바보드.jpg}">
 					</a>
 					<p>템바 LB-07</p>
                 </div>
 			    <div class="product-item">
 					<a href="/product/wall/panel/board/1"> 
-					    <img src="/images/board_1.jpg" alt="디자인보드 제품1">
+					    <img th:src="@{/img/wall/wallpanel/버니보드.jpg}">
 					</a>
 					<p>디자인보드 LB-02</p>
                 </div>
                 <div class="product-item">
 					<a href="/product/wall/panel/classic/1"> 
-					    <img src="/images/classic_1.jpg" alt="클래식월 제품1">
+					    <img th:src="@{/img/wall/wallpanel/클래식월.jpg}">
 					</a>
 					<p>클래식월 LB-05</p>
                 </div>
                 <div class="product-item">
 					<a href="/product/wall/panel/wall-system/3"> 
-					    <img src="/images/wall-system_3.jpg" alt="월시스템 제품3">
+					    <img th:src="@{/img/wall/wallpanel/월시스템.jpg}">
 					</a>
 					<p>월시스템 LB-06</p>
                 </div>
                 <div class="product-item">
 					<a href="/product/wall/panel/shelf/1"> 
-					    <img src="/images/shelf_1.jpg" alt="벽선반 제품1">
+					    <img th:src="@{/img/wall/wallpanel/슬림라인 선반.jpg}">
 					</a>
 					<p>벽선반 LB-08</p>
                 </div>
                 <div class="product-item">
 					<a href="/product/wall/panel/shelf/2"> 
-					    <img src="/images/shelf_2.jpg" alt="벽선반 제품2">
+					    <img th:src="@{/img/wall/wallpanel/라인선반.jpg}">
 					</a>
 					<p>벽선반 LB-09</p>
                 </div>
                 <div class="product-item">
 					<a href="/product/wall/panel/shelf/3"> 
-					    <img src="/images/shelf_3.jpg" alt="벽선반 제품3">
+					    <img th:src="@{/img/wall/wallpanel/박스선반.jpg}">
 					</a>
 					<p>벽선반 LB-10</p>
                 </div>
                 <div class="product-item">
 					<a href="/product/wall/panel/shelf/4"> 
-					    <img src="/images/shelf_4.jpg" alt="벽선반 제품4">
+					    <img th:src="@{/img/wall/wallpanel/멀티선반.jpg}">
 					</a>
 					<p>벽선반 LB-11</p>
                 </div>
                 <div class="product-item">
 					<a href="/product/wall/panel/art/1"> 
-					    <img src="/images/art_1.jpg" alt="아트월 제품1">
+					    <img th:src="@{/img/wall/wallpanel/모노.jpg}">
 					</a>
 					<p>아트월 LB-12</p>
                 </div>

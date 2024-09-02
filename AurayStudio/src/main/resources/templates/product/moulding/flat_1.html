@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>히든 몰딩 제품 상세</title>
+    <!-- <link href="@{/css/productstyle.css}" rel="stylesheet"> -->
+<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 20px;
+}
+
+.product-detail {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-image img {
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.product-info p {
+    margin-bottom: 10px;
+}
+
+.product-actions {
+    margin-top: 20px;
+}
+
+.action-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background-color: #c9302c;
+}
+
+</style>
+</head>
+<body>
+    <div layout:fragment="content">
+        <header>평몰딩 제품 상세</header>
+        <div class="product-detail">
+            <div class="product-image">
+                <img th:src="@{/img/moulding/평몰딩_01.jpg}">
+            </div>
+            <div class="product-info">
+                <p><strong>카테고리:</strong> 평몰딩</p>
+                <p><strong>제품코드:</strong> MA-02</p>
+                <p>30mm평몰딩: 2,400×30×9(mm)</p>
+                <p>40mm평몰딩: 2,400×40×9(mm)</p>
+                <p>50mm평몰딩: 2,400×50×9(mm)</p>
+                <p>60mm평몰딩: 2,400×60×9(mm)</p>
+                <p>80mm평몰딩: 2,400×80×9(mm)</p>
+                <p>100mm평몰딩: 2,400×100×9(mm)</p>
+                <p>120mm평몰딩: 2,400×120×9(mm)</p>
+                <p>160mm평몰딩: 2,400×160×9(mm)</p>
+                <p>200mm평몰딩: 2,400×200×9(mm)</p>
+                <p>250mm평몰딩: 2,400×250×9(mm)</p>
+                <p>300mm평몰딩: 2,400×300×9(mm)</p>
+                <p>400mm평몰딩: 2,400×400×9(mm)</p>
+                <p>600mm평몰딩: 2,400×600×9(mm)</p>
+                <div class="product-actions">
+                    <button class="action-button">인테리어 상담신청</button>
+                    <button class="action-button">가까운 매장찾기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

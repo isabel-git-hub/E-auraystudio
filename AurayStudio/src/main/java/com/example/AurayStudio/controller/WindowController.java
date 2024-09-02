@@ -42,7 +42,7 @@ public class WindowController {
     // 시스템창 - Door
     @GetMapping("/system/door")
     public String windowSystemDoor(Model model) {
-        model.addAttribute("title", "Door");
+        model.addAttribute("title", "Turning-Door");
         return "product/window/system/door";
     }
     
