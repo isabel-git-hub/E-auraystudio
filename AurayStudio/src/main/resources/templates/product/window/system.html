@@ -18,15 +18,16 @@ body {
 .product-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 64px;
     margin-top: 20px;
+    justify-content: center; 
 }
 
 .product-item {
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
-    width: 150px;
+    width: 245px;
 }
 
 .product-item img {
@@ -52,16 +53,19 @@ body {
 		<div class="content">
 			<div class="product-list">
 			    <div class="product-item">
-					<a href="/product/window/system/tilt-turn">Tilt-turn</a> 
-					    <img th:src="@{/img/window/Tilt&Turn.jpg}">
+					<a href="/product/window/system/tilt-turn">
+					    <img th:src="@{/img/window/Tilt&Turn.png}">
+					</a>     
                 </div>
                 <div class="product-item">
-					<a href="/product/window/system/lift-slide">Lift&Slide</a> 
+					<a href="/product/window/system/lift-slide"> 
 					    <img th:src="@{/img/window/Lift&Slide.jpg}">
+					</a>    
                 </div>
 			    <div class="product-item">
-					<a href="/product/window/system/door">Turning-Door</a> 
+					<a href="/product/window/system/door"> 
 					    <img th:src="@{/img/window/Turning Door.jpg}">
+					</a>    
                 </div>
                 
 			</div>

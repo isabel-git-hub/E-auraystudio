@@ -55,7 +55,7 @@ public class MouldingController {
     // 몰딩 - 마이너스 몰딩
     @GetMapping("/minus/1")
     public String mouldingMinusProduct1(Model model) {
-        model.addAttribute("title", "마이너스 몰딩");
+        model.addAttribute("title", "마이너스 몰딩 제품 상세");
         return "product/moulding/minus_1";
     }    
 
@@ -65,6 +65,13 @@ public class MouldingController {
         model.addAttribute("title", "천장 몰딩");
         return "product/moulding/ceiling";
     }
+    
+    // 몰딩 - 천장 몰딩
+    @GetMapping("/ceiling/1")
+    public String mouldingCeilingProduct1(Model model) {
+        model.addAttribute("title", "천장 몰딩 제품 상세");
+        return "product/moulding/ceiling_1";
+    }
 
     // 몰딩 - 걸레받이
     @GetMapping("/baseboard")
@@ -73,6 +80,13 @@ public class MouldingController {
         return "product/moulding/baseboard";
     }
 
+	// 몰딩 - 걸레받이
+	@GetMapping("/baseboard/1")
+	public String mouldingBaseboardProduct1(Model model) {
+		model.addAttribute("title", "걸레받이 제품 상세");
+		return "product/moulding/baseboard_1";
+	}
+
     // 몰딩 - 계단 몰딩
     @GetMapping("/stair")
     public String mouldingStair(Model model) {
@@ -80,4 +94,10 @@ public class MouldingController {
         return "product/moulding/stair";
     }
 
+    // 몰딩 - 계단 몰딩
+    @GetMapping("/stair/1")
+    public String mouldingStairProduct1(Model model) {
+        model.addAttribute("title", "계단 몰딩 제품 상세 ");
+        return "product/moulding/stair_1";
+    }    
 }

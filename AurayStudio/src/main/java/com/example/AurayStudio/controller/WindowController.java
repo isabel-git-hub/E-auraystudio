@@ -53,5 +53,10 @@ public class WindowController {
 	    return "product/window/general";
 	}
 
-
+	// 일반창
+	@GetMapping("/general/1")
+	public String windowGeneralProduct1(Model model) {
+	    model.addAttribute("title", "일반창");
+	    return "product/window/general_1";
+	}
 }
