@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+<title>Auray Studio</title>
+<!-- <link href="@{/css/productstyle.css}" rel="stylesheet"> -->
+<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 20px;
+}
+
+.content {
+    padding: 20px;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category, .colors, .features {
+    display: flex;
+    align-items: center;
+}
+
+.color-selection {
+    margin-top: 20px;
+}
+
+.color-options {
+    display: flex;
+    gap: 10px;
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.product-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    width: 150px;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+}
+
+.product-item p {
+    margin-top: 10px;
+}
+
+.product-item button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h3>에센셜 바스</h3>
+		<div class="content">
+			<p>기본적이고 실용적인 디자인으로 필수적인 기능을 갖춘 욕실 스타일입니다.</p>
+			<div class="filter">
+				<div class="category">
+					<p>카테고리: Natural | Modern | Classic</p>
+				</div>
+				<div class="color-selection">
+					<span>색상</span>
+					<div class="color-options">
+                        <span class="color-option" style="background-color: #2b2b2b;"></span>
+                        <span class="color-option" style="background-color: #d3d3d3;"></span>
+                        <span class="color-option" style="background-color: #ffffff;"></span>
+                        <span class="color-option" style="background-color: #e1d7bc;"></span>
+                    </div>
+				</div>
+			</div>
+			<div class="product-list">
+			    <div class="product-item">
+					<a href="/product/bath/essential/1"> 
+					    <img th:src="@{/img/bath/미로베이지.jpg}">
+					</a>
+					<p>Natural BATH-01</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/bath/essential/2"> 
+					    <img th:src="@{/img/bath/호텔블루사보이.jpg}">
+					</a>
+					<p>Modern BATH-02</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/bath/essential/3">  
+					    <img th:src="@{/img/bath/슬로우위켄드.jpg}">
+					</a>
+					<p>Natural BATH-03</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/bath/essential/4"> 
+					    <img th:src="@{/img/bath/스톤그레이.jpg}">
+					</a>
+					<p>Modern BATH-04</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/bath/essential/5"> 
+					    <img th:src="@{/img/bath/포레스트 그린.jpg}">
+					</a>
+					<p>Natural BATH-05</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/bath/essential/6"> 
+					    <img th:src="@{/img/bath/로맨티코.jpg}">
+					</a>
+					<p>Classic BATH-06</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/bath/essential/7"> 
+					    <img th:src="@{/img/bath/클라우드 스퀘어.jpg}">
+					</a>
+					<p>Modern BATH-07</p>
+                </div>
+                <div class="product-item">
+					<a href="/product/bath/essential/8"> 
+					    <img th:src="@{/img/bath/카반칼라카타.jpg}">
+					</a>
+					<p>Modern BATH-08</p>
+                </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
