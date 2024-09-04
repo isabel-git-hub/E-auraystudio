@@ -13,6 +13,11 @@ body {
 	padding: 20px;
 }
 
+h3 {
+    margin-bottom: -6px;
+    padding-left: 20px;
+}
+
 .product-detail {
     display: flex;
     gap: 20px;
@@ -59,7 +64,7 @@ body {
 </head>
 <body>
     <div layout:fragment="content">
-        <header>버니보드 제품 상세</header>
+        <h3>버니보드</h3>
         <div class="product-detail">
             <div class="product-image">
                 <img th:src="@{/img/wall/wallpanel/버니보드.jpg}">
@@ -68,7 +73,7 @@ body {
                 <p><strong>카테고리:</strong> 디자인보드</p>
                 <p><strong>제품코드:</strong> LB-02</p>
                 <p><strong>사이즈:</strong> 600×2400(mm)</p>
-                <p><strong>색상:</strong> 탠 브라운 <span style="background-color: #8b6f52; width: 20px; height: 20px; display: inline-block;"></span></p>
+                <p><strong>색상:</strong> 브라운 <span style="background-color: #8b6f52; width: 20px; height: 20px; display: inline-block;"></span></p>
                 <div class="product-actions">
                     <button class="action-button">인테리어 상담신청</button>
                     <button class="action-button">가까운 매장찾기</button>

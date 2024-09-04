@@ -8,13 +8,56 @@
 <!-- <link href="@{/css/productstyle.css}" rel="stylesheet"> -->
 <style>
 body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 20px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h3 {
+    margin-bottom: -6px;
+    padding-left: 26px;
+    text-decoration: underline;
+}
+
+p {
+    margin-top: 0;
+    padding-left: 7px;
 }
 
 .content {
     padding: 20px;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.color-selection {
+    margin-top: 0px;
+    padding-left: 7px;
+}
+
+.color-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px; /* 간격을 원하는 크기로 조정 */
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .product-list {
@@ -25,16 +68,16 @@ body {
 }
 
 .product-item {
-    /* border: 1px solid #ccc; */
+    border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
     width: 150px;
 }
 
-/* .product-item img {
+.product-item img {
     width: 100%;
     height: auto;
-} */
+}
 
 .product-item p {
     margin-top: 10px;
@@ -45,20 +88,35 @@ body {
     padding: 5px 10px;
     cursor: pointer;
 }
-
 </style>
 </head>
 <body>
 	<div layout:fragment="content">
-		<header>히든 몰딩</header>
+		<h3>히든 몰딩</h3>
 		<div class="content">
 			<p>몰딩을 숨겨 깔끔하고 미니멀한 공간을 연출하는 고급스러운 인테리어 스타일입니다.</p>
+				<div class="filter">
+				<div class="category">
+					<p>카테고리: 
+					    <span class="category-filter" data-category="Hidden">Hidden</span>
+					</p>
+				</div>
+				<div class="color-selection">
+					<span>색상</span>
+					<div class="color-options">
+						<span class="color-option" style="background-color: #2b2b2b;" data-color="black"></span> 
+						<span class="color-option" style="background-color: #d3d3d3;" data-color="gray"></span> 
+						<span class="color-option" style="background-color: #ffffff;" data-color="white"></span> 
+						<span class="color-option" style="background-color: #8b6f52;" data-color="brown"></span>
+					</div>
+				</div>
+			</div>
 			<div class="product-list">
-			    <div class="product-item">
+			    <div class="product-item" data-category="Hidden" data-color="white">
 					<a href="/product/moulding/hidden/1"> 
 					    <img th:src="@{/img/moulding/히든몰딩_01.jpg}">
 					</a>
-					<p>히든 몰딩 MA-01</p>
+					<p>Hidden MA-01</p>
                 </div>
 			</div>
 		</div>

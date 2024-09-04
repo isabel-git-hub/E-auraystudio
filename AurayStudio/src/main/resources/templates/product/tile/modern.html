@@ -8,9 +8,20 @@
 <!-- <link href="@{/css/productstyle.css}" rel="stylesheet"> -->
 <style>
 body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 20px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h3 {
+    margin-bottom: -6px;
+    padding-left: 26px;
+    text-decoration: underline;
+}
+
+p {
+    margin-top: 0;
+    padding-left: 7px;
 }
 
 .content {
@@ -24,18 +35,21 @@ body {
     margin-bottom: 20px;
 }
 
-.category, .colors, .features {
+.category {
     display: flex;
     align-items: center;
+    margin-top: 8px;
 }
 
 .color-selection {
-    margin-top: 20px;
+    margin-top: 0px;
+    padding-left: 7px;
 }
 
 .color-options {
     display: flex;
     gap: 10px;
+    margin-top: 10px; /* 간격을 원하는 크기로 조정 */
 }
 
 .color-option {
@@ -74,7 +88,6 @@ body {
     padding: 5px 10px;
     cursor: pointer;
 }
-
 </style>
 </head>
 <body>
@@ -83,45 +96,45 @@ body {
 		<div class="content">
 			<p>깔끔하고 세련된 디자인으로 현대적이고 미니멀한 공간을 연출하는 타일입니다.</p>
 			<div class="filter">
-				<div class="category">
-					<p>카테고리: Modern</p>
-				</div>
+				<p>카테고리: 
+                        <span class="category-filter" data-category="Modern">Modern</span>
+                    </p>
 				<div class="color-selection">
 					<span>색상</span>
 					<div class="color-options">
-                        <span class="color-option" style="background-color: #ffffff;"></span>
-                        <span class="color-option" style="background-color: #d3d3d3;"></span>
-                        <span class="color-option" style="background-color: #8b6f52;"></span>
-                        <span class="color-option" style="background-color: #e1d7bc;"></span>
+                        <span class="color-option" style="background-color: #ffffff;" data-color="white"></span>
+                        <span class="color-option" style="background-color: #d3d3d3;" data-color="gray"></span>
+                        <span class="color-option" style="background-color: #8b6f52;" data-color="tan brown"></span>
+                        <span class="color-option" style="background-color: #e1d7bc;" data-color="beige"></span>
                     </div>
 				</div>
 			</div>
 			<div class="product-list">
-			    <div class="product-item">
+			    <div class="product-item" data-category="Modern" data-color="white">
 					<a href="/product/tile/modern/1"> 
 					    <img th:src="@{/img/tile/우니카 화이트.jpg}">
 					</a>
 					<p>Modern TA-03</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="Modern" data-color="beige">
 					<a href="/product/tile/modern/2"> 
 					    <img th:src="@{/img/tile/스톤클라우드 아이보리.jpg}">
 					</a>
 					<p>Modern TA-04</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="Modern" data-color="gray">
 					<a href="/product/tile/modern/3">  
 					    <img th:src="@{/img/tile/우니카 그레이.jpg}">
 					</a>
 					<p>Modern TA-07</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="Modern" data-color="white">
 					<a href="/product/tile/modern/4"> 
 					    <img th:src="@{/img/tile/스노우 비앙코.jpg}">
 					</a>
 					<p>Modern TA-09</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="Modern" data-color="beige">
 					<a href="/product/tile/modern/5"> 
 					    <img th:src="@{/img/tile/그레이스.png}">
 					</a>

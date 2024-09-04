@@ -1,15 +1,56 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8">
 <title>Auray Studio</title>
-<link>
-<link rel="stylesheet" href="style.css">
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<script th:src="@{/js/script.js}"></script>
+<link href="/css/productstyle.css" rel="stylesheet">
+<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 20px;
+}
+
+#wall-options {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.option {
+    flex: 1 1 30%;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    transition: background-color 0.3s ease;
+}
+
+.option a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+}
+
+.option:hover {
+    background-color: #ddd;
+}
+</style>
 </head>
 <body>
-	<header>wall</header>
-
+<div layout:fragment="content">
+	<header>wall 옵션</header>
+		<div class="content">
+			<div id="wall-options">
+				<div class="option">
+					<a href="/product/wall/style">stylewall</a>
+				</div>
+				<div class="option">
+					<a href="/product/wall/panel">wallpanel</a>
+				</div>
+			</div>
+		</div>
+	</div>    
 </body>
 </html>

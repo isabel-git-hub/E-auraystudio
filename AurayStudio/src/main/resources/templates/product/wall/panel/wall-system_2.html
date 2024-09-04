@@ -13,6 +13,11 @@ body {
 	padding: 20px;
 }
 
+h3 {
+    margin-bottom: -6px;
+    padding-left: 20px;
+}
+
 .product-detail {
     display: flex;
     gap: 20px;
@@ -59,7 +64,7 @@ body {
 </head>
 <body>
     <div layout:fragment="content">
-        <header>월시스템 와이드 제품 상세</header>
+        <h3>월시스템 와이드</h3>
         <div class="product-detail">
             <div class="product-image">
                 <img th:src="@{/img/wall/wallpanel/월시스템 와이드.jpg}">

@@ -13,6 +13,11 @@ body {
 	padding: 20px;
 }
 
+h3 {
+    margin-bottom: -6px;
+    padding-left: 20px;
+}
+
 .product-detail {
     display: flex;
     gap: 20px;
@@ -59,7 +64,7 @@ body {
 </head>
 <body>
     <div layout:fragment="content">
-        <header>차콜 스톤 제품 상세</header>
+        <h3>차콜 스톤</h3>
         <div class="product-detail">
             <div class="product-image">
                 <img th:src="@{/img/wall/stylewall/차콜 스톤.jpg}">

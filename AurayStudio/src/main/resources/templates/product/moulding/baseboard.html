@@ -13,8 +13,51 @@ body {
 	padding: 20px;
 }
 
+h3 {
+    margin-bottom: -6px;
+    padding-left: 26px;
+    text-decoration: underline;
+}
+
+p {
+    margin-top: 0;
+    padding-left: 7px;
+}
+
 .content {
     padding: 20px;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.color-selection {
+    margin-top: 0px;
+    padding-left: 7px;
+}
+
+.color-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px; /* 간격을 원하는 크기로 조정 */
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .product-list {
@@ -25,16 +68,16 @@ body {
 }
 
 .product-item {
-    /* border: 1px solid #ccc; */
+    border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
     width: 150px;
 }
 
-/* .product-item img {
+.product-item img {
     width: 100%;
     height: auto;
-} */
+}
 
 .product-item p {
     margin-top: 10px;
@@ -45,20 +88,35 @@ body {
     padding: 5px 10px;
     cursor: pointer;
 }
-
 </style>
 </head>
 <body>
 	<div layout:fragment="content">
-		<header>걸레받이</header>
+		<h3>걸레받이</h3>
 		<div class="content">
 			<p>벽과 바닥의 경계를 마감하며, 실내 공간에 깔끔함과 보호 기능을 더해주는 중요한 인테리어 요소입니다.</p>
+				<div class="filter">
+				<div class="category">
+					<p>카테고리: 
+					    <span class="category-filter" data-category="Baseboard">Baseboard</span>
+					</p>
+				</div>
+				<div class="color-selection">
+					<span>색상</span>
+					<div class="color-options">
+						<span class="color-option" style="background-color: #2b2b2b;" data-color="black"></span> 
+						<span class="color-option" style="background-color: #d3d3d3;" data-color="gray"></span> 
+						<span class="color-option" style="background-color: #ffffff;" data-color="white"></span> 
+						<span class="color-option" style="background-color: #8b6f52;" data-color="brown"></span>
+					</div>
+				</div>
+			</div>
 			<div class="product-list">
-			    <div class="product-item">
+			    <div class="product-item" data-category="Baseboard" data-color="brown">
 					<a href="/product/moulding/baseboard/1"> 
 					    <img th:src="@{/img/moulding/걸레받이몰딩_01.jpg}">
 					</a>
-					<p>걸레받이 MA-05</p>
+					<p>Baseboard MA-05</p>
                 </div>
 			</div>
 		</div>

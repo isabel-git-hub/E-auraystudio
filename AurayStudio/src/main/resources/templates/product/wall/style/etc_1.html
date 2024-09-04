@@ -13,6 +13,11 @@ body {
 	padding: 20px;
 }
 
+h3 {
+    margin-bottom: -6px;
+    padding-left: 20px;
+}
+
 .product-detail {
     display: flex;
     gap: 20px;
@@ -59,10 +64,10 @@ body {
 </head>
 <body>
     <div layout:fragment="content">
-        <header>로네 라이트 제품 상세</header>
+        <h3>로네 라이트</h3>
         <div class="product-detail">
             <div class="product-image">
-                <img src="/images/etc_1.jpg" alt="기타 제품1">
+                <img th:src="@{/img/wall/stylewall/로네 라이트.jpg}">
             </div>
             <div class="product-info">
                 <p><strong>카테고리:</strong> 기타</p>

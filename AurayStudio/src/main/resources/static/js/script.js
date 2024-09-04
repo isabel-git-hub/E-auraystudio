@@ -172,3 +172,54 @@ function validateForm() {
             }
             return true;
         }
+        
+document.addEventListener('DOMContentLoaded', function() {
+	let selectedCategory = null;
+	let selectedColor = null;
+	let selectedFeatures = [];
+
+	const filterProducts = () => {
+		const products = document.querySelectorAll('.product-item');
+		products.forEach(product => {
+			const categoryMatch = !selectedCategory || product.getAttribute('data-category') === selectedCategory;
+			const colorMatch = !selectedColor || product.getAttribute('data-color') === selectedColor;
+			const featureMatch = selectedFeatures.length === 0 || selectedFeatures.includes(product.getAttribute('data-feature'));
+
+			if (categoryMatch && colorMatch && featureMatch) {
+				product.style.display = 'block';
+			} else {
+				product.style.display = 'none';
+			}
+		});
+	};
+
+	// 카테고리 필터 클릭 이벤트
+	const categoryFilters = document.querySelectorAll('.category-filter');
+	categoryFilters.forEach(filter => {
+		filter.addEventListener('click', function() {
+			selectedCategory = this.getAttribute('data-category');
+			filterProducts();
+		});
+	});
+
+	// 색상 필터 클릭 이벤트
+	const colorOptions = document.querySelectorAll('.color-option');
+	colorOptions.forEach(option => {
+		option.addEventListener('click', function() {
+			selectedColor = this.getAttribute('data-color');
+			filterProducts();
+		});
+	});
+
+	// 기능 필터 체크박스 이벤트
+	const featureCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+	featureCheckboxes.forEach(checkbox => {
+		checkbox.addEventListener('change', function() {
+			selectedFeatures = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
+			filterProducts();
+		});
+	});
+
+	// 페이지 로드시 모든 제품을 기본으로 표시
+	filterProducts();
+});

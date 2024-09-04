@@ -11,6 +11,16 @@ body {
 	padding: 20px;
 }
 
+h3 {
+    margin-bottom: -6px;
+    padding-left: 26px;
+}
+
+p {
+    margin-top: 0;
+    padding-left: 7px;
+}
+
 .content {
     padding: 20px;
 }
@@ -22,18 +32,26 @@ body {
     margin-bottom: 20px;
 }
 
-.category, .colors, .features {
+.category {
     display: flex;
     align-items: center;
+    margin-top: 8px;
 }
 
 .color-selection {
-    margin-top: 20px;
+    margin-top: 0px;
+    padding-left: 7px;
+}
+
+.features {
+    margin-top: 10px;
+    padding-left: 7px;
 }
 
 .color-options {
     display: flex;
     gap: 10px;
+    margin-top: 10px; /* 간격을 원하는 크기로 조정 */
 }
 
 .color-option {
@@ -72,101 +90,101 @@ body {
     padding: 5px 10px;
     cursor: pointer;
 }
-
 </style>
 </head>
 <body>
 	<div layout:fragment="content">
-		<header>월판넬 옵션</header>
+		<h3>월판넬</h3>
 		<div class="content">
 			<div class="filter">
 				<div class="category">
-					<span>카테고리</span> 
-					<span>월시스템</span>
-					<span>템바</span>
-					<span>디자인보드</span>
-					<span>클래식월</span>
-					<span>벽선반</span>
-					<span>아트월</span>
+					<p>카테고리: 
+                        <span class="category-filter" data-category="월시스템">월시스템</span> | 
+                        <span class="category-filter" data-category="템바">템바</span> | 
+                        <span class="category-filter" data-category="디자인보드">디자인보드</span> |
+                        <span class="category-filter" data-category="클래식월">클래식월</span> | 
+                        <span class="category-filter" data-category="벽선반">벽선반</span> | 
+                        <span class="category-filter" data-category="아트월">아트월</span>
+                    </p>
 				</div>
 				<div class="color-selection">
 					<span>색상</span>
 					<div class="color-options">
-                        <span class="color-option" style="background-color: #2b2b2b;"></span>
-                        <span class="color-option" style="background-color: #d3d3d3;"></span>
-                        <span class="color-option" style="background-color: #8b6f52;"></span>
-                        <span class="color-option" style="background-color: #ffffff;"></span>
+                        <span class="color-option" style="background-color: #2b2b2b;" data-color="black"></span>
+                        <span class="color-option" style="background-color: #d3d3d3;" data-color="gray"></span>
+                        <span class="color-option" style="background-color: #ffffff;" data-color="white"></span>                        
+                        <span class="color-option" style="background-color: #8b6f52;" data-color="brown"></span>
                     </div>
 				</div>
 			</div>
 			<div class="product-list">
-			    <div class="product-item">
+			    <div class="product-item" data-category="월시스템" data-color="white">
 					<a href="/product/wall/panel/wall-system/1"> 
 					    <img th:src="@{/img/wall/wallpanel/인피니월.jpg}">
 					</a>
 					<p>월시스템 LB-03</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="월시스템" data-color="gray">
 					<a href="/product/wall/panel/wall-system/2"> 
 					    <img th:src="@{/img/wall/wallpanel/월시스템 와이드.jpg}">
 					</a>
 					<p>월시스템 LB-04</p>
                 </div>
-			    <div class="product-item">
+			    <div class="product-item" data-category="템바" data-color="brown">
 					<a href="/product/wall/panel/tamba/1"> 
 					    <img th:src="@{/img/wall/wallpanel/무늬목 템바보드.jpg}">
 					</a>
 					<p>템바 LB-01</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="템바" data-color="brown">
 					<a href="/product/wall/panel/tamba/2"> 
 					    <img th:src="@{/img/wall/wallpanel/템바보드.jpg}">
 					</a>
 					<p>템바 LB-07</p>
                 </div>
-			    <div class="product-item">
+			    <div class="product-item" data-category="디자인보드" data-color="brown">
 					<a href="/product/wall/panel/board/1"> 
 					    <img th:src="@{/img/wall/wallpanel/버니보드.jpg}">
 					</a>
 					<p>디자인보드 LB-02</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="클래식월" data-color="white">
 					<a href="/product/wall/panel/classic/1"> 
 					    <img th:src="@{/img/wall/wallpanel/클래식월.jpg}">
 					</a>
 					<p>클래식월 LB-05</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="월시스템" data-color="white">
 					<a href="/product/wall/panel/wall-system/3"> 
 					    <img th:src="@{/img/wall/wallpanel/월시스템.jpg}">
 					</a>
 					<p>월시스템 LB-06</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="벽선반" data-color="white">
 					<a href="/product/wall/panel/shelf/1"> 
 					    <img th:src="@{/img/wall/wallpanel/슬림라인 선반.jpg}">
 					</a>
 					<p>벽선반 LB-08</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="벽선반" data-color="black">
 					<a href="/product/wall/panel/shelf/2"> 
 					    <img th:src="@{/img/wall/wallpanel/라인선반.jpg}">
 					</a>
 					<p>벽선반 LB-09</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="벽선반" data-color="black">
 					<a href="/product/wall/panel/shelf/3"> 
 					    <img th:src="@{/img/wall/wallpanel/박스선반.jpg}">
 					</a>
 					<p>벽선반 LB-10</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="벽선반" data-color="black">
 					<a href="/product/wall/panel/shelf/4"> 
 					    <img th:src="@{/img/wall/wallpanel/멀티선반.jpg}">
 					</a>
 					<p>벽선반 LB-11</p>
                 </div>
-                <div class="product-item">
+                <div class="product-item" data-category="아트월" data-color="brown">
 					<a href="/product/wall/panel/art/1"> 
 					    <img th:src="@{/img/wall/wallpanel/모노.jpg}">
 					</a>
