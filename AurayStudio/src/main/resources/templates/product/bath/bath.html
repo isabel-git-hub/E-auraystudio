@@ -11,28 +11,46 @@ body {
 	padding: 20px;
 }
 
+.content {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* 바스 옵션을 가로로 정렬 */
 #bath-options {
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 20px;
     gap: 20px;
 }
 
+/* 개별 옵션 스타일 */
 .option {
-    flex: 1 1 30%;
     text-align: center;
     padding: 20px;
     border: 1px solid #ccc;
     background-color: #f5f5f5;
+    width: 180px;
+    border-radius: 10px;
     transition: background-color 0.3s ease;
 }
 
+/* 옵션 안의 링크 스타일 */
 .option a {
     text-decoration: none;
     color: #000;
     font-size: 18px;
 }
 
+/* 옵션 안의 이미지 스타일 */
+.option img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* 옵션 hover 시 배경색 변화 */
 .option:hover {
     background-color: #ddd;
 }
@@ -44,13 +62,19 @@ body {
 	<div class="content">
 			<div id="bath-options">
 				<div class="option">
+					<img src="/img/bath/에센셜 바스.png">
 					<a href="/product/bath/essential">에센셜 바스</a>
+						
 				</div>
 				<div class="option">
+					<img src="/img/bath/타임리스 바스.png">
 					<a href="/product/bath/timeless">타임리스 바스</a>
+						
 				</div>
 				<div class="option">
+					<img src="/img/bath/바스 구성기기.png">
 					<a href="/product/bath/fixtures">바스 구성기기</a>
+						
 				</div>
 			</div>
 		</div>

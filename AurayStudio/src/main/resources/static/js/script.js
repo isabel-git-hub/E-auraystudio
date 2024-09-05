@@ -223,3 +223,75 @@ document.addEventListener('DOMContentLoaded', function() {
 	// 페이지 로드시 모든 제품을 기본으로 표시
 	filterProducts();
 });
+
+/*window.addEventListener('DOMContentLoaded', () => {
+    const scrollWrappers = document.querySelectorAll('.scrollable-wrapper');  // 모든 스크롤 가능한 영역 선택
+
+    scrollWrappers.forEach(wrapper => {
+        const leftArrow = wrapper.querySelector('.left-arrow');  // 좌측 화살표 선택
+        const rightArrow = wrapper.querySelector('.right-arrow');  // 우측 화살표 선택
+        const scrollableContainer = wrapper.querySelector('.scrollable-container');  // 스크롤할 컨테이너 선택
+
+        const optionWidth = 150;  // 옵션 하나의 너비 (CSS의 min-width와 동일하게 설정)
+        const optionGap = 20;  // 옵션 간의 간격 (CSS의 gap과 동일하게 설정)
+        const scrollAmount = optionWidth + optionGap;  // 한 번에 하나의 옵션만큼 이동하도록 설정
+
+        // 스크롤이 필요한지 여부 확인하는 함수
+        const checkScroll = () => {
+            if (scrollableContainer.scrollWidth > scrollableContainer.clientWidth) {
+                leftArrow.style.display = 'block';
+                rightArrow.style.display = 'block';
+            } else {
+                leftArrow.style.display = 'none';
+                rightArrow.style.display = 'none';
+            }
+        };
+
+        checkScroll();  // 페이지 로드 후 스크롤 가능 여부 체크
+
+        // 왼쪽 화살표 클릭 시 좌측으로 하나의 옵션만큼 스크롤
+        leftArrow.onclick = () => {
+            scrollableContainer.scrollBy({
+                left: -scrollAmount,  // 한 번에 하나의 옵션만큼 스크롤
+                behavior: 'smooth'
+            });
+        };
+
+        // 오른쪽 화살표 클릭 시 우측으로 하나의 옵션만큼 스크롤
+        rightArrow.onclick = () => {
+            scrollableContainer.scrollBy({
+                left: scrollAmount,  // 한 번에 하나의 옵션만큼 스크롤
+                behavior: 'smooth'
+            });
+        };
+
+        // 윈도우 크기 변경 시에도 스크롤 상태 재확인
+        window.addEventListener('resize', checkScroll);
+    });
+});
+*/
+window.addEventListener('DOMContentLoaded', () => {
+    const leftArrow = document.querySelector('.left-arrow');
+    const rightArrow = document.querySelector('.right-arrow');
+    const scrollableContainer = document.querySelector('.scrollable-container');
+
+    const optionWidth = 150;  // 옵션 하나의 너비
+    const optionGap = 20;     // 옵션 간의 간격
+    const scrollAmount = optionWidth + optionGap;  // 스크롤할 총 너비 계산 (옵션 하나의 너비 + 간격)
+
+    // 왼쪽 화살표 클릭 시 좌측으로 스크롤
+    leftArrow.addEventListener('click', () => {
+        scrollableContainer.scrollBy({
+            left: -scrollAmount,  // 왼쪽으로 옵션 하나 만큼 이동
+            behavior: 'smooth'
+        });
+    });
+
+    // 오른쪽 화살표 클릭 시 우측으로 스크롤
+    rightArrow.addEventListener('click', () => {
+        scrollableContainer.scrollBy({
+            left: scrollAmount,  // 오른쪽으로 옵션 하나 만큼 이동
+            behavior: 'smooth'
+        });
+    });
+});
