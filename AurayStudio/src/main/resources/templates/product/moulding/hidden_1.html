@@ -13,11 +13,6 @@ body {
 	padding: 20px;
 }
 
-h3 {
-    margin-bottom: -6px;
-    padding-left: 20px;
-}
-
 .product-detail {
     display: flex;
     gap: 20px;
@@ -64,14 +59,13 @@ h3 {
 </head>
 <body>
     <div layout:fragment="content">
-        <h3>히든 몰딩</h3>
         <div class="product-detail">
             <div class="product-image">
                 <img th:src="@{/img/moulding/히든몰딩_01.jpg}">
             </div>
             <div class="product-info">
+                <h2>MA-01</h2>
                 <p><strong>카테고리:</strong> 히든 몰딩</p>
-                <p><strong>제품코드:</strong> MA-01</p>
                 <p><strong>사이즈:</strong> 규격: 2,400×15.2×51.2(mm)</p>
                 <p><strong>운영 컬러:</strong> 백골/시트래핑(주문재)</p>
                 <div class="product-actions">
