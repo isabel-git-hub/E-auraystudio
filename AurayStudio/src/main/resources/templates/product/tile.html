@@ -25,10 +25,11 @@ h3 {
 	font-size: 21px;
 }
 
-/* 바스 옵션을 가로로 정렬 */
+/* 타일 옵션을 가로로 정렬 */
 #tile-options {
 	display: flex;
 	gap: 20px;
+	margin-bottom: 8px;
 }
 
 /* 개별 옵션 스타일 */
@@ -70,35 +71,41 @@ h3 {
 	background-color: #ddd;
 }
 
-/* 타일 옵션 위에 배치될 이미지 스타일 */
-.header-images {
+/* 타일 옵션 위에 있는 큰 사진을 감싸는 div */
+#top-image-wrapper {
 	display: flex;
 	justify-content: center;
-	gap: 20px; /* 이미지 간 간격 */
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 
-.header-image {
-	width: 310px; /* 각 이미지의 너비 설정 */
-	height: auto;
-	/* border-radius: 10px; */ /* 둥근 모서리 */
+/* 타일 옵션 위에 있는 사진을 가로로 길게 설정 */
+#top-image {
+	width: 645px; /* 원하는 가로 길이 설정 */
+	height: 215px; /* 원하는 세로 길이 설정 */
+	object-fit: cover; /* 이미지 비율을 유지하면서 크기에 맞춤 */
 }
 
-/* Modern2 이미지 스타일 */
-.modern-image {
-	width: 310px; /* Modern2 이미지를 가로로 넓힘 */
-	height: auto;
-	/* border-radius: 10px; */
+/* 설명 텍스트를 감싸는 div 스타일 */
+#description-wrapper {
+	width: 640px; /* 왼쪽 이미지의 너비에 맞춤 */
+	margin-left: 360px; /* 왼쪽 이미지에 맞추기 위해 여백 설정 */
+}
+
+p {
+	font-size: 14px;
+	margin: 0;
 }
 </style>
 </head>
 <body>
 <div layout:fragment="content">
-	<div class="header-images">
-		<img class="header-image modern-image" th:src="@{/img/tile/modern2.png}">
-		<img class="header-image" th:src="@{/img/tile/unique2.png}">
+	<div id="top-image-wrapper">
+		<img id="top-image" th:src="@{/img/tile/natural3.png}">
 	</div>
 	<h3>타일 옵션</h3>
+		<div id="description-wrapper">
+			<p>다양한 재질과 디자인으로 제작된 바닥 및 벽 장식 재료로, 내구성과 미적 효과를 제공합니다.</p>
+		</div>
 		<div class="content">
 			<div id="tile-options">
 				<div class="option">
@@ -115,6 +122,10 @@ h3 {
 				</div>
 			</div>
 		</div>
+		<!-- <div class="header-images">
+			<img class="header-image modern-image" th:src="@{/img/tile/modern2.png}"> 
+			<img class="header-image" th:src="@{/img/tile/unique2.png}">
+		</div> -->
 	</div>  
 </body>
 </html>

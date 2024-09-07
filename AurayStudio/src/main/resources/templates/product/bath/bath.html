@@ -71,24 +71,60 @@ h3 {
 	background-color: #ddd;
 }
 
-/* 타일 옵션 위에 배치될 이미지 스타일 */
+/* 바스 옵션 위에 있는 큰 사진을 감싸는 div */
+#top-image-wrapper {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+/* 바스 옵션 위에 있는 사진을 가로로 길게 설정 */
+#top-image {
+	width: 645px; /* 원하는 가로 길이 설정 */
+	height: 215px; /* 원하는 세로 길이 설정 */
+	object-fit: cover; /* 이미지 비율을 유지하면서 크기에 맞춤 */
+}
+
+/* 바스 옵션 위에 배치될 이미지 스타일 */
 .header-images {
 	display: flex;
 	justify-content: center;
 	gap: 20px; /* 이미지 간 간격 */
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 
 .header-image {
-	width: 200px; /* 각 이미지의 너비 설정 */
-	height: auto;
+	width: 215px; /* 각 이미지의 너비 설정 */
+	height: 200px;
 	/* border-radius: 10px; */ /* 둥근 모서리 */
+}
+
+.timeless-image {
+	width: 396px;
+	height: 200px;
+	/* border-radius: 10px; */
+}
+
+/* p 태그를 감싸는 div 스타일 */
+#description-wrapper {
+	width: 640px; /* 왼쪽 이미지의 너비에 맞춤 */
+	margin-left: 360px; /* 왼쪽 이미지에 맞추기 위해 여백 설정 */
+}
+p {
+font-size: 14px;
+margin: 0;
 }
 </style>
 </head>
 <body>
 <div layout:fragment="content">
+	<div id="top-image-wrapper">
+		<img id="top-image" th:src="@{/img/bath/essential2.png}">
+	</div>
 	<h3>바스 옵션</h3>
+	<div id="description-wrapper">
+			<p>편안한 목욕을 위해 디자인된 욕실 공간으로, 스타일과 기능을 모두 갖춘 욕조와 관련 기기를 포함합니다.</p>
+		</div>
 	<div class="content">
 			<div id="bath-options">
 				<div class="option">
@@ -105,11 +141,11 @@ h3 {
 				</div>
 			</div>
 		</div>
-		<div class="header-images">
-		<img class="header-image" th:src="@{/img/bath/essential2.png}">
-		<img class="header-image" th:src="@{/img/bath/timeless2.png}">
-		<img class="header-image" th:src="@{/img/bath/fixtures2.png}">
-	</div>
-</div>  
+		<!-- <div class="header-images">
+			<img class="header-image timeless-image" th:src="@{/img/bath/timeless2.png}">
+			<img class="header-image" th:src="@{/img/bath/fixtures2.png}">
+	    </div> -->
+		
+	</div>  
 </body>
 </html>
