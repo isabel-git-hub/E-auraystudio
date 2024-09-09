@@ -1,49 +1,484 @@
 <!DOCTYPE html>
-<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html layout:decorate="~{layout}"
+	xmlns:layout="http://www.w3.org/1999/xhtml">
+
 <head>
-<link>
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/inquire.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
+
 <body>
+	<div th:replace="fragments/nav :: nav"></div>
 	<div layout:fragment="content" id="contents">
-		<h1>상담신청</h1>
+		<h1 id="inquiry">상담신청</h1>
+
+		<div class="form-header">
+			<div class="title">신청자 정보</div>
+			<div class="required-note">* 필수 입력 항목</div>
+		</div>
+		<div class="divider_01"></div>
+
 		<form id="inquiryForm" name="inquiryForm" action="/sendMail"
 			method="post" onsubmit="return validateForm()">
-			<table>
+			<table id="table">
+				<!-- 기존 폼 요소들 -->
+
+				<div id="construction-period">
+					<label for="constructionPeriod">시공 시기는 언제로 희망하시나요?<span
+						class="required">*</span></label>
+					<div>
+						<input type="radio" id="within1Month" name="constructionPeriod"
+							value="1개월 이내" required> <label for="within1Month">1개월
+							이내</label> <input type="radio" id="within4Months"
+							name="constructionPeriod" value="4개월 이내"> <label
+							for="within4Months">4개월 이내</label> <input type="radio"
+							id="after4Months" name="constructionPeriod" value="4개월 이후">
+						<label for="after4Months">4개월 이후</label> <input type="radio"
+							id="notSure" name="constructionPeriod" value="미정"> <label
+							for="notSure">미정</label>
+					</div>
+				</div>
+
+				<!-- 숨겨진 subject 필드 -->
 				<tr>
-					<td>제목</td>
-					<td><input type="text" name="title" required></td>
+					<td><label for="subject">제목</label></td>
+					<td><input type="text" name="subject" id="subject"
+						value="상담신청" readonly></td>
+				</tr>
+
+				<tr>
+					<td id="users" style="width: 130px;"><label for="name">이름<span
+							class="required">*</span></label></td>
+					<td><input type="text" name="name" id="name"
+						placeholder="이름을 입력해주세요" required>
+						<div class="small-text">상담하실 분의 이름을 입력해 주세요.</div></td>
 				</tr>
 				<tr>
-					<td>이름</td>
-					<td><input type="text" name="name" required></td>
+					<td id="users"><label for="telno">휴대폰 번호<span
+							class="required">*</span></label></td>
+					<td>
+						<div class="phone-input">
+							<input type="text" name="telno1" maxlength="3" value="010"
+								required> <input type="text" name="telno2" maxlength="4"
+								required> <input type="text" name="telno3" maxlength="4"
+								required>
+						</div> <!-- 						<div class="small-text">
+							<span>*</span>연락받으실 휴대폰 번호를 정확하게 입력해 주세요.
+						</div> -->
+					</td>
 				</tr>
+
 				<tr>
-					<td>전화번호</td>
-					<td><input type="text" name="telno" required></td>
+					<td id="users"><label for="mail">이메일<span
+							class="required">*</span></label></td>
+					<td>
+						<div class="mail-input">
+							<input type="text" name="to" id="mail" required>
+						</div>
+						<div class="small-text">
+							<span>*</span>연락받으실 이메일을 정확하게 입력해 주세요.
+						</div>
+					</td>
 				</tr>
+
+				<!-- 주소 입력 필드 -->
 				<tr>
-					<td>시공주소</td>
-					<td><input type="text" name="addr"></td>
-				</tr>
-				<tr>
-					<td>내용</td>
-					<td><textarea name="content" required></textarea></td>
-				</tr>
-				<tr>
-					<td>상담원에게 한마디 (선택사항)</td>
-					<td><textarea name="messageToAgent"></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-                        <input type="checkbox" id="consentCheckbox" name="consent" required>
-                        <label for="consentCheckbox">개인정보 처리에 동의합니다.</label>
-                    </td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="submit" value="제출"></td>
+					<td id="users"><label for="addr">시공주소<span
+							class="required">*</span></label></td>
+					<td><input type="text" id="addr" class="full-width-input"
+						placeholder="주소를 입력해주세요"> <input type="text"
+						id="detailAddr" class="full-width-input"
+						placeholder="상세주소를 입력해주세요"></td>
 				</tr>
 			</table>
+
+			<div>
+				<!-- 추가 상담 내용 -->
+				<div>
+					<label for="text">원하시는 시공을 모두 적어주세요 <span
+						class="required">*</span></label><br>
+					<textarea name="text" id="text"
+						placeholder="메모"></textarea>
+				</div>
+
+				<br>
+				<div class="divider_02"></div>
+				<br>
+
+				<!-- 추가적인 동의 항목들 -->
+				<div>
+					<input type="checkbox" id="checkAll"> <label for="checkAll">전체
+						동의</label> <br> <br>
+					<ul class="checkbox-list">
+						<li><input type="checkbox" id="checkbox1"> <label
+							for="checkbox1" class="open-popup" data-popup="popup1">
+								개인정보 수집 및 이용에 대한 안내<span class="required">*</span> <span
+								class="spacing view">보기</span>
+						</label></li>
+						<li><input type="checkbox" id="checkbox2"> <label
+							for="checkbox2" class="open-popup" data-popup="popup2">
+								개인정보 제3자 제공에 대한 안내 <span class="required">*</span> <span
+								class="spacing view">&nbsp;보기</span>
+						</label></li>
+						<li><input type="checkbox" id="checkbox3"> <label
+							for="checkbox3" class="open-popup" data-popup="popup3">
+								개인정보 마케팅 활용에 대한 안내 <span class="required">*</span> <span
+								class="spacing view">보기</span>
+						</label></li>
+					</ul>
+					<br>
+					<div class="required-message">
+						<span class="required">* 필수: 상담신청을 위해서는 필수항목에 대한 동의가 필요합니다.</span>
+					</div>
+				</div>
+
+				<br> <br>
+
+				<div style="text-align: center;">
+					<input type="submit" value="신청완료" class="submit-btn">
+					<!-- <input type="button" value="신청완료" class="submit-btn" onclick="sendMail()"> -->
+				</div>
+
+				<!-- 팝업창 HTML 구조 -->
+				<div class="popup-overlay"></div>
+
+				<!-- 개인정보 수집 및 이용에 대한 안내 팝업 -->
+				<div id="popup1" class="popup">
+					<button class="popup-close">X</button>
+					<div class="popup-header">개인정보 수집 및 이용 안내</div>
+					<div class="popup-content">
+						1. 수집하는 개인정보 항목 및 목적
+						<ul>
+							<li>1) 상담 고객</li>
+							<li>수집 개인정보 : 성명, 연락처, 주소, 상담정보</li>
+							<li>수집·이용목적 : 고객 상담 및 실측 · 견적, 상담 판촉물 제공, 상담 예약 시 일정 알림톡 제공</li>
+							<li>2) 계약 고객</li>
+							<li>수집 개인정보 : 성명, 연락처, 주소, 상담정보, CI(본인인증)</li>
+							<li>수집·이용목적 : 본인인증 및 계약관리, 상담 판촉물 제공, 계약 후 일정에 대한 알림톡 제공, 시공
+								후 A/S 관리</li>
+						</ul>
+
+						2. 보유 및 이용기간<br> 개인정보는 인테리어 상담의 목적으로 상담 후 12개월 동안 보유 후 파기합니다.
+						다만, 12개월 내 계약이 체결된 고객은 계약 및 거래 기록과 함께 법률에서 정한 보존 기간 및 품질 보증을 위한
+						기간과 동일하게 보관합니다.<br> <br> 3. 고객께서는 개인정보 수집 및 이용과 관련하여 동의를
+						거부할 권리가 있으며, 동의 거부 시 인테리어 상담 및 계약이 불가할 수 있습니다. <
+					</div>
+					<button class="popup-confirm">확인</button>
+				</div>
+
+				<!-- 개인정보 제3자 제공에 대한 안내 팝업 -->
+				<div id="popup2" class="popup">
+					<button class="popup-close">X</button>
+					<div class="popup-header">개인정보 제3자 제공 안내</div>
+					<div class="popup-content">
+						1. 동의 거부권리 및 동의 거부 시 불이익 내용<br> <br> 고객님은 개인정보 제3자 제공과
+						관련하여 동의를 거부할 권리가 있습니다. 다만, 동의 거부 시 인테리어 상담 및 계약이 불가할 수 있습니다.
+					</div>
+					<button class="popup-confirm">확인</button>
+				</div>
+
+				<!-- 개인정보 마케팅 활용에 대한 안내 팝업 -->
+				<div id="popup3" class="popup">
+					<button class="popup-close">X</button>
+					<div class="popup-header">개인정보 마케팅 활용 안내</div>
+					<div class="popup-content">
+						1. 수집 항목 : 성명, 연락처, 주소, 상담정보<br> <br> 2. 이용 목적 : 각종
+						프로모션, 이벤트 참여 및 혜택 제공, 신제품 관련 정보 안내 등 마케팅 활용, 마케팅 활용을 위한 데이터 분석<br>
+						<br> 3. 보유 기간: 12개월, 기타 제휴사 및 이벤트 제공업체 6개월, 위 기간 도래 전 정보주체의
+						마케팅 활용 동의 철회 시까지<br> <br> 4. 마케팅 업무 위탁에 관한 사항<br>
+						개인정보 마케팅 업무를 아래와 같은 외부기관에 위탁하고 있으며, 명시된 목적 이외의 용도로는 사용되지 않음을
+						알려드립니다.<br> <br> 5. 고객께서 제공하신 개인정보는 맞춤 서비스 및 사은품 제공, 마케팅
+						활동(문자, 알림톡 등)등으로 활용되는 것에 동의를 거부할 권리가 있으며, 동의 거부 시 해당 서비스 이용에 제약이
+						있습니다.
+					</div>
+					<button class="popup-confirm">확인</button>
+				</div>
+			</div>
 		</form>
-	</div>
+
+
+		<script>
+					function validateForm() {
+						// 전화번호 검사
+						var telno1 = document.getElementsByName("telno1")[0].value;
+						var telno2 = document.getElementsByName("telno2")[0].value;
+						var telno3 = document.getElementsByName("telno3")[0].value;
+						if (!/^\d{3}$/.test(telno1) || !/^\d{4}$/.test(telno2)
+								|| !/^\d{4}$/.test(telno3)) {
+							alert("유효한 전화번호를 입력해 주세요.");
+							return false;
+						}
+
+						// 이메일 검사
+						var email = document.getElementsByName("mail")[0].value;
+						var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+						if (!emailPattern.test(email)) {
+							alert("유효한 이메일 주소를 입력해 주세요.");
+							return false;
+						}
+
+						// 주소 검사
+						var addr = document.getElementById("addr").value;
+						if (addr.trim() === "") {
+							alert("주소를 입력해 주세요.");
+							return false;
+						}
+
+						// 체크박스 검사
+						if (!document.getElementById("checkbox1").checked
+								|| !document.getElementById("checkbox2").checked
+								|| !document.getElementById("checkbox3").checked) {
+							alert("모든 필수 항목에 동의해 주세요.");
+							return false;
+						}
+
+						return true; // 모든 검사를 통과하면 true를 반환하여 폼 제출 진행
+					}
+
+					/* $(document).ready(function() {
+					    // "보기"라는 텍스트가 들어간 span 태그에만 이벤트 리스너 추가
+					    $('label span').each(function() {
+					        if ($(this).text().trim() === '보기') {
+					            $(this).on('click', function(e) {
+					                e.preventDefault();
+					                // 관련된 팝업 ID 가져오기
+					                var popupId = $(this).closest('label').data('popup');
+					                
+					                // 팝업 열기
+					                $('#' + popupId).fadeIn();
+					                $('.popup-overlay').fadeIn();
+					            });
+					        }
+					    });
+
+					    // 팝업창 닫기
+					    $('.popup-close').on('click', function() {
+					        $(this).closest('.popup').fadeOut();
+					        $('.popup-overlay').fadeOut();
+					    });
+
+					    // 배경 클릭 시 팝업창 닫기
+					    $('.popup-overlay').on('click', function() {
+					        $('.popup').fadeOut();
+					        $(this).fadeOut();
+					    });
+					}); */
+
+					/* $(document).ready(function() {
+						// 팝업창 열기
+						$('.open-popup').on('click', function(e) {
+							e.preventDefault();
+							var popupId = $(this).data('popup');
+							$('#' + popupId).fadeIn();
+							$('.popup-overlay').fadeIn();
+						});
+
+						// 팝업창 닫기
+						$('.popup-close').on('click', function() {
+							$(this).closest('.popup').fadeOut();
+							$('.popup-overlay').fadeOut();
+						});
+
+						// 배경 클릭 시 팝업창 닫기
+						$('.popup-overlay').on('click', function() {
+							$('.popup').fadeOut();
+							$(this).fadeOut();
+						});
+					}); */
+
+					
+					$(document).ready(function () {
+					    var currentCheckbox = null; // 현재 열려있는 팝업과 연결된 체크박스를 저장할 변수
+
+					    // "보기"라는 텍스트가 들어간 span 태그에만 이벤트 리스너 추가
+					    $('label span').each(function () {
+					        if ($(this).text().trim() === '보기') {
+					            $(this).on('click', function (e) {
+					                e.preventDefault();
+					                // 관련된 팝업 ID 가져오기
+					                var popupId = $(this).closest('label').data('popup');
+					                // 팝업 열기
+					                $('#' + popupId).fadeIn();
+					                $('.popup-overlay').fadeIn();
+
+					                // 현재 팝업과 연결된 체크박스 저장
+					                currentCheckbox = $(this).closest('li').find('input[type="checkbox"]');
+					            });
+					        }
+					    });
+
+					    // 전체 동의 체크박스 클릭 시
+					    $('#checkAll').on('click', function () {
+					        var isChecked = $(this).is(':checked');
+					        if (isChecked) {
+					            $('#checkbox1, #checkbox2, #checkbox3').prop('checked', true); // 모든 체크박스를 체크
+					        } else {
+					            $('#checkbox1, #checkbox2, #checkbox3').prop('checked', false); // 체크 해제
+					        }
+					    });
+
+					    // 체크박스 클릭 방지 - 개인정보 수집 및 이용, 개인정보 제3자 제공, 개인정보 마케팅 활용 체크박스 클릭 방지
+					    $('#checkbox1, #checkbox2, #checkbox3').on('click', function (e) {
+					        if (!$('#checkAll').is(':checked')) { // 전체 동의가 아닐 때만 클릭 방지
+					            e.preventDefault(); // 체크박스를 클릭해도 바로 체크되지 않도록 방지
+					            alert('먼저 "보기"를 클릭하고 팝업에서 동의를 확인해 주세요.');
+					        }
+					    });
+
+					    // 팝업창 닫기
+					    $('.popup-close').on('click', function () {
+					        $(this).closest('.popup').fadeOut();
+					        $('.popup-overlay').fadeOut();
+					    });
+
+					    // 배경 클릭 시 팝업창 닫기
+					    $('.popup-overlay').on('click', function () {
+					        $('.popup').fadeOut();
+					        $(this).fadeOut();
+					    });
+
+					    // 팝업 안의 확인 버튼 클릭 시 해당 체크박스를 체크
+					    $('.popup-confirm').on('click', function () {
+					        if (currentCheckbox && (currentCheckbox.attr('id') === 'checkbox1' || currentCheckbox.attr('id') === 'checkbox2' || currentCheckbox.attr('id') === 'checkbox3')) {
+					            currentCheckbox.prop('checked', true); // 체크박스 체크
+					            alert('해당 항목에 동의하셨습니다.');
+					        } else {
+					            alert('해당 항목에 대한 동의만 체크 가능합니다.');
+					        }
+					        $(this).closest('.popup').fadeOut(); // 팝업 닫기
+					        $('.popup-overlay').fadeOut(); // 오버레이 닫기
+
+					        // 모든 체크박스가 체크된 경우 전체 동의도 체크
+					        if ($('#checkbox1').is(':checked') && $('#checkbox2').is(':checked') && $('#checkbox3').is(':checked')) {
+					            $('#checkAll').prop('checked', true);
+					        } else {
+					            $('#checkAll').prop('checked', false); // 하나라도 체크가 안 되어 있으면 전체 동의 해제
+					        }
+					    });
+					});
+					
+					
+					 // 메일 보내기
+					/* function sendMail() {
+					    // 폼 요소 참조
+					    const form = document.getElementById('inquireForm');
+					    const title = form.title.value;
+					    const email = form.email.value;
+					    const name = form.name.value;
+					    const telno = form.telno.value;
+					    const content = form.content.value;
+					    
+					    // 필수 입력 필드 검사
+					    if (!title) {
+					        alert("제목을 입력해 주세요.");
+					        return;
+					    }
+					    if (!email) {
+					        alert("이메일을 입력해 주세요.");
+					        return;
+					    }
+					    if (!name) {
+					        alert("이름을 입력해 주세요.");
+					        return;
+					    }
+					    if (!telno) {
+					        alert("전화번호를 입력해 주세요.");
+					        return;
+					    }
+					    if (!content) {
+					        alert("내용을 입력해 주세요.");
+					        return;
+					    }
+					    
+					    // 메일 내용 설정
+					    const subject = `${name}님이 문의하신 내용입니다.`;
+					    const to = "skwy8938@gmail.com";
+					    const text = `
+					    <table>
+					    <tr><td>제목</td><td>${title}</td></tr>
+					    <tr><td>이메일</td><td>${email}</td></tr>
+					    <tr><td>이름</td><td>${name}</td></tr>
+					    <tr><td>전화번호</td><td>${telno}</td></tr>
+					    <tr><td>내용</td><td>${content}</td></tr>
+					    </table>
+					    `;
+					    
+					    // 확인용 경고창
+					    // alert(`제목: ${title}\n이메일: ${email}\n이름: ${name}\n전화번호: ${telno}\n내용: ${content}`);
+					    
+					    // 숨겨진 입력 필드 생성
+					    const subjectInput = document.createElement('input');
+					    subjectInput.type = 'hidden';
+					    subjectInput.name = 'subject';
+					    subjectInput.value = subject;
+					    
+					    const toInput = document.createElement('input');
+					    toInput.type = 'hidden';
+					    toInput.name = 'to';
+					    toInput.value = to;
+					    
+					    const textInput = document.createElement('input');
+					    textInput.type = 'hidden';
+					    textInput.name = 'text';
+					    textInput.value = text;
+					    
+					    // 폼에 숨겨진 입력 필드 추가
+					    form.appendChild(subjectInput);
+					    form.appendChild(toInput);
+					    form.appendChild(textInput);
+					    
+					    // 폼 제출
+					    form.submit();
+					}  */
+					
+					
+					
+					function sendMail() {
+					    // 폼 요소 가져오기
+					    const name = document.getElementById('name').value;
+					    const mail = document.getElementById('mail').value;
+					    const message = document.getElementById('messageToAgent').value;
+
+					    // 입력 값 확인
+					    if (!name || !mail || !message) {
+					        alert("모든 필드를 채워주세요.");
+					        return;
+					    }
+					    
+					   
+
+					    // JSON 데이터를 서버로 전송
+					    fetch('/sendMail', {
+					        method: 'POST',
+					        headers: {
+					            'Content-Type': 'application/json'  // JSON 형식으로 서버에 전송
+					        },
+					        body: JSON.stringify({
+					            to: mail,  // 수신자 이메일 주소
+					            from: "sherbet04@daum.net",  // 발신자 이메일 주소 (필요 시 수정)
+					            subject: document.getElementById('subject').value,
+					            text: message  // 이메일 내용
+					        })
+					    })
+					    .then(response => response.text())  // 서버로부터 응답을 텍스트로 받음
+					    .then(result => {
+					        if (result === "Email 전송 성공!") {
+					            alert("메일이 성공적으로 전송되었습니다.");
+					        } else {
+					            alert("메일 전송 실패: " + result);
+					        }
+					    })
+					    .catch(error => {
+					        console.error("메일 전송 중 오류 발생:", error);
+					        alert("메일 전송 중 오류가 발생했습니다.");
+					    });
+					}
+
+
+				</script>
+				</div>
 </body>
 </html>

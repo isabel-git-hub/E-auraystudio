@@ -17,8 +17,8 @@ public interface MemberDao {
 	@Select("SELECT COUNT(*) FROM member WHERE userid=#{userid} AND birthdate=#{birthdate} AND telnumber=#{telnumber}")
 	boolean checkMember(MemberDto dto) throws DataAccessException;
 	
-	@Insert("INSERT INTO member (userid, userpw, username, birthdate, gender, telnumber, addr, permit) " +
-            "VALUES (#{userid}, #{userpw}, #{username}, #{birthdate}, #{gender}, #{telnumber}, #{addr}, #{permit})")
+	@Insert("INSERT INTO member (userid, userpw, username, birthdate, gender, telnumber, addr, email, permit) " +
+            "VALUES (#{userid}, #{userpw}, #{username}, #{birthdate}, #{gender}, #{telnumber}, #{addr}, #{email}, #{permit})")
 	boolean insertMember(MemberDto memberDto) throws DataAccessException;
 	@Select("select count(*) from member where userid=#{userid}")
 	int checkId(String userid) throws DataAccessException;

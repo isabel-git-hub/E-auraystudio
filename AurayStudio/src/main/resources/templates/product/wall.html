@@ -70,11 +70,46 @@ h3 {
 .option:hover {
 	background-color: #ddd;
 }
+
+/* 월 옵션 위에 있는 큰 사진을 감싸는 div */
+#top-image-wrapper {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+/* 월 옵션 위에 있는 사진을 가로로 길게 설정 */
+#top-image {
+	width: 100%; /* 화면 너비에 맞게 설정 */
+	max-width: 494px; /* 최대 너비 제한 */
+	height: 215px; /* 원하는 세로 길이 설정 */
+	object-fit: cover; /* 이미지 비율을 유지하면서 크기에 맞춤 */
+}
+
+/* 설명 텍스트를 감싸는 div 스타일 */
+#description-wrapper {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto; /* 중앙 정렬 */
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+p {
+	font-size: 14px;
+	margin-left: 4px;
+}
 </style>
 </head>
 <body>
 <div layout:fragment="content">
+	<div id="top-image-wrapper">
+		<img id="top-image" th:src="@{/img/wall/stylewall/stylewall3.png}">
+	</div>
 	<h3>wall 옵션</h3>
+		<div id="description-wrapper">
+			<p>다양한 텍스처와 패턴으로 시각적인 깊이와 균형을 강조한 벽 디자인입니다.</p>
+		</div>
 		<div class="content">
 			<div id="wall-options">
 				<div class="option">
@@ -87,6 +122,10 @@ h3 {
 				</div>
 			</div>
 		</div>
+		<!-- <div class="header-images">
+			<img class="header-image wall-image" th:src="@{/img/wall/stylewall/stylewall2.png}"> 
+			<img class="header-image" th:src="@{/img/wall/wallpanel/wallpanel2.png}">
+		</div> -->
 	</div>    
 </body>
 </html>

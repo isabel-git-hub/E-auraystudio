@@ -3,6 +3,7 @@ package com.example.AurayStudio.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.AurayStudio.dto.EmailDto;
@@ -22,10 +23,13 @@ public class EmailController {
 	}
 	
 	@PostMapping("/sendMail")
-	public String sendMail(EmailDto msg) {
-		if(email.sendMailReject(msg))
-			System.out.println("Email 전송 성공!!!");
-		else System.out.println("Email 전송 실패!!!");
-		return "redirect:/";
+	public String sendMail(@ModelAttribute EmailDto emailDto) {
+	    // emailDto.getTo()에 폼에서 입력한 이메일 주소가 들어옵니다.
+	    if (email.mailSend(emailDto)) {
+	        System.out.println("Email 전송 성공!");
+	    } else {
+	        System.out.println("Email 전송 실패!");
+	    }
+	    return "redirect:/";
 	}
 }

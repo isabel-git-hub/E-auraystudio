@@ -30,6 +30,7 @@ body {
 	padding: 10px 15px;
 	border-radius: 4px;
 	background-color: #f0f0f0;
+	width: 100%;
 }
 
 .menu li a:hover, .menu li.active a {
@@ -45,18 +46,33 @@ body {
 	background-color: #ffffff;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 1;
-	width: 180px;
+	width: 220px; /* 드롭다운 메뉴의 너비를 더 넓게 설정 */
+	padding: 10px;
 }
 
 .menu li:hover .dropdown-content {
+	/* display: flex;
+	align-items: center; */
 	display: block;
+}
+
+.dropdown-item {
+	display: flex; /* 아이템을 수평으로 배치 */
+	align-items: center; /* 이미지와 텍스트를 수직 중앙 정렬 */
+	margin-bottom: 5px;
+}
+
+.dropdown-content img {
+	width: 40px; /* 이미지 크기 */
+	height: 40px;
+	margin-right: 10px; /* 텍스트와 이미지 사이 간격 */
 }
 
 .dropdown-content a {
 	color: black;
 	padding: 8px 12px;
 	text-decoration: none;
-	display: block;
+	flex-grow: 1;
 	border-bottom: 1px solid #ddd;
 }
 
@@ -67,6 +83,7 @@ body {
 .dropdown-content a:hover {
 	background-color: #f1f1f1;
 }
+
 /* 드롭다운 메뉴 기본 숨기기 */
 .menu li .dropdown-content {
     display: none;
@@ -88,6 +105,10 @@ body {
 .menu li .dropdown-content:hover {
     display: block;
 }
+
+p {
+    margin-top: 0;
+}
 </style>
 </head>
 <body>
@@ -99,17 +120,41 @@ body {
 		<li>
 		    <a href="/product/bath">바스</a>
 		    <div class="dropdown-content">
-				<a href="/product/bath/essential">에센셜 바스</a> 
-				<a href="/product/bath/timeless">타임리스 바스</a>
-				<a href="/product/bath/fixtures">바스 구성기기</a>
+		    <img th:src="@{/img/bath/essential2.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
+			    <p>바스</p>
+			    <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
+				<div class="dropdown-item">
+				    <img th:src="@{/img/bath/essential.png}">
+				    <a href="/product/bath/essential">에센셜 바스</a>
+				</div>
+				<div class="dropdown-item"> 
+				    <img th:src="@{/img/bath/timeless.png}">
+				    <a href="/product/bath/timeless">타임리스 바스</a>
+				</div>
+				<div class="dropdown-item">
+				    <img th:src="@{/img/bath/fixtures.png}">
+				    <a href="/product/bath/fixtures">바스 구성기기</a>
+				</div>
 			</div>
 		</li>
 		<li>
 		    <a href="/product/tile">타일</a>
 		    <div class="dropdown-content">
-				<a href="/product/tile/natural">Natural</a> 
-				<a href="/product/tile/modern">Modern</a>
-				<a href="/product/tile/unique">Unique</a>
+		    <img th:src="@{/img/tile/natural3.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
+		        <p>타일</p>
+		        <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
+				<div class="dropdown-item">
+				    <img th:src="@{/img/tile/natural.png}">
+				    <a href="/product/tile/natural">Natural</a> 
+				</div>
+				<div class="dropdown-item">
+				    <img th:src="@{/img/tile/modern.png}">
+				    <a href="/product/tile/modern">Modern</a>
+				</div>
+				<div class="dropdown-item">
+				    <img th:src="@{/img/tile/unique.png}">
+				    <a href="/product/tile/unique">Unique</a>
+				</div>
 			</div>
 		</li>
 		<li><a href="/product/door">도어</a></li>
@@ -135,21 +180,54 @@ body {
 		<li>
 		    <a href="/product/wall">Wall</a>
 		    <div class="dropdown-content">
-		        <a href="/product/wall/style">스타일월</a>
-                <a href="/product/wall/panel">월판넬</a>
+		    <img th:src="@{/img/wall/stylewall/stylewall3.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
+		        <p>Wall</p>
+		        <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
+		        <div class="dropdown-item">
+		            <img th:src="@{/img/wall/stylewall/stylewall.png}">
+		            <a href="/product/wall/style">스타일월</a>
+		        </div>
+		        <div class="dropdown-item">
+                    <img th:src="@{/img/wall/wallpanel/wallpanel.png}">
+                    <a href="/product/wall/panel">월판넬</a>
+                </div>
 		    </div>
 		</li>
 		<li><a href="/product/flooring">바닥재</a></li>
 		<li>
 		    <a href="/product/film">필름</a>
 		    <div class="dropdown-content">
-		        <a href="/product/film/solid">솔리드</a>
-                <a href="/product/film/metal">메탈</a>
-                <a href="/product/film/wood">우드</a>
-                <a href="/product/film/stone">스톤</a>
-                <a href="/product/film/textile">텍스타일</a>
-                <a href="/product/film/leather">레더</a>
-                <a href="/product/film/interior-board">인테리어 보드</a>
+		    <img th:src="@{/img/film/인테리어 필름.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
+		        <p>필름</p>
+		        <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
+		        <div class="dropdown-item">
+		            <img th:src="@{/img/film/솔리드.jpg}">
+		            <a href="/product/film/solid">솔리드</a>	
+		        </div>
+		        <div class="dropdown-item">
+		            <img th:src="@{/img/film/메탈.png}">
+                    <a href="/product/film/metal">메탈</a>
+		        </div>
+		        <div class="dropdown-item">
+		            <img th:src="@{/img/film/우드.png}">	
+                    <a href="/product/film/wood">우드</a>
+		        </div>
+                <div class="dropdown-item">
+                    <img th:src="@{/img/film/스톤.jpg}">	
+                    <a href="/product/film/stone">스톤</a>
+                </div>
+                <div class="dropdown-item">
+                    <img th:src="@{/img/film/텍스타일.png}">	
+                    <a href="/product/film/textile">텍스타일</a>
+                </div>
+                <div class="dropdown-item">
+                    <img th:src="@{/img/film/레더.png}">	
+                    <a href="/product/film/leather">레더</a>
+                </div>
+                <div class="dropdown-item">
+                    <img th:src="@{/img/film/인테리어 보드.jpg}">	
+                    <a href="/product/film/interior-board">인테리어 보드</a>
+                </div>	
 		    </div>
 		</li>
 		<li><a href="/product/wallpaper">벽지</a></li>

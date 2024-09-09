@@ -70,6 +70,25 @@ h3 {
 	margin-bottom: 10px;
 }
 
+/* 옵션 hover 시 배경색 변화 */
+.option:hover {
+	background-color: #ddd;
+}
+
+/* 타일 옵션 위에 있는 큰 사진을 감싸는 div */
+#top-image-wrapper {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+/* 타일 옵션 위에 있는 사진을 가로로 길게 설정 */
+#top-image {
+	width: 825px; /* 원하는 가로 길이 설정 */
+	height: 270px; /* 원하는 세로 길이 설정 */
+	object-fit: cover; /* 이미지 비율을 유지하면서 크기에 맞춤 */
+}
+
 /* 화살표 스타일 */
 .arrow {
 	position: absolute;
@@ -93,16 +112,30 @@ h3 {
 	right: 336px; /* 화살표를 오른쪽 컨테이너 바깥으로 배치 */
 }
 
-/* 옵션 hover 시 배경색 변화 */
-.option:hover {
-	background-color: #ddd;
+/* 설명 텍스트를 감싸는 div 스타일 */
+#description-wrapper {
+	width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
+p {
+	font-size: 16px;
+	margin-left: -167px;
+}
 </style>
 </head>
 <body>
 	<div layout:fragment="content">
+		<div id="top-image-wrapper">
+		<img id="top-image" th:src="@{/img/film/인테리어 필름.png}">
+	</div>
 		<h3>필름 옵션</h3>
+			<div id="description-wrapper">
+			<p>다양한 디자인과 재질로 벽면, 가구, 문 등을 간편하게 리모델링할 수 있는 접착식 필름입니다.</p>
+		</div>
 		<div class="content">
 			<span class="arrow left-arrow">&#10094;</span> <!-- 좌측 화살표 -->
 			<div class="scrollable-wrapper">
