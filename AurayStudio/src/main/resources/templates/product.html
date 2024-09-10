@@ -109,6 +109,28 @@ body {
 p {
     margin-top: 0;
 }
+
+.dropdown-item a {
+    display: flex;
+    justify-content: space-between; /* 텍스트와 화살표를 양쪽 끝에 배치 */
+    align-items: center; /* 수직 중앙 정렬 */
+    padding: 10px 15px; /* 여백 조정 */
+    text-decoration: none;
+    background-color: #f0f0f0; /* 회색 배경 */
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+    position: relative; /* 상대적 위치 */
+}
+
+.dropdown-item a::after {
+    content: '>'; /* 화살표 표시 */
+    font-size: 14px; /* 화살표 크기 */
+    color: gray; /* 화살표 색상 */
+    position: absolute;
+    right: 15px; /* 오른쪽 끝에 고정 */
+}
+
 </style>
 </head>
 <body>
@@ -162,19 +184,50 @@ p {
 		<li>
 		    <a href="/product/window">창호</a>
 			<div class="dropdown-content">
-				<a href="/product/window/system">시스템창</a> 
-				<a href="/product/window/general">일반창</a>
+			<img th:src="@{/img/window/window.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
+		        <p>창호</p>
+		        <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
+				<div class="dropdown-item">
+				    <img th:src="@{/img/window/system.png}">
+				    <a href="/product/window/system">시스템창</a> 
+				</div>
+				<div class="dropdown-item">
+				    <img th:src="@{/img/window/general2.png}">
+				    <a href="/product/window/general">일반창</a>
+				</div>
+			
 			</div>
 		</li>
 		<li>
 		    <a href="/product/moulding">몰딩</a>
 		    <div class="dropdown-content">
-		        <a href="/product/moulding/hidden">히든 몰딩</a>
-                <a href="/product/moulding/flat">평몰딩</a>
-                <a href="/product/moulding/minus">마이너스 몰딩</a>
-                <a href="/product/moulding/ceiling">천장 몰딩</a>
-                <a href="/product/moulding/baseboard">걸레받이</a>
-                <a href="/product/moulding/stair">계단 몰딩</a>
+		    <img th:src="@{/img/moulding/moulding.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
+		        <p>몰딩</p>
+		        <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
+		        <div class="dropdown-item">
+				    <img th:src="@{/img/moulding/히든몰딩_01.jpg}">
+				    <a href="/product/moulding/hidden">히든 몰딩</a>
+				</div>
+		        <div class="dropdown-item">
+				    <img th:src="@{/img/moulding/평몰딩_01.jpg}">
+				    <a href="/product/moulding/flat">평몰딩</a>
+				</div>
+                <div class="dropdown-item">
+				    <img th:src="@{/img/moulding/마이너스몰딩_01.jpg}">
+				    <a href="/product/moulding/minus">마이너스 몰딩</a>
+				</div>
+                <div class="dropdown-item">
+				    <img th:src="@{/img/moulding/천장몰딩_01.jpg}">
+				    <a href="/product/moulding/ceiling">천장 몰딩</a>
+				</div>
+                <div class="dropdown-item">
+				    <img th:src="@{/img/moulding/걸레받이몰딩_01.jpg}">
+				    <a href="/product/moulding/baseboard">걸레받이</a>
+				</div>
+				<div class="dropdown-item">
+				    <img th:src="@{/img/moulding/계단몰딩_01.jpg}">
+				    <a href="/product/moulding/stair">계단 몰딩</a>
+				</div>
 		    </div>
 		</li>
 		<li>
