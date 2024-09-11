@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${waterproofA.p_name}">제품명</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/index.css">
+<script th:src="@{https://code.jquery.com/jquery-latest.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/nav :: nav"></div>
+    <main>
+        <section class="product-details">
+            <img th:src="@{${waterproofA.y_img}}" alt="제품 이미지">
+            <div class="text-container">
+                <p class="innergate_IApro">
+                    <span th:text="${waterproofA.pro_kind}"></span>&nbsp;|&nbsp;
+                    <span th:text="${waterproofA.y_no}"></span>
+                </p>
+                <h3 th:text="${waterproofA.p_name}">제품명</h3>
+                <p class="innergate_IApro">
+                    <span th:text="${waterproofA.p_name}"></span>&nbsp;|&nbsp;
+                    <!-- <span th:text="${waterproofA.style}"></span> -->
+                </p>
+                <span class="custom-line"></span>
+                <div class="scrollable-content">
+                    <p class="innergate_IApro">
+                        <span th:text="${waterproofA.content}"></span>&nbsp;|&nbsp;
+                    </p>
+                    <p class="innergate_IApro">
+                        <strong>스펙</strong><br>
+                        간살 3연동 도어(목재)
+                    </p>
+                    <!-- <p class="innergate_IApro" th:text="${waterproofA.content}"></p> -->
+                </div>
+                <!-- 상담 신청 버튼 -->
+                <p class="innergate_IApro">
+                    <a href="/inquire" class="inquire-button">상담신청</a>
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

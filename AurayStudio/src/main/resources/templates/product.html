@@ -1,292 +1,169 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  layout:decorate="~{layout}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Auray Studio</title>
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<script th:src="@{/js/script.js}"></script>
-<style>
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 20px;
-}
-
-.menu {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	width: 200px;
-}
-
-.menu li {
-    position: relative;
-}
-
-.menu li a {
-	text-decoration: none;
-	color: black;
-	display: block;
-	padding: 10px 15px;
-	border-radius: 4px;
-	background-color: #f0f0f0;
-	width: 100%;
-}
-
-.menu li a:hover, .menu li.active a {
-	background-color: #e0e0e0;
-	color: #ff0000;
-}
-
-.dropdown-content {
-	display: none;
-	position: absolute;
-	left: 210px;
-	top: 0;
-	background-color: #ffffff;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-	z-index: 1;
-	width: 220px; /* 드롭다운 메뉴의 너비를 더 넓게 설정 */
-	padding: 10px;
-}
-
-.menu li:hover .dropdown-content {
-	/* display: flex;
-	align-items: center; */
-	display: block;
-}
-
-.dropdown-item {
-	display: flex; /* 아이템을 수평으로 배치 */
-	align-items: center; /* 이미지와 텍스트를 수직 중앙 정렬 */
-	margin-bottom: 5px;
-}
-
-.dropdown-content img {
-	width: 40px; /* 이미지 크기 */
-	height: 40px;
-	margin-right: 10px; /* 텍스트와 이미지 사이 간격 */
-}
-
-.dropdown-content a {
-	color: black;
-	padding: 8px 12px;
-	text-decoration: none;
-	flex-grow: 1;
-	border-bottom: 1px solid #ddd;
-}
-
-.dropdown-content a:last-child {
-	border-bottom: none;
-}
-
-.dropdown-content a:hover {
-	background-color: #f1f1f1;
-}
-
-/* 드롭다운 메뉴 기본 숨기기 */
-.menu li .dropdown-content {
-    display: none;
-    position: absolute;
-    left: 100%; /* 부모 요소 바로 옆에 위치 */
-    top: 0; /* 부모 요소와 동일한 높이에서 시작 */
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-/* 부모 항목 hover 시 드롭다운 메뉴 표시 */
-.menu li:hover > .dropdown-content {
-    display: block;
-}
-
-/* 드롭다운 메뉴에 hover 시에도 메뉴가 사라지지 않도록 설정 */
-.menu li .dropdown-content:hover {
-    display: block;
-}
-
-p {
-    margin-top: 0;
-}
-
-.dropdown-item a {
-    display: flex;
-    justify-content: space-between; /* 텍스트와 화살표를 양쪽 끝에 배치 */
-    align-items: center; /* 수직 중앙 정렬 */
-    padding: 10px 15px; /* 여백 조정 */
-    text-decoration: none;
-    background-color: #f0f0f0; /* 회색 배경 */
-    border-radius: 4px;
-    width: 100%;
-    box-sizing: border-box; /* 패딩 포함 너비 계산 */
-    position: relative; /* 상대적 위치 */
-}
-
-.dropdown-item a::after {
-    content: '>'; /* 화살표 표시 */
-    font-size: 14px; /* 화살표 크기 */
-    color: gray; /* 화살표 색상 */
-    position: absolute;
-    right: 17px; /* 오른쪽 끝에 고정 */
-}
-
-</style>
+<link>
+<link rel="stylesheet" href="/css/product.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/index.css">
+<script th:src="@{https://code.jquery.com/jquery-latest.min.js}"></script>
 </head>
 <body>
-<div layout:fragment="content">
+<div th:replace="fragments/nav :: nav"></div>
 	<header>제품보기</header>
+
+	<h3>
+		<a href="/">메인화면</a>
+	</h3>
 	<ul class="menu">
-		<li><a href="/product/kitchen">키친</a></li>
-		<li><a href="/product/built_in">붙박이장</a></li>
-		<li>
-		    <a href="/product/bath">바스</a>
-		    <div class="dropdown-content">
-		    <img th:src="@{/img/bath/essential2.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
-			    <p>바스</p>
-			    <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
-				<div class="dropdown-item">
-				    <img th:src="@{/img/bath/essential.png}">
-				    <a href="/product/bath/essential">에센셜 바스</a>
+		<li class="list-style"><a href="#">키친</a>
+			<ul class="submenu">
+				<li class="list-style"><a href="/product/kitchen/echo">인조대리석</a></li>
+				<li class="list-style"><a href="/product/kitchen/vista">이스톤</a></li>
+				<li class="list-style"><a href="/product/kitchen/signature">포세린</a></li>
+				<li class="list-style"><a href="/product/kitchen/faucet">수전</a></li>
+				<li class="list-style"><a href="/product/kitchen/sink">싱크볼</a></li>
+				<li class="list-style"><a href="/product/kitchen/pantry">팬트리장,인출망장</a></li>
+				<li class="list-style"><a href="/product/kitchen/hood">후드</a></li>
+				<li class="list-style"><a href="/product/kitchen/etc">기타</a></li>
+			</ul></li>
+
+		<li class="list-style"><a href="#">붙박이장</a>
+			<ul class="submenu">
+				<li class="list-style"><a href="/product/built_in/casement">여닫이</a></li>
+				<li class="list-style"><a href="/product/built_in/dressing">드레스룸</a></li>
+				<li class="list-style"><a href="/product/built_in/entrancehall">현관장</a></li>
+				<li class="list-style"><a href="/product/built_in/cabinet">수납장</a></li>
+				<li class="list-style"><a href="/product/built_in/sliding">슬라이딩</a></li>
+			</ul></li>
+
+		<li class="list-style"><a href="#">도어</a>
+			<ul class="submenu">
+				<li class="list-style"><a href="/product/door/doorabs">ABS
+						도어</a></li>
+				<li class="list-style"><a href="/product/door/craftinesse">기능성
+						도어</a></li>
+				<li class="list-style"><a href="/product/door/hardware">도어
+						하드웨어</a></li>
+				<li class="list-style"><a href="/product/door/system">도어
+						시스템</a></li>
+			</ul></li>
+
+		<li class="list-style"><a href="#">중문</a>
+			<ul class="submenu">
+				<li class="list-style"><a href="/product/innergate/jungmun3">3연동
+						중문</a></li>
+				<li class="list-style"><a
+					href="/product/innergate/double_sided">양개중문</a></li>
+				<li class="list-style"><a href="/product/innergate/aluminum">슬림
+						알루미늄 중문</a></li>
+				<li class="list-style"><a href="/product/innergate/folding">폴딩도어</a></li>
+				<li class="list-style"><a href="/product/innergate/partition">파티션</a></li>
+			</ul></li>
+
+		<li class="list-style"><a href="#">바스</a>
+			<ul class="submenu">
+				<li class="list-style"><a href="/product/bath/essential">에센셜
+						바스</a></li>
+				<li class="list-style"><a href="/product/bath/timeless">타임리스
+						바스</a></li>
+				<li class="list-style"><a href="/product/bath/fixtures">바스
+						구성기기</a></li>
+			</ul></li>
+
+		<li class="list-style">
+		<!-- <a href="#">타일</a> -->
+			<ul class="submenu">
+				<!-- <li class="list-style"><a href="/product/tile/tile">타일</a></li> -->
+				<li class="list-style"><a href="/product/tile">타일</a></li>
+				<div class="dropdown-content">
+					<a href="/product/tile/natural">Natural</a> 
+					<a href="/product/tile/modern">Modern</a>
+					<a href="/product/tile/unique">Unique</a>
 				</div>
-				<div class="dropdown-item"> 
-				    <img th:src="@{/img/bath/timeless.png}">
-				    <a href="/product/bath/timeless">타임리스 바스</a>
-				</div>
-				<div class="dropdown-item">
-				    <img th:src="@{/img/bath/fixtures.png}">
-				    <a href="/product/bath/fixtures">바스 구성기기</a>
-				</div>
-			</div>
-		</li>
-		<li>
-		    <a href="/product/tile">타일</a>
-		    <div class="dropdown-content">
-		    <img th:src="@{/img/tile/natural3.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
-		        <p>타일</p>
-		        <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
-				<div class="dropdown-item">
-				    <img th:src="@{/img/tile/natural.png}">
-				    <a href="/product/tile/natural">Natural</a> 
-				</div>
-				<div class="dropdown-item">
-				    <img th:src="@{/img/tile/modern.png}">
-				    <a href="/product/tile/modern">Modern</a>
-				</div>
-				<div class="dropdown-item">
-				    <img th:src="@{/img/tile/unique.png}">
-				    <a href="/product/tile/unique">Unique</a>
-				</div>
-			</div>
-		</li>
-		<li><a href="/product/door">도어</a></li>
-		<li><a href="/product/innergate">중문</a></li>
-		<li>
-		    <a href="/product/window">창호</a>
-			<div class="dropdown-content">
-			<img th:src="@{/img/window/window.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
-		        <p>창호</p>
-		        <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
-				<div class="dropdown-item">
-				    <img th:src="@{/img/window/system.png}">
-				    <a href="/product/window/system">시스템창</a> 
-				</div>
-				<div class="dropdown-item">
-				    <img th:src="@{/img/window/general2.png}">
-				    <a href="/product/window/general">일반창</a>
-				</div>
+			</ul></li>
+
+		<li class="list-style"><a href="#">창호</a>
+			<ul class="submenu">
+				<li class="list-style"><a href="/product/window/system">시스템창</a></li>
+				<li class="list-style"><a href="/product/window/general">일반창</a></li>
+			</ul></li>
+
+		<li class="list-style"><a href="#">몰딩</a>
+			<ul class="submenu">
+				<li class="list-style"><a href="/product/moulding/hidden">히든
+						몰딩</a></li>
+				<li class="list-style"><a href="/product/moulding/flat">평몰딩</a></li>
+				<li class="list-style"><a href="/product/moulding/minus">마이너스
+						몰딩</a></li>
+				<li class="list-style"><a href="/product/moulding/ceiling">천장
+						몰딩</a></li>
+				<li class="list-style"><a href="/product/moulding/baseboard">걸레받이</a></li>
+				<li class="list-style"><a href="/product/moulding/stair">계단
+						몰딩</a></li>
+			</ul></li>
+
+		<li class="list-style"><a href="#">Wall</a>
+			<ul class="submenu">
+				<li class="list-style"><a href="/product/wall/style">스타일월</a></li>
+				<li class="list-style"><a href="/product/wall/panel">월판넬</a></li>
+			</ul></li>
+
+		<li class="list-style"><a href="#">필름</a>
+			<ul class="submenu">
+				<li class="list-style"><a href="/product/film/solid">솔리드</a></li>
+				<li class="list-style"><a href="/product/film/metal">메탈</a></li>
+				<li class="list-style"><a href="/product/film/wood">우드</a></li>
+				<li class="list-style"><a href="/product/film/stone">스톤</a></li>
+				<li class="list-style"><a href="/product/film/textile">텍스타일</a></li>
+				<li class="list-style"><a href="/product/film/leather">레더</a></li>
+				<li class="list-style"><a href="/product/film/interior-board">인테리어
+						보드</a></li>
+			</ul></li>
+		<li class="list-style"><a href="#">바닥재</a>
+			<ul class="submenu">
+				<li><a href="/product/flooring/wood">원목마루</a></li>
+				<li><a href="/product/flooring/gang">강마루</a></li>
+				<li><a href="/product/flooring/sheet">시트</a></li>
+			</ul></li>
+		<li class="list-style"><a href="#">벽지</a>
+			<ul class="submenu">
+				<li><a href="/product/wallpaper/silk">실크</a></li>
+				<li><a href="/product/wallpaper/synthetic">합지</a></li>
+			</ul></li>
 			
-			</div>
-		</li>
-		<li>
-		    <a href="/product/moulding">몰딩</a>
-		    <div class="dropdown-content">
-		    <img th:src="@{/img/moulding/moulding.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
-		        <p>몰딩</p>
-		        <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
-		        <div class="dropdown-item">
-				    <img th:src="@{/img/moulding/히든몰딩_01.jpg}">
-				    <a href="/product/moulding/hidden">히든 몰딩</a>
-				</div>
-		        <div class="dropdown-item">
-				    <img th:src="@{/img/moulding/평몰딩_01.jpg}">
-				    <a href="/product/moulding/flat">평몰딩</a>
-				</div>
-                <div class="dropdown-item">
-				    <img th:src="@{/img/moulding/마이너스몰딩_01.jpg}">
-				    <a href="/product/moulding/minus">마이너스 몰딩</a>
-				</div>
-                <div class="dropdown-item">
-				    <img th:src="@{/img/moulding/천장몰딩_01.jpg}">
-				    <a href="/product/moulding/ceiling">천장 몰딩</a>
-				</div>
-                <div class="dropdown-item">
-				    <img th:src="@{/img/moulding/걸레받이몰딩_01.jpg}">
-				    <a href="/product/moulding/baseboard">걸레받이</a>
-				</div>
-				<div class="dropdown-item">
-				    <img th:src="@{/img/moulding/계단몰딩_01.jpg}">
-				    <a href="/product/moulding/stair">계단 몰딩</a>
-				</div>
-		    </div>
-		</li>
-		<li>
-		    <a href="/product/wall">Wall</a>
-		    <div class="dropdown-content">
-		    <img th:src="@{/img/wall/stylewall/stylewall3.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
-		        <p>Wall</p>
-		        <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
-		        <div class="dropdown-item">
-		            <img th:src="@{/img/wall/stylewall/stylewall.png}">
-		            <a href="/product/wall/style">스타일월</a>
-		        </div>
-		        <div class="dropdown-item">
-                    <img th:src="@{/img/wall/wallpanel/wallpanel.png}">
-                    <a href="/product/wall/panel">월판넬</a>
-                </div>
-		    </div>
-		</li>
-		<li><a href="/product/flooring">바닥재</a></li>
-		<li>
-		    <a href="/product/film">필름</a>
-		    <div class="dropdown-content">
-		    <img th:src="@{/img/film/인테리어 필름.png}" style="width: 100%; height: 140px; margin-bottom: 10px;">
-		        <p>필름</p>
-		        <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: -13px;">
-		        <div class="dropdown-item">
-		            <img th:src="@{/img/film/솔리드.jpg}">
-		            <a href="/product/film/solid">솔리드</a>	
-		        </div>
-		        <div class="dropdown-item">
-		            <img th:src="@{/img/film/메탈.png}">
-                    <a href="/product/film/metal">메탈</a>
-		        </div>
-		        <div class="dropdown-item">
-		            <img th:src="@{/img/film/우드.png}">	
-                    <a href="/product/film/wood">우드</a>
-		        </div>
-                <div class="dropdown-item">
-                    <img th:src="@{/img/film/스톤.jpg}">	
-                    <a href="/product/film/stone">스톤</a>
-                </div>
-                <div class="dropdown-item">
-                    <img th:src="@{/img/film/텍스타일.png}">	
-                    <a href="/product/film/textile">텍스타일</a>
-                </div>
-                <div class="dropdown-item">
-                    <img th:src="@{/img/film/레더.png}">	
-                    <a href="/product/film/leather">레더</a>
-                </div>
-                <div class="dropdown-item">
-                    <img th:src="@{/img/film/인테리어 보드.jpg}">	
-                    <a href="/product/film/interior-board">인테리어 보드</a>
-                </div>	
-		    </div>
-		</li>
-		<li><a href="/product/wallpaper">벽지</a></li>
-		<li><a href="/product/paint">페인트</a></li>
-		<li><a href="/product/insulation">단열재</a></li>
+		<li class="list-style"><a href="#">페인트</a>
+			<ul class="submenu">
+				<li class="list-style"><a href="/product/paint/paint">페인트</a></li>
+				<li class="list-style"><a href="/product/paint/waterproof">방수페인트</a></li>
+				<li class="list-style"><a href="/product/paint/primer">프라이머</a></li>
+				<li class="list-style"><a href="/product/paint/epoxy">에폭시</a></li>
+				<li class="list-style"><a href="/product/paint/thinner">신나</a></li>
+				<li class="list-style"><a href="/product/paint/elastic">탄성코트</a></li>
+			</ul></li>
+			
+		<li class="list-style"><a href="#">단열재</a>
+			<ul class="submenu">
+				<li><a href="/product/insulation">PF 단열재</a></li>
+			</ul></li>
 	</ul>
-</div>
 </body>
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		// '제품보기' 클릭 시 이벤트 처리
+		var productMenu = document.getElementById('product-menu');
+		var productSubmenu = document.getElementById('product-submenu');
+
+		productMenu.addEventListener('click', function(event) {
+			event.preventDefault(); // 링크 기본 동작 방지
+			// 서브메뉴 보이기/숨기기 토글
+			if (productSubmenu.style.display === "block") {
+				productSubmenu.style.display = "none";
+			} else {
+				productSubmenu.style.display = "block";
+			}
+		});
+	});
+</script>
 </html>

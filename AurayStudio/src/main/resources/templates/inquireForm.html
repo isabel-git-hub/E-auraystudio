@@ -2,6 +2,10 @@
 <html layout:decorate="~{layout}"
 	xmlns:layout="http://www.w3.org/1999/xhtml">
 
+<!-- #E6F4F1
+
+#B8D0FA -->
+
 <head>
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="/css/inquire.css">
@@ -28,7 +32,7 @@
 
 				<div id="construction-period">
 					<label for="constructionPeriod">시공 시기는 언제로 희망하시나요?<span
-						class="required">*</span></label>
+						class="required">&nbsp;*</span></label>
 					<div>
 						<input type="radio" id="within1Month" name="constructionPeriod"
 							value="1개월 이내" required> <label for="within1Month">1개월
@@ -46,19 +50,19 @@
 				<tr>
 					<td><label for="subject">제목</label></td>
 					<td><input type="text" name="subject" id="subject"
-						value="상담신청" readonly></td>
+						th:value="상담신청" readonly></td>
 				</tr>
 
 				<tr>
 					<td id="users" style="width: 130px;"><label for="name">이름<span
-							class="required">*</span></label></td>
+							class="required">&nbsp;*</span></label></td>
 					<td><input type="text" name="name" id="name"
 						placeholder="이름을 입력해주세요" required>
 						<div class="small-text">상담하실 분의 이름을 입력해 주세요.</div></td>
 				</tr>
 				<tr>
 					<td id="users"><label for="telno">휴대폰 번호<span
-							class="required">*</span></label></td>
+							class="required">&nbsp;*</span></label></td>
 					<td>
 						<div class="phone-input">
 							<input type="text" name="telno1" maxlength="3" value="010"
@@ -85,23 +89,41 @@
 				</tr>
 
 				<!-- 주소 입력 필드 -->
-				<tr>
+				<!-- <tr>
 					<td id="users"><label for="addr">시공주소<span
 							class="required">*</span></label></td>
 					<td><input type="text" id="addr" class="full-width-input"
 						placeholder="주소를 입력해주세요"> <input type="text"
 						id="detailAddr" class="full-width-input"
 						placeholder="상세주소를 입력해주세요"></td>
-				</tr>
+				</tr> -->
 			</table>
 
 			<div>
 				<!-- 추가 상담 내용 -->
+				<!-- <div>
+					<label for="text">원하시는 시공을 모두 적어주세요 <span class="required">*</span></label><br>
+					<textarea name="text" id="text" placeholder="메모" rows="10">
+이메일 : 
+시공 주소 : 
+원하는 시공 종류 : </textarea>
+			    </div> -->
+<br>
 				<div>
-					<label for="text">원하시는 시공을 모두 적어주세요 <span
-						class="required">*</span></label><br>
-					<textarea name="text" id="text"
-						placeholder="메모"></textarea>
+					<!-- <label for="email">원하시는 시공을 모두 적어주세요 <span class="required">*</span></label><br><br> -->
+
+					<!-- <input type="text" id="address" name="address" placeholder="주소 입력"
+						required> -->
+					<div class="readonlyText">원하는 시공 종류<span class="required">&nbsp;*</span></div>
+					<textarea name="text" id="text" placeholder="시공 종류 입력" rows="10"
+						required>
+주소 입력 : 
+
+전화번호 입력 : 
+
+원하는 시공 종류 : </textarea>
+
+					<br>
 				</div>
 
 				<br>
@@ -115,17 +137,17 @@
 					<ul class="checkbox-list">
 						<li><input type="checkbox" id="checkbox1"> <label
 							for="checkbox1" class="open-popup" data-popup="popup1">
-								개인정보 수집 및 이용에 대한 안내<span class="required">*</span> <span
+								개인정보 수집 및 이용에 대한 안내<span class="required">&nbsp;*</span> <span
 								class="spacing view">보기</span>
 						</label></li>
 						<li><input type="checkbox" id="checkbox2"> <label
 							for="checkbox2" class="open-popup" data-popup="popup2">
-								개인정보 제3자 제공에 대한 안내 <span class="required">*</span> <span
+								개인정보 제3자 제공에 대한 안내 <span class="required">&nbsp;*</span> <span
 								class="spacing view">&nbsp;보기</span>
 						</label></li>
 						<li><input type="checkbox" id="checkbox3"> <label
 							for="checkbox3" class="open-popup" data-popup="popup3">
-								개인정보 마케팅 활용에 대한 안내 <span class="required">*</span> <span
+								개인정보 마케팅 활용에 대한 안내 <span class="required">&nbsp;*</span> <span
 								class="spacing view">보기</span>
 						</label></li>
 					</ul>
@@ -164,7 +186,7 @@
 						2. 보유 및 이용기간<br> 개인정보는 인테리어 상담의 목적으로 상담 후 12개월 동안 보유 후 파기합니다.
 						다만, 12개월 내 계약이 체결된 고객은 계약 및 거래 기록과 함께 법률에서 정한 보존 기간 및 품질 보증을 위한
 						기간과 동일하게 보관합니다.<br> <br> 3. 고객께서는 개인정보 수집 및 이용과 관련하여 동의를
-						거부할 권리가 있으며, 동의 거부 시 인테리어 상담 및 계약이 불가할 수 있습니다. <
+						거부할 권리가 있으며, 동의 거부 시 인테리어 상담 및 계약이 불가할 수 있습니다.
 					</div>
 					<button class="popup-confirm">확인</button>
 				</div>
@@ -361,81 +383,6 @@
 					});
 					
 					
-					 // 메일 보내기
-					/* function sendMail() {
-					    // 폼 요소 참조
-					    const form = document.getElementById('inquireForm');
-					    const title = form.title.value;
-					    const email = form.email.value;
-					    const name = form.name.value;
-					    const telno = form.telno.value;
-					    const content = form.content.value;
-					    
-					    // 필수 입력 필드 검사
-					    if (!title) {
-					        alert("제목을 입력해 주세요.");
-					        return;
-					    }
-					    if (!email) {
-					        alert("이메일을 입력해 주세요.");
-					        return;
-					    }
-					    if (!name) {
-					        alert("이름을 입력해 주세요.");
-					        return;
-					    }
-					    if (!telno) {
-					        alert("전화번호를 입력해 주세요.");
-					        return;
-					    }
-					    if (!content) {
-					        alert("내용을 입력해 주세요.");
-					        return;
-					    }
-					    
-					    // 메일 내용 설정
-					    const subject = `${name}님이 문의하신 내용입니다.`;
-					    const to = "skwy8938@gmail.com";
-					    const text = `
-					    <table>
-					    <tr><td>제목</td><td>${title}</td></tr>
-					    <tr><td>이메일</td><td>${email}</td></tr>
-					    <tr><td>이름</td><td>${name}</td></tr>
-					    <tr><td>전화번호</td><td>${telno}</td></tr>
-					    <tr><td>내용</td><td>${content}</td></tr>
-					    </table>
-					    `;
-					    
-					    // 확인용 경고창
-					    // alert(`제목: ${title}\n이메일: ${email}\n이름: ${name}\n전화번호: ${telno}\n내용: ${content}`);
-					    
-					    // 숨겨진 입력 필드 생성
-					    const subjectInput = document.createElement('input');
-					    subjectInput.type = 'hidden';
-					    subjectInput.name = 'subject';
-					    subjectInput.value = subject;
-					    
-					    const toInput = document.createElement('input');
-					    toInput.type = 'hidden';
-					    toInput.name = 'to';
-					    toInput.value = to;
-					    
-					    const textInput = document.createElement('input');
-					    textInput.type = 'hidden';
-					    textInput.name = 'text';
-					    textInput.value = text;
-					    
-					    // 폼에 숨겨진 입력 필드 추가
-					    form.appendChild(subjectInput);
-					    form.appendChild(toInput);
-					    form.appendChild(textInput);
-					    
-					    // 폼 제출
-					    form.submit();
-					}  */
-					
-					
-					
 					function sendMail() {
 					    // 폼 요소 가져오기
 					    const name = document.getElementById('name').value;
@@ -447,9 +394,7 @@
 					        alert("모든 필드를 채워주세요.");
 					        return;
 					    }
-					    
 					   
-
 					    // JSON 데이터를 서버로 전송
 					    fetch('/sendMail', {
 					        method: 'POST',
@@ -479,6 +424,5 @@
 
 
 				</script>
-				</div>
 </body>
 </html>

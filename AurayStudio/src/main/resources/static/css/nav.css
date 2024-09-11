@@ -1,0 +1,177 @@
+.mega-menu-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.mega-menu:hover .mega-menu-content {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-column {
+    width: 20%;
+}
+
+.mega-menu-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mega-menu-content ul li {
+    margin-bottom: 5px;
+}
+
+.mega-menu-content h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* CSS
+.nav-container .menu .list-style a.active {
+    font-weight: bold; 선택된 항목을 진하게 표시
+}
+
+ */
+.submenu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 200px;
+}
+
+.submenu li {
+	margin-bottom: 5px;
+}
+
+.submenu li a {
+	text-decoration: none;
+	color: black;
+	display: block;
+	padding: 10px 5px;
+	border-radius: 4px;
+	background-color: #f0f0f0;
+	width: 100%;
+	align-items: center;
+	justify-content: space-around;
+}
+
+/* 마우스를 올렸을 때 밑줄 나타나게 하기 */
+.list-style a:hover {
+	border-bottom: 2px solid #000;
+	margin: 2px ;
+}
+
+/* 키친 항목에 마우스를 올리면 서브메뉴 표시 */
+.list-style:hover .submenu {
+	display: block;
+    z-index: 1000;
+}
+
+/* 드롭다운 메뉴 스타일 */
+.submenu li a:hover {
+	background-color: #ddd;
+}
+.dropdown-content {
+	display: none;
+	position: absolute;
+	left: 210px;
+	top: 0;
+	background-color: #ffffff;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	width: 220px; /* 드롭다운 메뉴의 너비를 더 넓게 설정 */
+	padding: 10px;
+	text-align: left;
+}
+
+.submenu li:hover .dropdown-content {
+	/* display: flex;*/
+	align-items: center; 
+	display: block;
+}
+
+.dropdown-item {
+	display: flex; /* 아이템을 수평으로 배치 */
+	align-items: center; /* 이미지와 텍스트를 수직 중앙 정렬 */
+	margin-bottom: 5px;
+}
+
+.dropdown-content img {
+	width: 40px; /* 이미지 크기 */
+	height: 40px;
+	margin-right: 10px; /* 텍스트와 이미지 사이 간격 */
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 8px 12px;
+	text-decoration: none;
+	flex-grow: 1;
+	border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content a:last-child {
+	border-bottom: none;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
+}
+
+/* 드롭다운 메뉴 기본 숨기기 */
+.submenu li .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 100%; /* 부모 요소 바로 옆에 위치 */
+    top: 0; /* 부모 요소와 동일한 높이에서 시작 */
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* 부모 항목 hover 시 드롭다운 메뉴 표시 */
+.submenu li:hover > .dropdown-content {
+    display: block;
+}
+
+/* 드롭다운 메뉴에 hover 시에도 메뉴가 사라지지 않도록 설정 */
+.submenu li .dropdown-content:hover {
+    display: block;
+}
+
+p {
+    margin-top: 0;
+}
+
+.dropdown-item a {
+    display: flex;
+    justify-content: start; /* 텍스트를 시작점에 정렬 */
+    align-items: center;
+    padding: 10px 8px; /* 패딩 조정 */
+    padding-right: 40px; /* 화살표와 글자 사이 간격 */
+    text-decoration: none;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    text-align: left; /* 텍스트를 왼쪽 정렬 */
+}
+
+.dropdown-item a::after {
+    content: '>'; /* 화살표 표시 */
+    font-size: 14px; /* 화살표 크기 */
+    color: gray; /* 화살표 색상 */
+    position: absolute;
+    right: 17px; /* 오른쪽 끝에 고정 */
+}
+p {
+    margin-top: -10px;
+}

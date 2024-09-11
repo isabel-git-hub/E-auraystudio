@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}"
+	xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/inquire.css">
+<script th:src="@{https://code.jquery.com/jquery-latest.min.js}"></script>
+ <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/nav :: nav"></div>
+	<div layout:fragment="content" id="contents">
+		<h1 id="inquiry">상담신청</h1>
+
+		<div class="form-header">
+			<div class="title">신청자 정보</div>
+			<div class="required-note">* 필수 입력 항목</div>
+		</div>
+		<div class="divider"></div>
+
+		<form id="inquiryForm" name="inquiryForm" action="/sendMail"
+			method="post" onsubmit="return validateForm()">
+			<table id="table">
+				<tr>
+					<td><label for="addr">시공주소<span class="required">*</span></label></td>
+					<td>
+						<!-- 우편번호와 검색 버튼 -->
+						<div class="address-container">
+							<input type="text" id="zipcode" class="zipcode"
+								placeholder="우편번호" readonly>
+							<button type="button" class="search-btn" onclick="openPostcode()">우편번호
+								검색</button>
+						</div> <!-- 주소 입력 필드 --> <input type="text" id="addr"
+						class="full-width-input" placeholder="주소를 입력해주세요" readonly>
+
+						<!-- 상세 주소 입력 필드 --> <input type="text" id="detailAddr"
+						class="full-width-input" placeholder="상세주소를 입력해주세요">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<script>
+		function openPostcode() {
+			new daum.Postcode({
+				oncomplete : function(data) {
+					// 검색 결과에서 필요한 정보만 가져와서 해당 필드에 넣어줌
+					var roadAddr = data.roadAddress; // 도로명 주소
+					var jibunAddr = data.jibunAddress; // 지번 주소
+
+					// 우편번호와 주소 정보를 해당 필드에 넣어줌
+					document.getElementById('zipcode').value = data.zonecode;
+					document.getElementById('addr').value = roadAddr ? roadAddr
+							: jibunAddr;
+				}
+			}).open();
+		}
+	</script>
+</body>
+</html>

@@ -1,8 +1,111 @@
-<html layout:decorate="~{layout}">
-<div layout:fragment="content" id="contents">
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
-	<main>
-		<div class="container"></div>
-	</main>
-</div>
+<!-- <html layout:decorate="~{layout}">
+<head>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+
+<script th:src="@{https://code.jquery.com/jquery-latest.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/nav :: nav"></div>
+
+    콘텐츠 영역
+    <div layout:fragment="content">
+        <h2>환영합니다!</h2>
+        <p>이곳은 메인 페이지입니다.</p>
+    </div>
+
+    푸터 불러오기
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
+
+ -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/nav.css">
+<script type="text/javascript" src="script.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+</style>
+</head>
+<body>
+	<div th:replace="fragments/nav :: nav"></div>
+
+	<div layout:fragment="content">
+		<!-- <h2>환영합니다!</h2>
+        <p>이곳은 메인 페이지입니다.</p> -->
+
+		<div class="slideshow-container">
+			<div class="slides">
+				<img src="/img/index/인덱스1.jpg" alt="Slide 1">
+			</div>
+
+			<div class="slides">
+				<img src="/img/index/인덱스2.jpg" alt="Slide 2">
+			</div>
+
+			<div class="slides">
+				<img src="/img/index/인덱스3.jpg" alt="Slide 3">
+			</div>
+			
+			<div class="slides">
+				<img src="/img/index/인덱스4.jpg" alt="Slide 4">
+			</div>
+
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next"
+				onclick="plusSlides(1)">&#10095;</a>
+		</div>
+	</div>
+
+	<script>
+	/* 슬라이드js */
+	let slideIndex = 0;
+	showSlides();
+
+	function showSlides() {
+		let i;
+		let slides = document.getElementsByClassName("slides");
+		for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+		}
+		slideIndex++;
+		if (slideIndex > slides.length) {
+			slideIndex = 1
+		}
+		slides[slideIndex - 1].style.display = "block";
+		setTimeout(showSlides, 5000); // 5초마다 슬라이드 자동 전환
+	}
+
+	function plusSlides(n) {
+		slideIndex += n - 1;
+		showSlides();
+	}
+
+	/* 스크롤 시 네비게이션 바 숨기기 */
+	let prevScrollPos = window.pageYOffset;
+	window.onscroll = function() {
+		let currentScrollPos = window.pageYOffset;
+		let navbar = document.getElementById("navbar");
+
+		if (prevScrollPos > currentScrollPos) {
+			// 스크롤이 위로 이동하면 네비게이션 바 표시
+			navbar.classList.remove("hidden");
+		} else {
+			// 스크롤이 아래로 이동하면 네비게이션 바 숨기기
+			navbar.classList.add("hidden");
+		}
+		prevScrollPos = currentScrollPos;
+	}
+	</script>
+
+</body>
 </html>

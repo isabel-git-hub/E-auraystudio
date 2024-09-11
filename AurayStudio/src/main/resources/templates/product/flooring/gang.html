@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Auray Studio</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/kitchen.css">
+<script th:src="@{https://code.jquery.com/jquery-latest.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/nav :: nav"></div>
+	
+	<div class="main-content">
+		<aside class="sidebar">
+			<h2>바닥재</h2>
+			<span class="custom-line"></span>
+			<ul>
+				<li><a href="/product/flooring/wood">원목마루</a></li>
+				<li><a href="/product/flooring/gang">강마루</a></li>
+				<li><a href="/product/flooring/sheet">시트</a></li>
+			</ul>
+		</aside>
+		
+		<main class="content-area">
+			<section>
+				<h2>원목마루</h2>
+				<div class="products-container">
+					<div th:each="flooring : ${floorings}" class="door-item">
+						<div class="innergate-field">
+							<a th:href="@{'/product/flooring/gang/' + ${flooring.y_no}}">
+								<img th:src="@{${flooring.y_img}}" style="font-size: 12px;">
+							</a>
+						</div>
+						<div class="innergate-field">
+							<span th:text="${flooring.y_no}">제품코드</span>&nbsp;&nbsp;<br> 
+							<span th:text="${flooring.f_name}" style="font-size: 12px;"></span>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+</body>
+</html>

@@ -1,9 +1,190 @@
-	<nav>
-		<ul>
-			<li><a th:href="@{/}">홈</a></li>
-			<li><a href="/company">회사소개</a></li>
-			<li><a href="/inquire">상담신청</a></li>
-			<li><a href="/product">제품보기</a></li>
-			<li><a href="/shop">매장</a></li>
-		</ul>
-	</nav>
+<div th:fragment="nav">
+    <nav>
+        <div class="nav-container">
+            <a href="/" style="text-decoration: none; color: inherit;">
+                <h1>Auray Studio</h1>
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <ul class="menu left-menu">
+                <li class="list-style"><a th:href="@{/company}" class="active">회사소개</a></li>
+                <li class="list-style"><a th:href="@{/inquire}" class="active">상담신청</a></li>
+                <li class="list-style mega-menu">
+                    <a th:href="@{#}" class="active">제품보기</a>
+                    <ul class="submenu">
+                        <li><a href="/product/kitchen/echo" style="width:75px;">키친</a></li>
+                        <li><a href="/product/built_in/casement" style="width:75px;">붙박이장</a></li>
+                        <li><a href="/product/door/doorabs" style="width:75px;">도어</a></li>
+                        <li><a href="/product/innergate/jungmun3" style="width:75px;">중문</a></li>
+                        <li>
+                            <a href="/product/bath">바스</a>
+                            <div class="dropdown-content">
+                                <img th:src="@{/img/bath/essential2.png}" style="width: 100%; height: 125px; margin-bottom: 20px;">
+                                <p>바스</p>
+                                <hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: 2px;">
+                                <div class="dropdown-item">
+                                    <img th:src="@{/img/bath/essential.png}">
+                                    <a href="/product/bath/essential">에센셜 바스</a>
+                                </div>
+                                <div class="dropdown-item">
+                                    <img th:src="@{d/img/bath/timeless.png}">
+                                    <a href="/product/bath/timeless">타임리스 바스</a>
+                                </div>
+                                <div class="dropdown-item">
+                                    <img th:src="@{/img/bath/fixtures.png}">
+                                    <a href="/product/bath/fixtures">바스 구성기기</a>
+                                </div>
+                            </div>
+                        </li>
+						<li>
+						    <a href="/product/tile">타일</a>
+							<div class="dropdown-content">
+								<img th:src="@{/img/tile/natural3.png}"  style="width: 100%; height: 125px; margin-bottom: 20px;">
+								<p>타일</p>
+								<hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: 2px;">
+								<div class="dropdown-item">
+									<img th:src="@{/img/tile/natural.png}"> 
+									<a href="/product/tile/natural">Natural</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/tile/modern.png}"> 
+									<a href="/product/tile/modern">Modern</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/tile/unique.png}"> 
+									<a href="/product/tile/unique">Unique</a>
+								</div>
+							</div>
+						</li>
+						<li>
+						    <a href="/product/window">창호</a>
+							<div class="dropdown-content">
+								<img th:src="@{/img/window/window.png}" style="width: 100%; height: 125px; margin-bottom: 20px;">
+								<p>창호</p>
+								<hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: 2px;">
+								<div class="dropdown-item">
+									<img th:src="@{/img/window/system.png}"> 
+									<a href="/product/window/system">시스템창</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/window/general2.png}"> 
+									<a href="/product/window/general">일반창</a>
+								</div>
+							</div>
+						</li>
+						<li>
+						    <a href="/product/moulding">몰딩</a>
+							<div class="dropdown-content">
+								<img th:src="@{/img/moulding/moulding.png}" style="width: 100%; height: 125px; margin-bottom: 20px;">
+								<p>몰딩</p>
+								<hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: 2px;">
+								<div class="dropdown-item">
+									<img th:src="@{/img/moulding/히든몰딩_01.jpg}"> 
+									<a href="/product/moulding/hidden">히든 몰딩</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/moulding/평몰딩_01.jpg}"> 
+									<a href="/product/moulding/flat">평몰딩</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/moulding/마이너스몰딩_01.jpg}"> 
+									<a href="/product/moulding/minus">마이너스 몰딩</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/moulding/천장몰딩_01.jpg}"> 
+									<a href="/product/moulding/ceiling">천장 몰딩</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/moulding/걸레받이몰딩_01.jpg}"> 
+									<a href="/product/moulding/baseboard">걸레받이</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/moulding/계단몰딩_01.jpg}"> 
+									<a href="/product/moulding/stair">계단 몰딩</a>
+								</div>
+							</div>
+						</li>
+						<li>
+						    <a href="/product/wall">Wall</a>
+							<div class="dropdown-content">
+								<img th:src="@{/img/wall/stylewall/stylewall3.png}" style="width: 100%; height: 125px; margin-bottom: 20px;">
+								<p>Wall</p>
+								<hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: 2px;">
+								<div class="dropdown-item">
+									<img th:src="@{/img/wall/stylewall/stylewall.png}"> 
+									<a href="/product/wall/style">스타일월</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/wall/wallpanel/wallpanel.png}"> 
+									<a href="/product/wall/panel">월판넬</a>
+								</div>
+							</div>
+						</li>
+						<li class="list-style"><a href="/product/wallpaper/silk" style="width:75px;">벽지</a></li>
+						<li>
+						    <a href="/product/film">필름</a>
+							<div class="dropdown-content">
+								<img th:src="@{/img/film/인테리어 필름.png}" style="width: 100%; height: 125px; margin-bottom: 20px;">
+								<p>필름</p>
+								<hr style="border: 0.1px solid #ccc; margin: 10px 0; margin-top: 2px;">
+								<div class="dropdown-item">
+									<img th:src="@{/img/film/솔리드.jpg}"> 
+									<a href="/product/film/solid">솔리드</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/film/메탈.png}"> 
+									<a href="/product/film/metal">메탈</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/film/우드.png}"> 
+									<a href="/product/film/wood">우드</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/film/스톤.jpg}"> 
+									<a href="/product/film/stone">스톤</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/film/텍스타일.png}"> 
+									<a href="/product/film/textile">텍스타일</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/film/레더.png}"> 
+									<a href="/product/film/leather">레더</a>
+								</div>
+								<div class="dropdown-item">
+									<img th:src="@{/img/film/인테리어 보드.jpg}"> 
+									<a href="/product/film/interior-board">인테리어 보드</a>
+								</div>
+							</div></li>
+						<li class="list-style"><a href="/product/flooring/wood" style="width:75px;">바닥재</a></li>
+                        <li class="list-style"><a href="/product/paint/paint" style="width:75px;">페인트</a></li>
+                        <li class="list-style"><a href="/product/insulation" style="width:75px;">단열재</a></li>
+                    </ul>
+                </li>
+                <li class="list-style"><a th:href="@{/shop}" style="width:75px;">매장찾기</a></li>
+            </ul>
+
+            <ul class="menu right-menu">
+                <li sec:authorize="isAnonymous()" class="list-style">
+                    <a th:href="@{/login}" style="width:75px;">
+                        <i class="fa-regular fa-user"></i> 로그인
+                    </a>
+                </li>
+                <li sec:authorize="isAnonymous()" class="list-style"><a th:href="@{/join}">회원가입</a></li>
+
+                <li class="list-style">
+                    <i class="fa-solid fa-bars"></i>
+                </li>
+
+                <li sec:authorize="isAuthenticated()" class="list-style">
+                    <a th:href="@{/logout}" style="width:75px;">로그아웃</a>
+                </li>
+
+                <li sec:authorize="isAuthenticated()">
+                    <a href="/mypage" style="width:75px;">
+                        <span th:text="${#authentication.name} + '님'"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

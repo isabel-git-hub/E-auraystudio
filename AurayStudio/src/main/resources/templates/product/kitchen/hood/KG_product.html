@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${hood.k_name}">제품명</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/KA_product.css}">
+<script th:src="@{https://code.jquery.com/jquery-latest.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/nav :: nav"></div>
+<aside class="sidebar">
+			<h2>부엌</h2>
+			<span class="custom-line"></span>
+			<ul>
+				<li><a href="/product/kitchen/echo">인조대리석</a></li>
+				<li><a href="/product/kitchen/vista">이스톤</a></li>
+				<li><a href="/product/kitchen/signature">포세린</a></li>
+				<li><a href="/product/kitchen/sink">수전</a></li>
+				<li><a href="/product/kitchen/sink">싱크볼</a></li>
+				<li><a href="/product/kitchen/pantry">팬트리장,인출망장</a></li>
+				<li><a href="/product/kitchen/hood">후드</a></li>
+				<li><a href="/product/kitchen/etc">기타</a></li>
+			</ul>
+		</aside>
+	<main>
+		<section class="product-details">
+			<img th:src="${hood.y_img}" alt="제품 이미지">
+			<div class="text-container">
+				<p class="innergate_IApro">
+					<span th:text="${hood.pro_kind}"></span>&nbsp;|&nbsp; <span
+						th:text="${hood.y_no}"></span>
+				</p>
+				<h3 th:text="${hood.k_name}">제품명</h3>
+				<p class="innergate_IApro">
+					<span th:text="${hood.k_kind}"></span>
+				</p>
+				<span class="custom-line"></span>
+
+				<p>
+					<span th:text="${hood.content}"></span>
+				</p>
+				<p class="innergate_pro"></p>
+				<!-- 상담 신청 버튼 -->
+				<p class="innergate_IApro">
+					<a href="/inquire" class="inquire-button">상담신청</a>
+				</p>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

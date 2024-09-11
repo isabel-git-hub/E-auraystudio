@@ -295,3 +295,46 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+/*document.addEventListener("DOMContentLoaded", function() {
+	// '제품보기' 클릭 시 이벤트 처리
+	var productMenu = document.getElementById('product-menu');
+	var productSubmenu = document.getElementById('product-submenu');
+
+	productMenu.addEventListener('click', function(event) {
+		event.preventDefault(); // 링크 기본 동작 방지
+		// 서브메뉴 보이기/숨기기 토글
+		if (productSubmenu.style.display === "block") {
+			productSubmenu.style.display = "none";
+		} else {
+			productSubmenu.style.display = "block";
+		}
+	});
+});*/
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+	// 드롭다운 메뉴를 감지하는 함수
+	const dropdown = document.querySelector(".dropdown");
+	const navContainer = document.querySelector(".nav-container");
+
+	dropdown.addEventListener("mouseenter", function() {
+		navContainer.classList.add("show"); // 네비게이션 전체 보이기
+	});
+
+	dropdown.addEventListener("mouseleave", function() {
+		navContainer.classList.remove("show"); // 네비게이션 전체 숨기기
+	});
+});
+
+
+document.querySelector('.search-icon').addEventListener('click', function() {
+    var searchBar = document.getElementById('search-bar');
+    if (searchBar.style.display === 'none' || searchBar.style.display === '') {
+        searchBar.style.display = 'inline-block'; // 검색창을 보이게 합니다.
+    } else {
+        searchBar.style.display = 'none'; // 검색창을 숨깁니다.
+    }
+});

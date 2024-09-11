@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Auray Studio</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/index.css">
+<script th:src="@{https://code.jquery.com/jquery-latest.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/nav :: nav"></div>
+
+	<main>
+		<!-- IA-01 제품 상세 정보 -->
+		<section class="product-details">
+			<img th:src="@{${innergateJ.y_img}}" alt="제품 이미지">
+			<div class="text-container">
+				<p class="innergate_IApro">
+					<span th:text="${innergateJ.y_no}"></span>
+				</p>
+
+				<p class="small-text" th:text="${innergateJ.i_name}"></p>
+
+				<!-- <span th:text="${innergateJ.i_name}" class="bold-text"></span> -->
+
+				<p class="innergate_IApro">
+					<span
+						th:text="${innergateJ.style}"></span>
+				</p>
+				<span class="custom-line"></span>
+				<!--custom-line 밑 해당 내용만 스크롤할 수 있게 설정  -->
+				<div class="scrollable-content">
+					<p class="innergate_IApro">
+						<span th:text="${innergateJ.content}"></span>
+					</p>
+				</div>
+				<p class="innergate_pro"></p>
+				<!-- 상담 신청 버튼 -->
+				<p class="innergate_IApro">
+					<a href="/inquire" class="inquire-button">상담신청</a>
+				</p>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

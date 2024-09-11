@@ -19,7 +19,7 @@ public class MemberDto {
     private String gender;
     private String telnumber;
     private String addr;
-    private String email;
     private int permit;
-
+    private String email;
+    
 }

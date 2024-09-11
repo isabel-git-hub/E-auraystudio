@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/index.css">
+    <script th:src="@{/js/script.js}"></script>
+</head>
+<body>
+    <!-- 부모 레이아웃의 content fragment를 대체합니다 -->
+    <div layout:fragment="content" id="contents">
+        <main>
+            <h2>환영합니다!</h2>
+            <p>이곳은 메인 페이지입니다.</p>
+        </main>
+    </div>
+</body>
+</html>

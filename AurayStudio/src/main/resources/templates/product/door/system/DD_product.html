@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${doorD.d_name}">제품명</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/index.css">
+<script th:src="@{https://code.jquery.com/jquery-latest.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/nav :: nav"></div>
+    <main>
+        <section class="product-details">
+            <img th:src="@{${doorD.y_img}}" alt="제품 이미지">
+            <div class="text-container">
+                <p class="innergate_IApro">
+                    <span th:text="${doorD.pro_kind}"></span>&nbsp;|&nbsp;
+                    <span th:text="${doorD.y_no}"></span>
+                </p>
+                <p class="small-text" th:text="${doorD.d_name}"></p>
+                <p class="innergate_IApro">
+                    <span th:text="${doorD.d_name}"></span>&nbsp;|&nbsp;
+                    <span th:text="${doorD.style}"></span>
+                </p>
+                <span class="custom-line"></span>
+                
+                <div class="scrollable-content">
+					<p class="innergate_IApro">
+						<span th:text="${doorD.content}"></span>
+					</p>
+				</div>
+				<p class="innergate_pro"></p>
+                <!-- 상담 신청 버튼 -->
+                <p class="innergate_IApro">
+                    <a href="/inquire" class="inquire-button">상담신청</a>
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

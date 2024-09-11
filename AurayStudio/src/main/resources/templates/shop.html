@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auray Studio 매장 찾기</title>
+
+    <!-- Kakao Map API -->
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=6174f159c915c7f12aa6f40cbe1017c7"></script>
+
+    <!-- Custom Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/index.css">
+
+    <!-- 지도 스타일 -->
+    <style>
+        #map {
+            width: 555px;
+            height: 555px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div th:replace="fragments/nav :: nav"></div>
+
+    <!-- Main Content -->
+    <div id="contents">
+        <!-- Map Container -->
+        <div id="map"></div>
+
+        <!-- Kakao Map Script -->
+        <script>
+            // 지도 생성 함수
+            function createMap(latitude, longitude) {
+                var container = document.getElementById('map'); 
+                var options = { 
+                    center: new kakao.maps.LatLng(latitude, longitude), // 실시간 위치로 지도 중심 설정
+                    level: 3 
+                };
+
+                var map = new kakao.maps.Map(container, options); 
+            }
+
+            // 사용자의 현재 위치 가져오기
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;   // 위도
+                    var longitude = position.coords.longitude; // 경도
+
+                    // 실시간 위치로 지도 생성
+                    createMap(latitude, longitude);
+                }, function(error) {
+                    // 위치 정보를 가져오지 못할 때 기본 좌표 설정 (예: 대전 둔산동)
+                    createMap(36.350412, 127.384548);
+                    alert('위치 정보를 가져올 수 없습니다.');
+                });
+            } else {
+                // 브라우저가 Geolocation을 지원하지 않을 때 기본 좌표 설정 (예: 대전 둔산동)
+                createMap(36.350412, 127.384548);
+                alert('Geolocation을 지원하지 않는 브라우저입니다.');
+            }
+        </script>
+    </div>
+</body>
+</html>

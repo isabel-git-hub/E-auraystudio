@@ -9,7 +9,12 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
+//@RestController
 public class IndexController {
+//	@Autowired
+//    private ShopService shopService;
+	
+	
 	@GetMapping({"/", "/index"})
 	public String indexPage(HttpSession session, Model model) {
 		// 세션에서 사용자 정보 가져오기
@@ -19,4 +24,12 @@ public class IndexController {
         }
 		return "index";
 	}
+	
+	
+	@GetMapping("/shop")
+	public String shopPage (Model model) {
+		return "/shop" ;
+	}
+	
+
 }

@@ -1,31 +1,20 @@
 package com.example.AurayStudio.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.example.AurayStudio.dto.EmailDto;
 
-//@RequiredArgsConstructor
-@Service
-public class EmailService {
-	@Autowired
-	private JavaMailSender javaMailSender;
-	private final String FROM_MAIL_GOOGLE = "wonyuchung@gmail.com";
+import lombok.AllArgsConstructor;
 
-	/*
-	 * public boolean sendMailReject(EmailDto mail) { boolean msg = true;
-	 * 
-	 * MimeMessage message = javaMailSender.createMimeMessage();
-	 * 
-	 * try { MimeMessageHelper helper = new MimeMessageHelper(message, true,
-	 * "UTF-8"); helper.setTo(mail.getTo()); helper.setSubject(mail.getSubject());
-	 * helper.setFrom(FROM_MAIL_GOOGLE); helper.setText(mail.getText(), true);
-	 * 
-	 * javaMailSender.send(message); } catch (MessagingException e) {
-	 * e.printStackTrace(); msg = false; } return msg; }
-	 */
+@Service
+@AllArgsConstructor
+public class EmailService {
+	private JavaMailSender javaMailSender;
+	private static final String FROM_MAIL_KAKAO = "sherbet04@daum.net";  // 발신자 주소
+
+
 	public boolean mailSend(EmailDto mailDto) {
 		try {
 			// Null 검증
@@ -41,7 +30,7 @@ public class EmailService {
 
 			SimpleMailMessage message = new SimpleMailMessage();
 			message.setTo(mailDto.getTo());
-			message.setFrom(FROM_MAIL_GOOGLE); // 발신자는 고정된 이메일을 사용
+			message.setFrom(FROM_MAIL_KAKAO); // 발신자는 고정된 이메일을 사용
 			message.setSubject(mailDto.getSubject());
 			message.setText(mailDto.getText());
 
@@ -55,5 +44,4 @@ public class EmailService {
 			return false; // 전송 실패 시 false 반환
 		}
 	}
-	}
-
+}

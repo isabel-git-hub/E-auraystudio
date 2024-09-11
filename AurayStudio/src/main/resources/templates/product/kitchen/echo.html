@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Auray Studio - Kitchen</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/kitchen.css">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script th:src="@{/js/script.js}"></script>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="main-content">
+			<aside class="sidebar">
+				<h2>부엌</h2>
+				<span class="custom-line"></span>
+				<ul>
+					<li><a href="/product/kitchen/echo">인조대리석</a></li>
+					<li><a href="/product/kitchen/vista">이스톤</a></li>
+					<li><a href="/product/kitchen/signature">포세린</a></li>
+					<li><a href="/product/kitchen/faucet">수전</a></li>
+					<li><a href="/product/kitchen/sink">싱크볼</a></li>
+					<li><a href="/product/kitchen/pantry">팬트리장,인출망장</a></li>
+					<li><a href="/product/kitchen/hood">후드</a></li>
+					<li><a href="/product/kitchen/etc">기타</a></li>
+				</ul>
+			</aside>
+
+			<main class="content-area">
+				<section>
+					<h2>인조대리석</h2>
+					<div class="products-container">
+						<div th:each="kitchen : ${kitchens}" class="door-item">
+							<div class="innergate-field">
+								<a th:href="@{'/product/kitchen/echo/' + ${kitchen.y_no}}">
+									<img th:src="@{${kitchen.y_img}}" style="font-size: 12px;">
+								</a>
+							</div>
+							<div class="innergate-field">
+								<span th:text="${kitchen.y_no}">제품코드</span><br> <span
+									th:text="${kitchen.k_name}" style="font-size: 12px;"></span>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+	</div>
+</body>
+</html>

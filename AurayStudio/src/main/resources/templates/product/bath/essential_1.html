@@ -1,85 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>에센셜 바스 제품 상세</title>
-    <!-- <link href="@{/css/productstyle.css}" rel="stylesheet"> -->
-<style>
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 20px;
-}
+<meta charset="UTF-8">
+<title>에센셜 바스 제품 상세</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/essential/essential_1.css">
 
-h3 {
-    margin-bottom: -6px;
-    padding-left: 20px;
-}
-
-.product-detail {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-}
-
-.product-image img {
-    max-width: 400px;
-    max-height: 400px;
-    object-fit: cover;
-}
-
-.product-info {
-    flex: 1;
-}
-
-.product-info h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.product-info p {
-    margin-bottom: 10px;
-}
-
-.product-actions {
-    margin-top: 20px;
-}
-
-.action-button {
-    padding: 10px 20px;
-    margin-right: 10px;
-    background-color: #d9534f;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-.action-button:hover {
-    background-color: #c9302c;
-}
-
-</style>
 </head>
 <body>
-    <div layout:fragment="content">
-        <h3>미로베이지</h3>
-        <div class="product-detail">
-            <div class="product-image">
-                <img th:src="@{/img/bath/미로베이지.jpg}">
-            </div>
-            <div class="product-info">
-                <p><strong>카테고리:</strong> Natural</p>
-                <p><strong>제품코드:</strong> BATH-01</p>
-                <p><strong>제품설명:</strong> 내추럴 베이지 스톤 타일로 밝고 화사한 무드를 선사하는 안락한 욕실</p>
-                <p><strong>색상:</strong> 베이지 <span style="background-color: #e1d7bc; width: 20px; height: 20px; display: inline-block;"></span></p>
-                <div class="product-actions">
-                    <button class="action-button">인테리어 상담신청</button>
-                    <button class="action-button">가까운 매장찾기</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div th:replace="fragments/nav :: nav"></div>
+	<div layout:fragment="content">
+		<h3>미로베이지</h3>
+		<div class="product-detail">
+			<div class="product-image">
+				<img th:src="@{/img/bath/미로베이지.jpg}">
+			</div>
+			<div class="product-info">
+				<p>
+					<strong>카테고리:</strong> Natural
+				</p>
+				<p>
+					<strong>제품코드:</strong> BATH-01
+				</p>
+				<p>
+					<strong>제품설명:</strong> 내추럴 베이지 스톤 타일로 밝고 화사한 무드를 선사하는 안락한 욕실
+				</p>
+				<p>
+					<strong>색상:</strong> 베이지 <span
+						style="background-color: #e1d7bc; width: 20px; height: 20px; display: inline-block;"></span>
+				</p>
+				<div class="product-actions">
+					<button class="action-button">인테리어 상담신청</button>
+					<button class="action-button">가까운 매장찾기</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

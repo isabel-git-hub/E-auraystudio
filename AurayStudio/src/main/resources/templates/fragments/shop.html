@@ -1,0 +1,52 @@
+<!-- <div th:fragment="menu">
+	<nav>
+		<div class="nav-container">
+			<a href="/" style="text-decoration: none; color: inherit;">
+			    <h1>Auray Studio</h1>
+			</a>
+			&nbsp;&nbsp;&nbsp;
+			<ul class="menu left-menu">
+				<li class="list-style"><a th:href="@{/company}" style="width:75px;">회사소개</a></li>
+				<li class="list-style"><a th:href="@{/inquire}" style="width:75px;">상담신청</a></li>
+				<li class="list-style mega-menu"><a th:href="@{#}" style="width:75px;">제품보기</a>
+					<ul class="submenu">
+						<li class="list-style"><a href="/product/kitchen/echo" style="width:75px;">키친</a></li>
+						<li class="list-style"><a href="/product/built_in/casement" style="width:75px;">붙박이장</a></li>
+						<li class="list-style"><a href="/product/door/doorabs" style="width:75px;">도어</a></li>
+						<li class="list-style"><a href="/product/innergate/jungmun3" style="width:75px;">중문</a></li>
+						<li class="list-style"><a href="/product/bath" style="width:75px;">바스</a></li>
+						<li class="list-style"><a href="/product/tile" style="width:75px;">타일</a></li>
+						<li class="list-style"><a href="/product/window" style="width:75px;">창호</a></li>
+						<li class="list-style"><a href="/product/moulding" style="width:75px;">몰딩</a></li>
+						<li class="list-style"><a href="/product/wall" style="width:75px;">월</a></li>
+						<li class="list-style"><a href="/product/wallpaper/silk" style="width:75px;">벽지</a></li>
+						<li class="list-style"><a href="/product/film" style="width:75px;">필름</a></li>
+						<li class="list-style"><a href="/product/flooring/wood" style="width:75px;">바닥재</a></li>
+						<li class="list-style"><a href="/product/paint/paint" style="width:75px;">페인트</a></li>
+						<li class="list-style"><a href="/product/insulation" style="width:75px;">단열재</a></li>
+					</ul>
+				</li>
+				<li class="list-style"><a th:href="@{/shop}" style="width:75px;">매장찾기</a></li>
+			</ul>
+
+			<ul class="menu right-menu">
+				<li th:if="${session.loggedInUser == null}" class="list-style">
+				    <a th:href="@{/login}" style="width:75px;">
+				        <i class="fa-regular fa-user"></i> 로그인
+				    </a>
+				</li>
+				<li th:if="${session.loggedInUser == null}" class="list-style"><a th:href="@{/join}">회원가입</a></li>
+				
+				메뉴 아이콘 추가
+				<li class="list-style">
+				    <a href="#" style="width:10px;">
+				        <i class="fa-solid fa-bars"></i> 메뉴 아이콘
+				    </a>
+				</li>
+				
+				<li th:if="${session.loggedInUser != null}" class="list-style"><a th:href="@{/logout}" style="width:75px;">로그아웃</a></li>
+				<li th:if="${session.loggedInUser != null}" class="list-style"><span th:text="${session.loggedInUser} + '님'"></span></li>
+			</ul>
+		</div>
+	</nav>
+</div> -->
