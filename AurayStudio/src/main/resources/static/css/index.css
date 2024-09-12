@@ -77,6 +77,9 @@ img {
 	list-style: none;
 }
 
+.active {
+	text-align: center;
+}
 
 /* 기본적인 스타일 */
 ul {
@@ -92,6 +95,10 @@ ul {
 	display: inline-block;
 	border-bottom: 2px solid transparent;
     transition: border-bottom 0.3s ease;
+    text-align: center;
+}
+.list-style a {
+	justify-content: center;
 }
 
 /* 서브메뉴 숨기기 */
@@ -102,7 +109,7 @@ ul {
 	padding: 10px;
 	border: 1px solid #ddd;
 	/* min-width: 220px; */
-	width: auto ;
+	width: 137px;
 	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     transform: translateX(-15%); /* 자신의 절반 크기만큼 왼쪽으로 이동 */
     /* left: 370px; */
@@ -124,10 +131,12 @@ ul {
 	justify-content: space-around;
 }
 
+
 /* 마우스를 올렸을 때 밑줄 나타나게 하기 */
 .list-style a:hover {
 	border-bottom: 2px solid #000;
 	margin: 2px ;
+	text-align: center;
 }
 
 /* 키친 항목에 마우스를 올리면 서브메뉴 표시 */
@@ -192,7 +201,7 @@ ul {
     display: none;
     position: absolute;
     left: 100%; /* 부모 요소 바로 옆에 위치 */
-    top: 0; /* 부모 요소와 동일한 높이에서 시작 */
+    top: 155px; /* 부모 요소와 동일한 높이에서 시작 */
     background-color: #f9f9f9;
     min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -207,10 +216,6 @@ ul {
 /* 드롭다운 메뉴에 hover 시에도 메뉴가 사라지지 않도록 설정 */
 .submenu li .dropdown-content:hover {
     display: block;
-}
-
-p {
-    margin-top: 0;
 }
 
 .dropdown-item a {
@@ -237,7 +242,9 @@ p {
 }
 p {
     margin-top: -10px;
+    text-align: left;
 }
+
 /* 헤더 스타일 */
 header {
     display: flex;
@@ -319,16 +326,22 @@ header ul li a:hover {
     justify-content: flex-end;
   }
  */
-  .nav-container ul li {
-    /* margin-left: 0px; */
-    margin: auto ;
-  }
+.nav-container ul li {
+	/* margin-left: 0px; */
+	/* margin: auto ; */
+	text-align: center;
+}
+/*
+.nav-container ul li a {
+	text-decoration: none;
+	text-align: left;
+	 color: black;
+} */
 
-  .nav-container ul li a {
-    text-decoration: none;
-    text-align: left;
-    /* color: black; */
-  }
+/* active 상태의 메뉴 항목 가운데 정렬 */
+.nav-container ul li a.active {
+    text-align: center;
+}
 
 /* 왼쪽 메뉴 */
 .left-menu {
@@ -379,4 +392,55 @@ header ul li a:hover {
     background-color: #ddd;
 } */
 
+/* 기본 숨겨진 상태의 사이드 메뉴 */
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
 
+/* 메뉴를 여는 버튼 스타일 */
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    margin-top: -10px;
+}
+
+/* 사이드 메뉴 안의 항목 스타일 */
+.side-menu a {
+    padding: 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+}
+
+/* 닫기 버튼 */
+.side-menu .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+/* 사이드 메뉴가 열렸을 때 */
+.side-menu.open {
+    width: 300px;
+}
+
+/* 작은 화면에서의 폰트 크기 조정 */
+@media screen and (max-height: 450px) {
+    .side-menu a {
+        font-size: 20px;
+    }
+}

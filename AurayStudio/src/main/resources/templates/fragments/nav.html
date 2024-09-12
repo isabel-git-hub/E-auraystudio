@@ -5,17 +5,16 @@
                 <h1>Auray Studio</h1>
             </a>
             &nbsp;&nbsp;&nbsp;
-            <ul class="menu left-menu">
-                <li class="list-style"><a th:href="@{/company}" class="active">회사소개</a></li>
-                <li class="list-style"><a th:href="@{/inquire}" class="active">상담신청</a></li>
+            <!--<ul class="menu left-menu">
+                 <li class="list-style"><a th:href="@{/company}" class="active">회사소개</a></li>
                 <li class="list-style mega-menu">
                     <a th:href="@{#}" class="active">제품보기</a>
                     <ul class="submenu">
-                        <li><a href="/product/kitchen/echo" style="width:75px;">키친</a></li>
-                        <li><a href="/product/built_in/casement" style="width:75px;">붙박이장</a></li>
-                        <li><a href="/product/door/doorabs" style="width:75px;">도어</a></li>
-                        <li><a href="/product/innergate/jungmun3" style="width:75px;">중문</a></li>
-                        <li>
+                        <li class="list-style"><a href="/product/kitchen/echo" >키친</a></li>
+                        <li class="list-style"><a href="/product/built_in/casement" >붙박이장</a></li>
+                        <li class="list-style"><a href="/product/door/doorabs" >도어</a></li>
+                        <li class="list-style"><a href="/product/innergate/jungmun3" >중문</a></li>
+                        <li class="list-style">
                             <a href="/product/bath">바스</a>
                             <div class="dropdown-content">
                                 <img th:src="@{/img/bath/essential2.png}" style="width: 100%; height: 125px; margin-bottom: 20px;">
@@ -35,7 +34,7 @@
                                 </div>
                             </div>
                         </li>
-						<li>
+						<li class="list-style">
 						    <a href="/product/tile">타일</a>
 							<div class="dropdown-content">
 								<img th:src="@{/img/tile/natural3.png}"  style="width: 100%; height: 125px; margin-bottom: 20px;">
@@ -55,7 +54,7 @@
 								</div>
 							</div>
 						</li>
-						<li>
+						<li class="list-style">
 						    <a href="/product/window">창호</a>
 							<div class="dropdown-content">
 								<img th:src="@{/img/window/window.png}" style="width: 100%; height: 125px; margin-bottom: 20px;">
@@ -71,7 +70,7 @@
 								</div>
 							</div>
 						</li>
-						<li>
+						<li class="list-style">
 						    <a href="/product/moulding">몰딩</a>
 							<div class="dropdown-content">
 								<img th:src="@{/img/moulding/moulding.png}" style="width: 100%; height: 125px; margin-bottom: 20px;">
@@ -103,7 +102,7 @@
 								</div>
 							</div>
 						</li>
-						<li>
+						<li class="list-style">
 						    <a href="/product/wall">Wall</a>
 							<div class="dropdown-content">
 								<img th:src="@{/img/wall/stylewall/stylewall3.png}" style="width: 100%; height: 125px; margin-bottom: 20px;">
@@ -119,8 +118,8 @@
 								</div>
 							</div>
 						</li>
-						<li class="list-style"><a href="/product/wallpaper/silk" style="width:75px;">벽지</a></li>
-						<li>
+						<li class="list-style"><a href="/product/wallpaper/silk" >벽지</a></li>
+						<li class="list-style">
 						    <a href="/product/film">필름</a>
 							<div class="dropdown-content">
 								<img th:src="@{/img/film/인테리어 필름.png}" style="width: 100%; height: 125px; margin-bottom: 20px;">
@@ -155,36 +154,58 @@
 									<a href="/product/film/interior-board">인테리어 보드</a>
 								</div>
 							</div></li>
-						<li class="list-style"><a href="/product/flooring/wood" style="width:75px;">바닥재</a></li>
-                        <li class="list-style"><a href="/product/paint/paint" style="width:75px;">페인트</a></li>
-                        <li class="list-style"><a href="/product/insulation" style="width:75px;">단열재</a></li>
+						<li class="list-style"><a href="/product/flooring/wood" >바닥재</a></li>
+                        <li class="list-style"><a href="/product/paint/paint" >페인트</a></li>
+                        <li class="list-style"><a href="/product/insulation" >단열재</a></li>
                     </ul>
                 </li>
-                <li class="list-style"><a th:href="@{/shop}" style="width:75px;">매장찾기</a></li>
-            </ul>
+                <li class="list-style"><a th:href="@{/inquire}" class="active">상담신청</a></li>
+                <li class="list-style"><a th:href="@{/shop}" >매장찾기</a></li>
+            </ul> -->
 
             <ul class="menu right-menu">
                 <li sec:authorize="isAnonymous()" class="list-style">
-                    <a th:href="@{/login}" style="width:75px;">
+                    <a th:href="@{/login}" >
                         <i class="fa-regular fa-user"></i> 로그인
                     </a>
                 </li>
                 <li sec:authorize="isAnonymous()" class="list-style"><a th:href="@{/join}">회원가입</a></li>
+				
+				<!-- 햄버거 메뉴 아이콘 추가 -->
+				<div class="menu-icon" onclick="openMenu()" style="width: 10px;">  
+				        <i class="fa-solid fa-bars"></i>
+				</div>
 
-                <li class="list-style">
-                    <i class="fa-solid fa-bars"></i>
-                </li>
-
-                <li sec:authorize="isAuthenticated()" class="list-style">
-                    <a th:href="@{/logout}" style="width:75px;">로그아웃</a>
+				<li sec:authorize="isAuthenticated()" class="list-style">
+                    <a th:href="@{/logout}" >로그아웃</a>
                 </li>
 
                 <li sec:authorize="isAuthenticated()">
-                    <a href="/mypage" style="width:75px;">
+                    <a href="/mypage" >
                         <span th:text="${#authentication.name} + '님'"></span>
                     </a>
                 </li>
             </ul>
         </div>
-    </nav>
+        <!-- 숨겨진 슬라이드 메뉴 -->
+		<div id="side-menu" class="side-menu">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+			<ul>
+				<li><a href="/company">회사소개</a></li>
+				<li><a href="/product">제품보기</a></li>
+				<li><a href="/inquire">상담신청</a></li>
+				<li><a href="/shop">매장찾기</a></li>
+			</ul>
+		</div>
+	</nav>
+	<script>
+		function openMenu() {
+			document.getElementById('side-menu').classList.add('open');
+		}
+
+		function closeMenu() {
+			document.getElementById('side-menu').classList.remove('open');
+		}
+	</script>
+	
 </div>
