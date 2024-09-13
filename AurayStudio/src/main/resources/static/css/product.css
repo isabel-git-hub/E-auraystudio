@@ -47,3 +47,10 @@ ul {
 .submenu li a:hover {
 	background-color: #ddd;
 }
+
+/* 메뉴를 여는 버튼 스타일 */
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    margin-top: -12px;
+}

@@ -4,18 +4,19 @@
 <meta charset="UTF-8">
 <title>Auray Studio</title>
 <link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="/css/product.css">
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/nav.css">
 <script th:src="@{https://code.jquery.com/jquery-latest.min.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/nav :: nav"></div>
-	<header>제품보기</header>
-
-	<h3>
+	<!-- <h3>
 		<a href="/">메인화면</a>
-	</h3>
+	</h3> -->
+	<header>제품보기</header>
 	<ul class="menu">
 		<li class="list-style">
 			<a href="#">키친</a>
@@ -108,7 +109,7 @@
 		</li>
 
 		<li class="list-style">
-			<a href="#">바스</a>
+			<a href="product/bath">바스</a>
 			<ul class="submenu">
 				<li class="list-style">
 					<a href="/product/bath/essential">에센셜 바스</a>
@@ -123,7 +124,7 @@
 		</li>
         
         <li class="list-style">
-			<a href="#">타일</a>
+			<a href="product/tile">타일</a>
 			<ul class="submenu">
 				<li class="list-style">
 					<a href="/product/tile/natural">Natural</a>
@@ -148,7 +149,7 @@
 			
 
 		<li class="list-style">
-			<a href="#">창호</a>
+			<a href="product/window">창호</a>
 			<ul class="submenu">
 				<li class="list-style">
 					<a href="/product/window/system">시스템창</a>

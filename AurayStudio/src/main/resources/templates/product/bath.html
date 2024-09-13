@@ -23,7 +23,7 @@ h3 {
 	margin-right: 552px;
 	text-align: center;
 	font-weight: bolder;
-	margin-bottom: 8px;
+	margin-bottom: 21px;
 	font-size: 21px;
 }
 
@@ -31,7 +31,7 @@ h3 {
 #bath-options {
 	display: flex;
 	justify-content: center; /* 중앙 정렬 */
-	gap: 20px;
+	gap: 30px;
 	margin-bottom: 8px;
 }
 
@@ -41,7 +41,7 @@ h3 {
 	padding: 14px;
 	border: 1px solid #ccc;
 	background-color: #f5f5f5;
-	width: 171px;
+	width: 194px;
 	border-radius: 10px;
 	transition: background-color 0.3s ease;
 	position: relative;
@@ -79,6 +79,7 @@ h3 {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 20px;
+	margin-top: -132px;
 }
 
 /* 바스 옵션 위의 사진을 가로로 길게 설정 */
@@ -100,20 +101,39 @@ h3 {
 
 /* 설명 텍스트 스타일 */
 p {
-	font-size: 14px;
-	margin: 0;
+	font-size: 15px;
+	margin-left: 79px;
 }
 
+.sidebar {
+	width: 10%; /* 사이드바의 너비를 20%로 설정 */
+	height: 100%;
+	padding: 3px;
+	/* margin-top: 3%; 다시 조절하기*/
+	margin-top: 3%;
+	background-color: #f4f4f4;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
 </style>
 </head>
 <body>
 <div layout:fragment="content">
-	<div id="top-image-wrapper">
+		<aside class="sidebar">
+			<h2>바스</h2>
+			<span class="custom-line"></span>
+			<ul>
+				<li><a href="/product/bath/essential">에센셜 바스</a></li>
+				<li><a href="/product/bath/timeless">타임리스 바스</a></li>
+				<li><a href="/product/bath/fixtures">바스 구성기기</a></li>
+			</ul>
+			<a href="/product">제품목록</a>
+		</aside>
+		<div id="top-image-wrapper">
 		<img id="top-image" th:src="@{/img/bath/essential2.png}">
 	</div>
 	<h3>바스 옵션</h3>
 	<div id="description-wrapper">
-			<p>편안한 목욕을 위해 디자인된 욕실 공간으로, 스타일과 기능을 모두 갖춘 욕조와 관련 기기를 포함합니다.</p>
+			<p>스타일과 기능을 모두 갖춘 욕조와 관련 기기를 포함한, 편안한 목욕을 위한 욕실 공간입니다.</p>
 		</div>
 	<div class="content">
 			<div id="bath-options">

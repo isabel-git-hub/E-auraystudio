@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auraystudio My Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/index.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f5f0e6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 헤더 스타일 */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* 사이드바 스타일 */
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #34495e;
+            font-size: 16px;
+            display: block;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #ecf0f1;
+        }
+
+        /* 컨텐츠 영역 */
+        .content {
+            margin-left: 270px; /* 사이드바 너비만큼 여백 */
+            padding: 30px;
+        }
+
+        .profile-section {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-section .profile-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .profile-section .profile-stats {
+            display: flex;
+            justify-content: space-between;
+            width: 60%;
+        }
+
+        .profile-stats div {
+            text-align: center;
+        }
+
+        .profile-stats div span {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2980b9;
+        }
+
+        /* 진행중인 상담 내역 */
+        .status-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .status-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .status-grid {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .status-grid div {
+            width: 18%;
+        }
+
+        .status-grid h4 {
+            font-size: 16px;
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+
+        .status-grid p {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .status-grid .icon {
+            font-size: 30px;
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 타임리프 네비게이션 바 -->
+    <div th:replace="fragments/nav :: nav"></div>
+
+    <!-- 사이드바 -->
+    <div class="sidebar">
+        <h2>마이페이지</h2>
+        <ul>
+        <!-- 사이드바 메뉴 출력 -->
+            <li><a href="#">스크랩북</a></li>
+            <li th:each="board : ${menu}" th:if="${#authorization.expression('hasRole(''USER'')')}">
+            	<a th:href="'/board/' + ${board.board_no}" th:text="${board.board_name}"></a>
+        	</li>
+        	<li th:each="board : ${menu}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+		    	<a th:href="'/board/' + ${board.board_no}" th:text="${board.board_name}"></a>
+		    </li>
+            <!-- 관리자 전용 메뉴 -->
+			<li th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+				<a href="/mypage/registration">제품 관리</a>
+			</li>
+			<li th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+				<a href="#">회원 관리</a>
+			</li>
+        </ul>
+    </div>
+
+    <!-- 메인 컨텐츠 -->
+    <div class="content">
+        <div class="status-section">
+            <div class="status-grid">
+            	<div class="profile-name">
+            		<h1 th:text="${#authentication.name} + 님"></h1>
+            	</div>
+            	<ul>
+	            	<li th:each="board : ${menu}" th:if="${#authorization.expression('hasRole(''USER'')')}">
+	            		<a th:href="'/board/' + ${board.board_no}" th:text="${board.board_name}"></a>
+	        		</li>
+	        		<li th:each="board : ${menu}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+			            <a th:href="'/board/' + ${board.board_no}" th:text="${board.board_name}"></a>
+			        </li>
+		        </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

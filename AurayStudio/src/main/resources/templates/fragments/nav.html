@@ -164,17 +164,18 @@
             </ul> -->
 
             <ul class="menu right-menu">
+            
+            <!-- 햄버거 메뉴 아이콘 추가 -->
+				<div class="menu-icon" onclick="openMenu()" style="width: 10px;">  
+				        <i class="fa-solid fa-bars"></i>
+				</div>
                 <li sec:authorize="isAnonymous()" class="list-style">
                     <a th:href="@{/login}" >
                         <i class="fa-regular fa-user"></i> 로그인
                     </a>
                 </li>
                 <li sec:authorize="isAnonymous()" class="list-style"><a th:href="@{/join}">회원가입</a></li>
-				
-				<!-- 햄버거 메뉴 아이콘 추가 -->
-				<div class="menu-icon" onclick="openMenu()" style="width: 10px;">  
-				        <i class="fa-solid fa-bars"></i>
-				</div>
+			
 
 				<li sec:authorize="isAuthenticated()" class="list-style">
                     <a th:href="@{/logout}" >로그아웃</a>

@@ -251,6 +251,9 @@ header {
     justify-content: space-between; /* h1과 네비게이션을 양쪽에 배치 */
     align-items: center;
     background-color: #f4f4f4; /* 헤더 배경색 (옵션) */
+    margin-top: 43px;
+    margin-left: 42px;
+    font-weight: bolder;
 }
 
 /* 네비게이션 메뉴를 오른쪽으로 정렬 */
@@ -411,7 +414,7 @@ header ul li a:hover {
 .menu-icon {
     font-size: 30px;
     cursor: pointer;
-    margin-top: -10px;
+    margin-top: -12px;
 }
 
 /* 사이드 메뉴 안의 항목 스타일 */

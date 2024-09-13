@@ -29,7 +29,7 @@ function checkId() {
         type: "get",
         dataType: "text",
         async: true,
-        url: "http://localhost:8080/checkid",
+        url: "http://localhost:8888/checkid",
         data: { data: snd_data },
         success: function (data) {
             console.log("Response from server:", data);
