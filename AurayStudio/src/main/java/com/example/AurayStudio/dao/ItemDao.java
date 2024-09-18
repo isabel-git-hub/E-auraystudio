@@ -43,11 +43,11 @@ public interface ItemDao {
 	@Select("SELECT COUNT(*) FROM item_product")
 	int getTotalItemCount() throws DataAccessException;
 
-	@Select("SELECT * FROM item_product WHERE category = #{category} LIMIT #{size} OFFSET #{offset}")
-	List<ItemDto> findItemsByCategory(@Param("category") String category, @Param("size") int size, @Param("offset") int offset) throws DataAccessException;
-
-	@Select("SELECT COUNT(*) FROM item_product WHERE category = #{category}")
-	int countItemsByCategory(@Param("category") String category) throws DataAccessException;
+//	@Select("SELECT * FROM item_product WHERE category = #{category} LIMIT #{size} OFFSET #{offset}")
+//	List<ItemDto> findItemsByCategory(@Param("category") String category, @Param("size") int size, @Param("offset") int offset) throws DataAccessException;
+//
+//	@Select("SELECT COUNT(*) FROM item_product WHERE category = #{category}")
+//	int countItemsByCategory(@Param("category") String category) throws DataAccessException;
 
 	}
 

@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -28,10 +29,11 @@ import com.example.AurayStudio.service.ItemService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Controller
 public class IndexController {
-	private final ItemService itemservice;
+	@Autowired
+	private ItemService itemservice;
 	
 	@GetMapping({"/", "/index"})
 	public String indexPage(HttpSession session, Model model) {
@@ -64,13 +66,13 @@ public class IndexController {
 
 	    List<ItemDto> items;
 	    if (category != null && !category.isEmpty()) {
-	    	items = itemservice.getItemsByCategory(page, size, category);
+	    	items = itemservice.getAllItems();
 	    } else {
 	    	// 카테고리가 없으면 전체 데이터
 	    	items = itemservice.getItemsWithPaging(page, size);
 	    }
 
-	    int totalItems = itemservice.getTotalItemCountByCategory(category);
+	    int totalItems = itemservice.getTotalItemCount();
 	    int totalPages = (int) Math.ceil((double) totalItems / size);
 
 	    // 페이지 그룹 계산
@@ -91,6 +93,45 @@ public class IndexController {
 
 	    return "registration";  // registration.html로 이동
 	}
+
+	// 제품 목록 페이지
+		@GetMapping("/mypage/kitchen")
+		public String mykitchen(Model model, 
+		                           @RequestParam(value = "page", defaultValue = "1") Integer page, 
+		                           @RequestParam(value = "size", defaultValue = "10") Integer size,
+		                           @RequestParam(value = "category", required = false) String category) {
+		    // 기본값을 명시적으로 확인 (null인 경우 대비)
+		    if (size == null) size = 10;
+
+		    List<ItemDto> kithchens;
+		    if (category != null && !category.isEmpty()) {
+		    	kithchens = itemservice.getAllItems();
+		    } else {
+		    	// 카테고리가 없으면 전체 데이터
+		    	kithchens = itemservice.getItemsWithPaging(page, size);
+		    }
+
+		    int totalItems = itemservice.getTotalItemCount();
+		    int totalPages = (int) Math.ceil((double) totalItems / size);
+
+		    // 페이지 그룹 계산
+		    int pageGroupSize = 10;  // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+		    int currentGroup = (page - 1) / pageGroupSize;  // 현재 페이지 그룹
+		    int startPage = currentGroup * pageGroupSize + 1;  // 시작 페이지 번호
+		    int endPage = Math.min(startPage + pageGroupSize - 1, totalPages);  // 마지막 페이지 번호
+
+		    // 페이징 정보 추가
+		    model.addAttribute("kithchens", kithchens);
+		    model.addAttribute("currentPage", page);
+		    model.addAttribute("totalPages", totalPages);
+		    model.addAttribute("startPage", startPage);
+		    model.addAttribute("endPage", endPage);
+		    model.addAttribute("hasPrevPage", currentGroup > 0);
+		    model.addAttribute("hasNextPage", endPage < totalPages);
+		    model.addAttribute("size", size);  // size 값을 모델에 추가하여 템플릿으로 전달
+
+		    return "mypage/kitchen";  // registration.html로 이동
+		}
 
 
     

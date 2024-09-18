@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -29,10 +30,11 @@ import com.example.AurayStudio.service.PaintService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @RequestMapping("/product/paint")
 public class PaintController {
-	private final PaintService paintservice;
+	@Autowired
+	private PaintService paintservice;
 	
 	// 제품 목록 페이지
     @GetMapping("/registration")

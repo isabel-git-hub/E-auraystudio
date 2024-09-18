@@ -1,16 +1,16 @@
 package com.example.AurayStudio.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.AurayStudio.dao.InnergateDao;
 import com.example.AurayStudio.dto.InnergateDto;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class PostService {
-    private final InnergateDao innergateDao;
+   @Autowired
+	private InnergateDao innergateDao;
 
     public void saveInnergate(InnergateDto innergateDto) {
         String lastYno = innergateDao.findLastYno();

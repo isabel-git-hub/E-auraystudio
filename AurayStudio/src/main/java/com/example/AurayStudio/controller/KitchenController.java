@@ -2,6 +2,7 @@ package com.example.AurayStudio.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,10 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("/product/kitchen")
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class KitchenController {
-	private final KitchenService kitchenservice ;
+	@Autowired
+	private KitchenService kitchenservice ;
 	
 	// 키친 (인조대리석)
 	@GetMapping("/echo")

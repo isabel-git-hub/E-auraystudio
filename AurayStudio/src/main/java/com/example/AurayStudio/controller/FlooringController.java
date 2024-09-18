@@ -2,6 +2,7 @@ package com.example.AurayStudio.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,10 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("/product/flooring")
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class FlooringController {
-	private final FlooringService flooringservice;
+	@Autowired
+	private FlooringService flooringservice;
 
 	// 원목마루
 		@GetMapping("/wood")

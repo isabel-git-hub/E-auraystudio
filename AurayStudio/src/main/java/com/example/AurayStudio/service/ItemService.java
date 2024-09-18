@@ -28,8 +28,8 @@ public interface ItemService {
 
 	int getTotalItemCount();
 
-	List<ItemDto> getItemsByCategory(int page, int size, String category);
-
-	int getTotalItemCountByCategory(String category);
+//	List<ItemDto> getItemsByCategory(int page, int size, String category);
+//
+//	int getTotalItemCountByCategory(String category);
 
 }

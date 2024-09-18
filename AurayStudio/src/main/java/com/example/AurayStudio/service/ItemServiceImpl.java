@@ -62,14 +62,14 @@ public class ItemServiceImpl implements ItemService {
 		return itemdao.getTotalItemCount();
 	}
 
-	@Override
-	public List<ItemDto> getItemsByCategory(int page, int size, String category) {
-		int offset = (page - 1) * size;
-	    return itemdao.findItemsByCategory(category, size, offset);
-	}
-	
-	@Override
-	public int getTotalItemCountByCategory(String category) {
-		return itemdao.countItemsByCategory(category);
-	}
+//	@Override
+//	public List<ItemDto> getItemsByCategory(int page, int size, String category) {
+//		int offset = (page - 1) * size;
+//	    return itemdao.findItemsByCategory(category, size, offset);
+//	}
+//	
+//	@Override
+//	public int getTotalItemCountByCategory(String category) {
+//		return itemdao.countItemsByCategory(category);
+//	}
 }
