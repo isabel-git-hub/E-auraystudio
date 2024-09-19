@@ -22,18 +22,58 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.AurayStudio.dto.BathDto;
+import com.example.AurayStudio.dto.Built_inDto;
+import com.example.AurayStudio.dto.DoorDto;
+import com.example.AurayStudio.dto.FilmDto;
+import com.example.AurayStudio.dto.InnergateDto;
 import com.example.AurayStudio.dto.ItemDto;
 import com.example.AurayStudio.dto.ItemimgDto;
+import com.example.AurayStudio.dto.KitchenDto;
+import com.example.AurayStudio.dto.MouldingDto;
+import com.example.AurayStudio.dto.TileDto;
+import com.example.AurayStudio.dto.WallDto;
+import com.example.AurayStudio.dto.WindowDto;
+import com.example.AurayStudio.service.BathService;
+import com.example.AurayStudio.service.Built_inService;
+import com.example.AurayStudio.service.DoorService;
+import com.example.AurayStudio.service.FilmService;
+import com.example.AurayStudio.service.InnergateService;
 import com.example.AurayStudio.service.ItemService;
+import com.example.AurayStudio.service.KitchenService;
+import com.example.AurayStudio.service.MouldingService;
+import com.example.AurayStudio.service.TileService;
+import com.example.AurayStudio.service.WallService;
+import com.example.AurayStudio.service.WindowService;
 
 import jakarta.servlet.http.HttpSession;
-import lombok.RequiredArgsConstructor;
 
 //@RequiredArgsConstructor
 @Controller
 public class IndexController {
 	@Autowired
 	private ItemService itemservice;
+	@Autowired
+	private KitchenService kitchenservice;
+	@Autowired
+	private Built_inService built_inservice;
+	@Autowired
+	private DoorService doorservice;
+	@Autowired
+	private InnergateService innergateservice;
+	@Autowired
+	private BathService bathservice;
+	@Autowired
+	private TileService tileservice;
+	@Autowired
+	private WindowService windowservice;
+	@Autowired
+	private MouldingService mouldingservice;
+	@Autowired
+	private WallService wallservice;
+	@Autowired
+	private FilmService filmservice;
+	
 	
 	@GetMapping({"/", "/index"})
 	public String indexPage(HttpSession session, Model model) {
@@ -97,22 +137,22 @@ public class IndexController {
 	// 제품 목록 페이지
 		@GetMapping("/mypage/kitchen")
 		public String mykitchen(Model model, 
-		                           @RequestParam(value = "page", defaultValue = "1") Integer page, 
-		                           @RequestParam(value = "size", defaultValue = "10") Integer size,
-		                           @RequestParam(value = "category", required = false) String category) {
+		                        @RequestParam(value = "page", defaultValue = "1") Integer page, 
+		                        @RequestParam(value = "size", defaultValue = "10") Integer size,
+		                        @RequestParam(value = "category", required = false) String category) {
 		    // 기본값을 명시적으로 확인 (null인 경우 대비)
 		    if (size == null) size = 10;
 
-		    List<ItemDto> kithchens;
+		    List<KitchenDto> kithchens;
 		    if (category != null && !category.isEmpty()) {
-		    	kithchens = itemservice.getAllItems();
+		    	kithchens = kitchenservice.getAllKitchens();
 		    } else {
 		    	// 카테고리가 없으면 전체 데이터
-		    	kithchens = itemservice.getItemsWithPaging(page, size);
+		    	kithchens = kitchenservice.getKitchensWithPaging(page, size);
 		    }
 
-		    int totalItems = itemservice.getTotalItemCount();
-		    int totalPages = (int) Math.ceil((double) totalItems / size);
+		    int totalKitchens = kitchenservice.getTotalKitchenCount();
+		    int totalPages = (int) Math.ceil((double) totalKitchens / size);
 
 		    // 페이지 그룹 계산
 		    int pageGroupSize = 10;  // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
@@ -121,7 +161,7 @@ public class IndexController {
 		    int endPage = Math.min(startPage + pageGroupSize - 1, totalPages);  // 마지막 페이지 번호
 
 		    // 페이징 정보 추가
-		    model.addAttribute("kithchens", kithchens);
+		    model.addAttribute("kitchens", kithchens); // 수정된 부분
 		    model.addAttribute("currentPage", page);
 		    model.addAttribute("totalPages", totalPages);
 		    model.addAttribute("startPage", startPage);
@@ -132,9 +172,367 @@ public class IndexController {
 
 		    return "mypage/kitchen";  // registration.html로 이동
 		}
+		
+		// 제품 목록 페이지
+		@GetMapping("/mypage/built_in")
+		public String mybuilt_in(Model model, 
+				                 @RequestParam(value = "page", defaultValue = "1") Integer page,
+				                 @RequestParam(value = "size", defaultValue = "10") Integer size,
+				                 @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
 
+			List<Built_inDto> built_ins;
+			if (category != null && !category.isEmpty()) {
+				built_ins = built_inservice.getAllBuilt_ins();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				built_ins = built_inservice.getBuilt_insWithPaging(page, size);
+			}
 
-    
+			int totalBuilt_ins = built_inservice.getTotalBuilt_inCount();
+			int totalPages = (int) Math.ceil((double) totalBuilt_ins / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("built_ins", built_ins); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/built_in";
+		}
+		
+		// 제품 목록 페이지
+		@GetMapping("/mypage/door")
+		public String mydoor(Model model, 
+				             @RequestParam(value = "page", defaultValue = "1") Integer page,
+				             @RequestParam(value = "size", defaultValue = "10") Integer size,
+				             @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
+
+			List<DoorDto> doors;
+			if (category != null && !category.isEmpty()) {
+				doors = doorservice.getAllDoors();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				doors = doorservice.getDoorsWithPaging(page, size);
+			}
+
+			int totalDoors = doorservice.getTotalDoorCount();
+			int totalPages = (int) Math.ceil((double) totalDoors / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("doors", doors); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/door";
+		}
+		
+		// 제품 목록 페이지
+		@GetMapping("/mypage/innergate")
+		public String myinnergate(Model model, 
+				             @RequestParam(value = "page", defaultValue = "1") Integer page,
+				             @RequestParam(value = "size", defaultValue = "10") Integer size,
+				             @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
+
+			List<InnergateDto> innergates;
+			if (category != null && !category.isEmpty()) {
+				innergates = innergateservice.getAllInnergates();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				innergates = innergateservice.getInnergatesWithPaging(page, size);
+			}
+
+			int totalInnergates = innergateservice.getTotalInnergateCount();
+			int totalPages = (int) Math.ceil((double) totalInnergates / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("innergates", innergates); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/innergate";
+		}
+
+		// 제품 목록 페이지
+		@GetMapping("/mypage/bath")
+		public String mybath(Model model, 
+				             @RequestParam(value = "page", defaultValue = "1") Integer page,
+				             @RequestParam(value = "size", defaultValue = "10") Integer size,
+				             @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
+
+			List<BathDto> baths;
+			if (category != null && !category.isEmpty()) {
+				baths = bathservice.getAllBaths();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				baths = bathservice.getBathsWithPaging(page, size);
+			}
+
+			int totalBaths = bathservice.getTotalBathCount();
+			int totalPages = (int) Math.ceil((double) totalBaths / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("baths", baths); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/bath";
+		}
+
+		// 제품 목록 페이지
+		@GetMapping("/mypage/tile")
+		public String mytile(Model model, 
+				             @RequestParam(value = "page", defaultValue = "1") Integer page,
+				             @RequestParam(value = "size", defaultValue = "10") Integer size,
+				             @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
+
+			List<TileDto> tiles;
+			if (category != null && !category.isEmpty()) {
+				tiles = tileservice.getAllTiles();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				tiles = tileservice.getTilesWithPaging(page, size);
+			}
+
+			int totalTiles = tileservice.getTotalTileCount();
+			int totalPages = (int) Math.ceil((double) totalTiles / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("tiles", tiles); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/tile";
+		}
+
+		// 제품 목록 페이지
+		@GetMapping("/mypage/window")
+		public String mywindow(Model model, 
+				             @RequestParam(value = "page", defaultValue = "1") Integer page,
+				             @RequestParam(value = "size", defaultValue = "10") Integer size,
+				             @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
+
+			List<WindowDto> windows;
+			if (category != null && !category.isEmpty()) {
+				windows = windowservice.getAllWindows();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				windows = windowservice.getWindowsWithPaging(page, size);
+			}
+
+			int totalWindows = windowservice.getTotalWindowCount();
+			int totalPages = (int) Math.ceil((double) totalWindows / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("windows", windows); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/window";
+		}
+
+		// 제품 목록 페이지
+		@GetMapping("/mypage/moulding")
+		public String mymoulding(Model model, 
+				             @RequestParam(value = "page", defaultValue = "1") Integer page,
+				             @RequestParam(value = "size", defaultValue = "10") Integer size,
+				             @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
+
+			List<MouldingDto> mouldings;
+			if (category != null && !category.isEmpty()) {
+				mouldings = mouldingservice.getAllMouldings();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				mouldings = mouldingservice.getMouldingsWithPaging(page, size);
+			}
+
+			int totalMouldings = mouldingservice.getTotalMouldingCount();
+			int totalPages = (int) Math.ceil((double) totalMouldings / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("mouldings", mouldings); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/moulding";
+		}
+
+		// 제품 목록 페이지
+		@GetMapping("/mypage/wall")
+		public String mywall(Model model, 
+				             @RequestParam(value = "page", defaultValue = "1") Integer page,
+				             @RequestParam(value = "size", defaultValue = "10") Integer size,
+				             @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
+
+			List<WallDto> walls;
+			if (category != null && !category.isEmpty()) {
+				walls = wallservice.getAllWalls();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				walls = wallservice.getWallsWithPaging(page, size);
+			}
+
+			int totalWalls = wallservice.getTotalWallCount();
+			int totalPages = (int) Math.ceil((double) totalWalls / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("walls", walls); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/wall";
+		}
+
+		// 제품 목록 페이지
+		@GetMapping("/mypage/film")
+		public String myfilm(Model model, 
+				             @RequestParam(value = "page", defaultValue = "1") Integer page,
+				             @RequestParam(value = "size", defaultValue = "10") Integer size,
+				             @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
+
+			List<FilmDto> films;
+			if (category != null && !category.isEmpty()) {
+				films = filmservice.getAllFilms();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				films = filmservice.getFilmsWithPaging(page, size);
+			}
+
+			int totalFilms = filmservice.getTotalFilmCount();
+			int totalPages = (int) Math.ceil((double) totalFilms / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("films", films); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/film";
+		}
+		
 	// 제품 추가
 	@PostMapping("/mypage/registration/add")
 	public String addItem(Model model, ItemDto itemdto,

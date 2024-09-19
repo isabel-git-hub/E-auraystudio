@@ -17,6 +17,8 @@ public class BathDto {
 	private String bath_name;
 	private String style;
 	private String pro_kind;
+	private String content;
+	private String y_img;
 	
 	public String getUserid() {
 		return userid;

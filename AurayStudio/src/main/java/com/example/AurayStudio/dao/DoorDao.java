@@ -1,13 +1,13 @@
 package com.example.AurayStudio.dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.dao.DataAccessException;
 
 import com.example.AurayStudio.dto.DoorDto;
-import com.example.AurayStudio.dto.KitchenDto;
 
 @Mapper
 public interface DoorDao {
@@ -17,4 +17,13 @@ public interface DoorDao {
 	
 	@Select("SELECT y_no, d_name, style, pro_kind, y_img FROM door WHERE pro_kind = #{kKind}")
     List<DoorDto> getDoorsByKKind(String kKind);
+
+	@Select("select * from door")
+	List<DoorDto> findAll() throws DataAccessException;
+
+	@Select("SELECT * FROM door LIMIT #{size} OFFSET #{offset}")
+	List<DoorDto> selectPagedDoors(@Param("size") int size, @Param("offset") int offset) throws DataAccessException;
+
+	@Select("SELECT COUNT(*) FROM door")
+	int getTotalDoorCount() throws DataAccessException;
 }

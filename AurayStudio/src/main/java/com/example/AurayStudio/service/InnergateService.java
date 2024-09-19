@@ -12,4 +12,7 @@ public interface InnergateService {
 	List<InnergateDto> getInnerByKKind(String kKind);
 	void saveInnergate (InnergateDto innergateDto) ;
 	String findLastYno(int digitCount);
+	List<InnergateDto> getAllInnergates();
+	List<InnergateDto> getInnergatesWithPaging(int page, int size);
+	int getTotalInnergateCount();
 }

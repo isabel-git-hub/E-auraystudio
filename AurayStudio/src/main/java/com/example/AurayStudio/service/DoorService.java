@@ -10,4 +10,7 @@ import com.example.AurayStudio.dto.DoorDto;
 public interface DoorService {
 	DoorDto findByYNo(String yNo);
 	List<DoorDto> getDoorsByKKind(String kKind);
+	List<DoorDto> getAllDoors();
+	List<DoorDto> getDoorsWithPaging(int page, int size);
+	int getTotalDoorCount();
 }

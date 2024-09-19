@@ -29,5 +29,20 @@ public class KitchenServiceImpl implements KitchenService{
 	public List<KitchenDto> getKitchensByPKind(String PKind) {
 		return kitchendao.getKitchensByPKind(PKind);
 	}
+	
+	@Override
+	public List<KitchenDto> getAllKitchens() {
+		return kitchendao.findAll();
+	}
+	
+	@Override
+	public List<KitchenDto> getKitchensWithPaging(int page, int size) {
+		int offset = (page - 1) * size;  
+		return kitchendao.selectPagedKitchens(size, offset);
+	}
 
+	@Override
+	public int getTotalKitchenCount() {
+		return kitchendao.getTotalKitchenCount();
+	}
 }

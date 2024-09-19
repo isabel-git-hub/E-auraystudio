@@ -50,4 +50,20 @@ public class InnergateServiceImpl implements InnergateService {
         // 새로운 y_no 생성 (예: "IA-02")
         return prefix + String.format("%0" + digitCount + "d", nextYno);
     }
+    
+    @Override
+    public List<InnergateDto> getAllInnergates() {
+    	return innergateDao.findAll();
+    }
+    
+    @Override
+    public List<InnergateDto> getInnergatesWithPaging(int page, int size) {
+    	int offset = (page - 1) * size;  
+    	return innergateDao.selectPagedInnergates(size, offset);
+    }
+    
+    @Override
+    public int getTotalInnergateCount() {
+    	return innergateDao.getTotalInnergateCount();
+    }
 }

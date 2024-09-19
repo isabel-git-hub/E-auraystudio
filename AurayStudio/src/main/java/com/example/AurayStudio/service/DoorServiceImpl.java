@@ -24,5 +24,21 @@ public class DoorServiceImpl implements DoorService{
 	public List<DoorDto> getDoorsByKKind(String kKind) {
 		return doordao.getDoorsByKKind(kKind);
 	}
+	
+	@Override
+	public List<DoorDto> getAllDoors() {
+		return doordao.findAll();
+	}
+	
+	@Override
+	public List<DoorDto> getDoorsWithPaging(int page, int size) {
+		int offset = (page - 1) * size;
+		return doordao.selectPagedDoors(size, offset);
+	}
+	
+	@Override
+	public int getTotalDoorCount() {
+		return doordao.getTotalDoorCount();
+	}
 
 }

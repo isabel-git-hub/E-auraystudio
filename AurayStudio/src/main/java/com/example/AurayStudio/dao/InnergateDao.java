@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.dao.DataAccessException;
 
 import com.example.AurayStudio.dto.InnergateDto;
 
@@ -24,5 +26,14 @@ public interface InnergateDao {
 	
 	@Select("SELECT y_no FROM innergate ORDER BY CAST(SUBSTRING(y_no, 4) AS UNSIGNED) DESC LIMIT 1")
 	String findLastYno();
+
+	@Select("select * from innergate")
+	List<InnergateDto> findAll() throws DataAccessException;
+
+	@Select("SELECT * FROM innergate LIMIT #{size} OFFSET #{offset}")
+	List<InnergateDto> selectPagedInnergates(@Param("size") int size, @Param("offset") int offset) throws DataAccessException;
+
+	@Select("SELECT COUNT(*) FROM innergate")
+	int getTotalInnergateCount() throws DataAccessException;
 
 }

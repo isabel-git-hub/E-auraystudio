@@ -1,14 +1,11 @@
 package com.example.AurayStudio.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.example.AurayStudio.dao.Built_inDao;
-import com.example.AurayStudio.dao.DoorDao;
 import com.example.AurayStudio.dto.Built_inDto;
-import com.example.AurayStudio.dto.DoorDto;
 
 @Service
 public class Built_inServiceImpl implements Built_inService{
@@ -28,4 +25,19 @@ public class Built_inServiceImpl implements Built_inService{
 		return built_inDao.getBuilt_insByKKind(kKind);
 	}
 
+	@Override
+	public List<Built_inDto> getAllBuilt_ins() {
+		return built_inDao.findAll();
+	}
+	
+	@Override
+	public List<Built_inDto> getBuilt_insWithPaging(int page, int size) {
+		int offset = (page - 1) * size;  
+		return built_inDao.selectPagedBuilt_ins(size, offset);
+	}
+	
+	@Override
+	public int getTotalBuilt_inCount() {
+		return built_inDao.getTotalBuilt_inCount();
+	}
 }

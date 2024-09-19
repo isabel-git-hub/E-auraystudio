@@ -16,6 +16,9 @@ public class FilmDto {
 	private String y_no;
 	private String film_name;
 	private String pro_kind;
+	private String style;
+	private String content;
+	private String y_img;
 	
 	public String getUserid() {
 		return userid;
