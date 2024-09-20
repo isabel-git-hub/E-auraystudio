@@ -10,4 +10,7 @@ import com.example.AurayStudio.dto.WallpaperDto;
 public interface WallpaperService {
 	WallpaperDto findByYNo(String yNo);
 	List<WallpaperDto> getWallpapersByKKind(String kKind);
+	List<WallpaperDto> getAllWallpapers();
+	List<WallpaperDto> getWallpapersWithPaging(int page, int size);
+	int getTotalWallpaperCount();
 }

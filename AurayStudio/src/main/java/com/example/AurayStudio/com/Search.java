@@ -11,6 +11,18 @@ public class Search {
 	private boolean existNextPage;	// 페이지 리스트 존재 여부
 	private int startPage;			// 페이지 리스트 시작 번호
 	private int endPage;			// 페이지 리스트 끝 번호
+	private int size;
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public Search(int size) {
+		this.size = size;
+	}
 	/***** 검색 영역 *****/
 	private String keyword;			// 검색 키워드
 	private String searchType;		// 검색 방법

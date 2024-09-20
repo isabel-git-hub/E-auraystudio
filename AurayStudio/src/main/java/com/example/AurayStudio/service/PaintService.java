@@ -17,4 +17,6 @@ public interface PaintService {
 	ImgmngDto downloadImg(String y_no);
 	List<PaintDto> getPaintList();
 	void uploadImg(ImgmngDto imgdto);
+	List<PaintDto> getPaintsWithPaging(int page, int size);
+	int getTotalPaintCount();
 }

@@ -47,5 +47,6 @@ public class FlooringDto {
 	private String pro_kind;
 	private String y_img;
 	private String content;
+	private String style;
 	
 }

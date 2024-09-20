@@ -26,24 +26,30 @@ import com.example.AurayStudio.dto.BathDto;
 import com.example.AurayStudio.dto.Built_inDto;
 import com.example.AurayStudio.dto.DoorDto;
 import com.example.AurayStudio.dto.FilmDto;
+import com.example.AurayStudio.dto.FlooringDto;
 import com.example.AurayStudio.dto.InnergateDto;
 import com.example.AurayStudio.dto.ItemDto;
 import com.example.AurayStudio.dto.ItemimgDto;
 import com.example.AurayStudio.dto.KitchenDto;
 import com.example.AurayStudio.dto.MouldingDto;
+import com.example.AurayStudio.dto.PaintDto;
 import com.example.AurayStudio.dto.TileDto;
 import com.example.AurayStudio.dto.WallDto;
+import com.example.AurayStudio.dto.WallpaperDto;
 import com.example.AurayStudio.dto.WindowDto;
 import com.example.AurayStudio.service.BathService;
 import com.example.AurayStudio.service.Built_inService;
 import com.example.AurayStudio.service.DoorService;
 import com.example.AurayStudio.service.FilmService;
+import com.example.AurayStudio.service.FlooringService;
 import com.example.AurayStudio.service.InnergateService;
 import com.example.AurayStudio.service.ItemService;
 import com.example.AurayStudio.service.KitchenService;
 import com.example.AurayStudio.service.MouldingService;
+import com.example.AurayStudio.service.PaintService;
 import com.example.AurayStudio.service.TileService;
 import com.example.AurayStudio.service.WallService;
+import com.example.AurayStudio.service.WallpaperService;
 import com.example.AurayStudio.service.WindowService;
 
 import jakarta.servlet.http.HttpSession;
@@ -73,7 +79,12 @@ public class IndexController {
 	private WallService wallservice;
 	@Autowired
 	private FilmService filmservice;
-	
+	@Autowired
+	private FlooringService flooringservice;
+	@Autowired
+	private WallpaperService wallpaperservice;
+	@Autowired
+	private PaintService paintservice;
 	
 	@GetMapping({"/", "/index"})
 	public String indexPage(HttpSession session, Model model) {
@@ -532,7 +543,127 @@ public class IndexController {
 
 			return "mypage/film";
 		}
+
+		// 제품 목록 페이지
+		@GetMapping("/mypage/flooring")
+		public String myflooring(Model model, 
+				             @RequestParam(value = "page", defaultValue = "1") Integer page,
+				             @RequestParam(value = "size", defaultValue = "10") Integer size,
+				             @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
+
+			List<FlooringDto> floorings;
+			if (category != null && !category.isEmpty()) {
+				floorings = flooringservice.getAllFloorings();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				floorings = flooringservice.getFlooringsWithPaging(page, size);
+			}
+
+			int totalFloorings = flooringservice.getTotalFlooringCount();
+			int totalPages = (int) Math.ceil((double) totalFloorings / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("floorings", floorings); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/flooring";
+		}
 		
+		// 제품 목록 페이지
+		@GetMapping("/mypage/wallpaper")
+		public String mywallpaper(Model model, 
+				             @RequestParam(value = "page", defaultValue = "1") Integer page,
+				             @RequestParam(value = "size", defaultValue = "10") Integer size,
+				             @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
+
+			List<WallpaperDto> wallpapers;
+			if (category != null && !category.isEmpty()) {
+				wallpapers = wallpaperservice.getAllWallpapers();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				wallpapers = wallpaperservice.getWallpapersWithPaging(page, size);
+			}
+
+			int totalWallpapers = wallpaperservice.getTotalWallpaperCount();
+			int totalPages = (int) Math.ceil((double) totalWallpapers / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("wallpapers", wallpapers); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/wallpaper";
+		}
+		
+		// 제품 목록 페이지
+		@GetMapping("/mypage/paint")
+		public String mypaint(Model model, 
+				             @RequestParam(value = "page", defaultValue = "1") Integer page,
+				             @RequestParam(value = "size", defaultValue = "10") Integer size,
+				             @RequestParam(value = "category", required = false) String category) {
+			// 기본값을 명시적으로 확인 (null인 경우 대비)
+			if (size == null)
+				size = 10;
+
+			List<PaintDto> paints;
+			if (category != null && !category.isEmpty()) {
+				paints = paintservice.getAllPaints();
+			} else {
+				// 카테고리가 없으면 전체 데이터
+				paints = paintservice.getPaintsWithPaging(page, size);
+			}
+
+			int totalPaints = paintservice.getTotalPaintCount();
+			int totalPages = (int) Math.ceil((double) totalPaints / size);
+
+			// 페이지 그룹 계산
+			int pageGroupSize = 10; // 한 페이지 그룹에 몇 개의 페이지를 보여줄지 설정
+			int currentGroup = (page - 1) / pageGroupSize; // 현재 페이지 그룹
+			int startPage = currentGroup * pageGroupSize + 1; // 시작 페이지 번호
+			int endPage = Math.min(startPage + pageGroupSize - 1, totalPages); // 마지막 페이지 번호
+
+			// 페이징 정보 추가
+			model.addAttribute("paints", paints); // 수정된 부분
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("hasPrevPage", currentGroup > 0);
+			model.addAttribute("hasNextPage", endPage < totalPages);
+			model.addAttribute("size", size); // size 값을 모델에 추가하여 템플릿으로 전달
+
+			return "mypage/paint";
+		}
+				
 	// 제품 추가
 	@PostMapping("/mypage/registration/add")
 	public String addItem(Model model, ItemDto itemdto,

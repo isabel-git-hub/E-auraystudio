@@ -42,4 +42,10 @@ public interface PaintDao {
 	@Select("select i.y_no, p.p_name, p.pro_kind, p.y_img from paint p "
 			+ "join item_img i on p.y_no = i.y_no")
 	List<PaintDto> selectPaintList() throws DataAccessException;
+
+	@Select("SELECT * FROM paint LIMIT #{size} OFFSET #{offset}")
+	List<PaintDto> selectPagedPaints(@Param("size") int size, @Param("offset") int offset) throws DataAccessException;
+
+	@Select("SELECT COUNT(*) FROM paint")
+	int getTotalPaintCount() throws DataAccessException;
 }

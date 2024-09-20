@@ -53,4 +53,15 @@ public class PaintServiceImpl implements PaintService{
 	public void uploadImg(ImgmngDto imgdto) {
 		paintdao.insertImg(imgdto);
 	}
+	
+	@Override
+	public List<PaintDto> getPaintsWithPaging(int page, int size) {
+		int offset = (page - 1) * size; 
+		return paintdao.selectPagedPaints(size, offset);
+	}
+	
+	@Override
+	public int getTotalPaintCount() {
+		return paintdao.getTotalPaintCount();
+	}
 }

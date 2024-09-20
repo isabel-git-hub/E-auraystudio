@@ -1,7 +1,6 @@
 package com.example.AurayStudio.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -26,4 +25,19 @@ public class FlooringServiceImpl implements FlooringService{
 		return flooringDao.getFlooringsByKKind(kKind);
 	}
 
+	@Override
+	public List<FlooringDto> getAllFloorings() {
+		return flooringDao.findAll();
+	}
+	
+	@Override
+	public List<FlooringDto> getFlooringsWithPaging(int page, int size) {
+		int offset = (page - 1) * size; 
+		return flooringDao.selectPagedFloorings(size, offset);
+	}
+	
+	@Override
+	public int getTotalFlooringCount() {
+		return flooringDao.getTotalFlooringCount();
+	}
 }
