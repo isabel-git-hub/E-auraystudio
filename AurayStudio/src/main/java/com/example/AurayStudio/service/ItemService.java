@@ -21,15 +21,25 @@ public interface ItemService {
 	ItemimgDto downloadImg(String y_no);
 
 	void deleteItem(String y_no);
-	
+
 	void deleteImg(String y_no);
+
+	List<ItemDto> getItemByKKind(String string);
+
+	Object findByYNo(String y_no);
 	
 	List<ItemDto> getItemsWithPaging(int page, int size);
 
 	int getTotalItemCount();
 
-//	List<ItemDto> getItemsByCategory(int page, int size, String category);
+//	List<ItemDto> getAllKitchens();
 //
-//	int getTotalItemCountByCategory(String category);
+//	List<ItemDto> getKitchensWithPaging(int page, int size);
+//
+//	int getTotalKitchenCount();
+	
+	List<ItemDto> getItemsByCategoryWithPaging(String category, int page, int size);
+	
+	int getTotalItemCountByCategory(String category);
 
 }

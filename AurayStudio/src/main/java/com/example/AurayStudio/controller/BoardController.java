@@ -48,43 +48,43 @@ public class BoardController {
 	}
 	
 	@GetMapping("/board/{board_no}")
-	public String boardPage(Model model,
-	                        @PathVariable("board_no") int board_no, 
-	                        @RequestParam(value = "page", defaultValue = "1") int page, 
-	                        @RequestParam(value = "size", defaultValue = "10") int size,
+	public String boardPage(Model model, @PathVariable("board_no") int board_no, 
 	                        @RequestParam(value = "keyword", defaultValue = "") String keyword) {
-	    Search search = new Search(size, 5);  // 페이지 크기 설정
-	    search.setPage(page);
-	    search.setKeyword(keyword);
-
+	    // 검색 및 페이지 처리
+	    Search search = new Search(5, 5);
+	    if (keyword != null && !keyword.isEmpty()) {
+	        search.setKeyword(keyword);
+	    }
+	    
 	    // 게시글 리스트 취득
 	    List<PostDto> list = service.getPostListByBoard(board_no, search);
 	    model.addAttribute("list", list);
 	    model.addAttribute("page", search);
-
+	    
 	    // 게시판 정보 취득
 	    BoardDto board = service.getBoard(board_no);
 	    model.addAttribute("board", board);
 
-	    // 게시판 메뉴 취득
+	    // 게시판 메뉴 취득 및 디버깅
 	    List<BoardDto> menu = service.getBoardMenu();
+	    if (menu == null || menu.isEmpty()) {
+	        System.out.println("메뉴가 없습니다.");
+	    } else {
+	        System.out.println("메뉴가 있습니다: " + menu);
+	    }
 	    model.addAttribute("menu", menu);
-
+	    
 	    return "board";
 	}
-
 	
 	@GetMapping("/board/{board_no}/{page}")
-	public String boardPageWithPage(Model model, 
-			                @PathVariable("board_no") int board_no, 
-			                @PathVariable("page") int page,
-			                @RequestParam(value = "size", defaultValue = "10") int size,
-			                @RequestParam(value = "keyword", defaultValue="") String keyword) {
-		Search search = new Search(size, 5);
+	public String boardPage(Model model, @PathVariable("board_no") int board_no, @PathVariable("page") int page, 
+			@RequestParam(value = "keyword", defaultValue="") String keyword) {
+		Search search =new Search(5, 5);
 		search.setPage(page);
 		search.setKeyword(keyword);
 		// 키워드 파라메타가 있으면 키워드 설정
-//		if(keyword != null) search.setKeyword(keyword);
+		if(keyword != null) search.setKeyword(keyword);
 		// 게시글 리스트 취득
 		List<PostDto> list = service.getPostListByBoard(board_no, search);
 		model.addAttribute("list", list);
@@ -102,16 +102,11 @@ public class BoardController {
 	}
 	
 	@GetMapping("/search/{board_no}")
-	public String searchPost(Model model, 
-			                 @PathVariable("board_no") int board_no, 
-			                 @RequestParam("keyword") String keyword,
-			                 @RequestParam(value = "page", defaultValue = "1") int page,
-			                 @RequestParam(value = "size", defaultValue = "10") int size) {
-		Search search = new Search(size, 5);
-		search.setPage(page);
-		search.setKeyword(keyword);
+	public String searchPost(Model model, @PathVariable("board_no") int board_no, @RequestParam("keyword") String keyword) {
+		Search page = new Search(5, 5);
+		page.setKeyword(keyword);
 		// 게시글 리스트 취득
-		List<PostDto> list = service.getPostListByKeyword(board_no, search);
+		List<PostDto> list = service.getPostListByKeyword(board_no, page);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
@@ -141,8 +136,8 @@ public class BoardController {
 	}
 	@PostMapping("/write")
 	public String writePost(Model model, PostDto dto, 
-			                @RequestParam(value="file", required=false) MultipartFile[] files) {
-		final String path = "D:\\koreait\\JAVA-work\\AurayStudio\\repository\\";
+			@RequestParam(value="file", required=false) MultipartFile[] files) {
+		final String path = "D:\\koreait\\JAVA-work\\firstboot\\repository\\";
 		System.out.println(dto.getBoard_no());
 		// 게시판 메뉴 취득
 		List<BoardDto> menu = service.getBoardMenu();
@@ -180,7 +175,6 @@ public class BoardController {
 		}
 		return "viewForm";
 	}
-	
 	@GetMapping("/view/{post_no}")
 	public String viewPost(@PathVariable("post_no") int post_no, Model model) {
 		// 게시글 취득
@@ -206,7 +200,6 @@ public class BoardController {
 		
 		return "viewForm";
 	}
-	
 	@GetMapping("/delete/{post_no}")
 	public String delPost(@PathVariable("post_no") int post_no) {
 		int board_no = service.getBoardNo(post_no);
@@ -233,10 +226,22 @@ public class BoardController {
 	
 	@PostMapping("/edit")
 	public String editPost(Model model, PostDto dto) {
+		// dto가 null인지 확인
+	    if (dto == null) {
+	        // 오류 처리 또는 예외 발생
+	        throw new IllegalArgumentException("게시글 정보가 없습니다.");
+	    }
 		// 게시글 수정
-		dto = service.editPost(dto);
+//		dto = service.editPost(dto);
+	    dto = service.editPost(dto);
+	    
+	    // 수정된 게시글 정보를 다시 가져와 모델에 추가
 		model.addAttribute("post", dto);
 
+		// 수정된 게시글 가져오기
+//	    PostDto updatedPost = service.getPost(dto.getPost_no());
+//	    model.addAttribute("post", updatedPost);
+	    
 		// 게시판 정보 취득
 		BoardDto board = service.getBoard(dto.getBoard_no());
 		model.addAttribute("board", board);

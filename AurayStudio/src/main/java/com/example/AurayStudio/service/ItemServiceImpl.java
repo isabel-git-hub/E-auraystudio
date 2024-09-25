@@ -45,10 +45,20 @@ public class ItemServiceImpl implements ItemService {
 	public void deleteItem(String y_no) {
 		itemdao.deleteItem(y_no);
 	}
-	
+
+	@Override
+	public List<ItemDto> getItemByKKind(String kKind) {
+		return itemdao.getItemsByKKind(kKind);
+	}
+
 	@Override
 	public void deleteImg(String y_no) {
 		itemdao.deleteImg(y_no);
+	}
+
+	@Override
+	public ItemDto findByYNo(String y_no) {
+		return itemdao.findByYNo(y_no) ;
 	}
 	
 	@Override
@@ -61,15 +71,45 @@ public class ItemServiceImpl implements ItemService {
 	public int getTotalItemCount() {
 		return itemdao.getTotalItemCount();
 	}
+	
+//	@Override
+//	public List<ItemDto> getItemsByCategoryWithPaging(String category, int page, int size) {
+//		if (page < 1) page = 1;
+//		int offset = (page - 1) * size;
+//		 System.out.println("Category: " + category + ", Page: " + page + ", Size: " + size + ", Offset: " + offset);
+//		return itemdao.findItemsByCategory(category, offset, size);
+//	}
+	@Override
+	public List<ItemDto> getItemsByCategoryWithPaging(String category, int page, int size) {
+	    int offset = (page - 1) * size;  // offset 계산
+	    List<ItemDto> items = itemdao.findItemsByCategory(category, size, offset);
+	    System.out.println("Category: " + category + ", Page: " + page + ", Size: " + size + ", Offset: " + offset);
+	    System.out.println("Items Size: " + items.size()); // 아이템 크기 확인
+	    return items;
+	}
+
+
+	@Override
+	public int getTotalItemCountByCategory(String category) {
+		return itemdao.countItemsByCategory(category);
+	}
+	
+//	@Override
+//	public List<ItemDto> getAllKitchens() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 //	@Override
-//	public List<ItemDto> getItemsByCategory(int page, int size, String category) {
-//		int offset = (page - 1) * size;
-//	    return itemdao.findItemsByCategory(category, size, offset);
+//	public List<ItemDto> getKitchensWithPaging(Integer page, Integer size) {
+//		// TODO Auto-generated method stub
+//		return null;
 //	}
-//	
+
 //	@Override
-//	public int getTotalItemCountByCategory(String category) {
-//		return itemdao.countItemsByCategory(category);
+//	public int getTotalKitchenCount() {
+//		// TODO Auto-generated method stub
+//		return 0;
 //	}
+
 }
